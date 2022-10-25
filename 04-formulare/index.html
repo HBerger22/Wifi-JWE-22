@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulare</title>
+
+    <style>
+        label {
+            color: rgb(21, 21, 202);
+        }
+    </style>
+
+</head>
+<body>
+    <!-- 
+        Kontaktformular 
+        Chat
+        Shop-Bestellung
+        Uploads
+        Bewertungen/Ratings/Review
+        Login / Authentifizierung
+        Newsletteranmeldungen (Doppel)
+    -->
+
+    <form action="index.html" method="get">
+        <div>
+            <label for="text1zeilig" style="color: rgb(250, 7, 7);" >Einzeiliges Eingabefeld</label> <br>
+            <input id="text1zeilig" type="text" value="Eingabefeld" name="1zeilig">
+
+        </div>
+
+        <div>
+            <label for="pwdfield1">Passwort:</label> <br>
+            <input type="password" id="pwdfield1" name="PWDfield">
+        </div>
+        
+        <div>
+            <label for="auswahl">Auswahl</label>
+            <input type="checkbox" id="auswahl" name="Auswahl">
+        </div>
+
+        <div>
+            <input type="radio" id="frau" name="gruppe1" value="frau">
+            <label for="frau">Frau</label>
+            <input type="radio" id="herr" name="gruppe1" value="herr"> 
+            <label for="herr">Herr</label>  
+        </div>
+        <div>
+            <label for="mehrzeilig">Mehrzeilig</label> <br>
+            <textarea name="mehrzeiligestextfeld" id="mehrzeilig" cols="20" rows="4"> das ist mein text
+            </textarea>
+        </div>
+        
+        <div>
+            <label for="color"></label>
+            <input type="color" id="color" name="color">
+        </div>
+        <div>
+            <label for="datum"></label>
+            <input type="date" id="datum" name="datum">
+        </div>
+        <div>
+            <label for="versteckt"></label>
+            <input type="hidden" id="versteckt" value="versteckt" name="versteckt">
+        </div>
+        <div>
+            <label for="monat"></label>
+            <input type="month" id="monat" name="monat">
+        </div>
+        <div>
+            <label for="bereich"></label>
+            <input type="range" id="bereich" name="bereich">
+            
+        </div>
+        <div>
+            <input type="checkbox" name="dsgvo" id="dsgvo" required>
+            <label for="dsgvo">Ich bin mit den Datenschutzbestimmungen einverstanden!</label>
+        </div>
+        <div>
+            <label for="submit"></label>
+            <input type="submit" id="submit" value="Abschicken">
+            <input type="submit" value="Mayday">
+        </div>
+    </form>
+
+</body>
+</html>
