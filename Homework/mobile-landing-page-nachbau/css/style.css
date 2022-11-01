@@ -1,0 +1,122 @@
+:root{
+    --rosa1: #ECA49C;
+    --rosa2: #F49C9C;
+    --gruen: #89D46F;
+    --grau: #888888;
+}
+
+body{
+    background-color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: left;
+    margin: 0px;
+}
+
+header{
+    text-transform: uppercase;
+    font-size: 16px;
+    font-weight:400;
+    letter-spacing: 6.93px;
+    color: var(--grau);
+    margin-top: 36px;
+}
+
+h1{
+    text-transform: uppercase;
+    color: var(--rosa2) ;
+    font-size: 98px;
+    font-weight: lighter;
+    margin-top: 17px;
+    margin-bottom: 0px;
+    line-height: 98px;
+}
+
+p{
+    color: var(--rosa2);
+    font-size: 19px;
+    font-weight: lighter;
+    margin-left: 34px;
+}
+
+#banner{
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 5.2px;
+    color:white;
+    background-color: var(--grau);
+    opacity: 0.51;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-left: 46px;
+    padding-right: 18px;
+    margin-left: 0px;
+    
+}
+
+.einzug_links{
+    margin-left: 27px;
+}
+
+.rosabanner{
+    background-color: var(--rosa1);
+    height: 72px;
+    width: 100%;
+    position: absolute;
+    top: 575px ;
+    left: 0px;
+
+}
+
+#bild_lady{
+    position: absolute;
+    top: 282px;
+    left: 147px;
+    z-index: +2;
+
+
+}
+
+#preis{
+    background-color: black;
+    color: white;
+    font-size: 37px;
+    font-weight: bold;
+
+    justify-content: center;
+    align-items: center;
+    display: inline-flex;
+    
+    border-radius: 50%;
+    height: 166px;
+    width: 166px;
+
+    position: absolute;
+    top: 432px;
+    left: 41px;
+    z-index: +1;
+}
+
+#button{
+    background-color: var(--gruen);
+    color: white;
+    border-radius: 26px;
+    font-size: 20px;
+    font-weight: bold;
+    display: block;
+    width: calc(100% - 54px);
+    border: none;
+    padding-top: 11px;
+    padding-bottom: 13px;
+    margin-left: 27px;
+    margin-right: 27px;
+    position: absolute;
+    left: 0px;
+    top: 664px;
+      
+}
+
+#button:hover{
+    background-color: var(--grau);
+    border-color: aqua;
+    border-style: dotted;
+}
