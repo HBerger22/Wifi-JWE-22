@@ -1,0 +1,127 @@
+:root{
+    --dred: #E74149;
+    --lgrey: #DDDDDD;
+    --dgrey: #969696;
+}
+
+html, body{
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif ;
+}
+
+html * {
+    box-sizing: border-box;
+
+  }
+
+body{
+    
+}
+
+header.top {
+    display: flex;
+    justify-content: space-between;
+    
+    background-color: aqua;
+    padding: 5px;
+
+}
+#logo{
+    margin: 10px;
+}
+
+header.top > * {
+    background: greenyellow;
+    border: 3px solid black;
+}
+
+#hero-image {
+    background: url(../bilder/blog-banner.png) no-repeat center top / cover;
+    padding: 15px;
+    position: relative;
+}
+
+#hero-image::before{
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    opacity: 0.2;
+    z-index: -0;
+
+
+}
+
+h1{ 
+    font-weight: 900;
+    color: white;
+    padding-left: 34px;
+    padding-right: 34px;
+}
+
+h3{
+    color: var(--dred);
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.a_article{
+    color: var(--dred);
+    text-decoration: underline;
+}
+
+a{
+    color: black;
+    text-decoration: none;
+}
+
+a:hover{
+    text-decoration: underline;
+}
+
+#b_entdecken{
+    /* Schriftstyle ist bei buttons separat zu definieren */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--dred);
+    color: white;
+    border-radius: 12px;
+
+    border: none;
+    padding: 20px 37px;
+    font-weight: 600;
+    font-size: 16px;
+
+
+}
+
+.endline{
+    font-size: 12px;
+    text-align: center;
+
+}
+
+footer.the-only-one{
+    background-color: var(--lgrey);
+    padding-bottom: 15px;
+}
+
+nav#footer-nav{
+    display: flex;
+    justify-content: space-around;
+}
+
+#footer-nav li{
+    list-style-type: "\25b8";
+    padding-left: 0em;
+}
+
+/* kann auch mit li::before angesprochen werden */
+#footer-nav ul li::marker {
+    color: red;
+    padding-right: 15px;
+}
