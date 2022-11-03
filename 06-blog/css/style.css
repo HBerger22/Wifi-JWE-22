@@ -12,38 +12,48 @@ html, body{
 
 html * {
     box-sizing: border-box;
+  } 
 
-  }
 
-body{
-    
-}
-
-header.top {
+ header.top { /*display flex setzt die Elemente von untereinander auf nebeneinander */
     display: flex;
     justify-content: space-between;
-    
-    background-color: aqua;
-    padding: 5px;
+    padding: 15px 30px;
+
+    /* background-color: aqua;  nur zur Anschauung von displayflex oder:*/
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+   
 
 }
 #logo{
     margin: 10px;
 }
-
+/*  bewirkt das um den einzelnen Flexelementen ein schwarzer rahmen ist
 header.top > * {
     background: greenyellow;
     border: 3px solid black;
-}
+}*/
 
 #hero-image {
     background: url(../bilder/blog-banner.png) no-repeat center top / cover;
-    padding: 15px;
+    height: 500px;
+    padding: 34px;
     position: relative;
+
+    display: flex;
+    /* statt nebeneinander soll es untereinander angeordnet werden */
+    flex-direction: column;
+    /* vertikal in der Mitte Plazieren */
+    justify-content: center;
 }
 
 #hero-image::before{
-    content: "";
+    /* hier wird eine graue fläche über den hero image drübergelegt, damit der weiße text darunter besser lesbar ist */
+    content: "123";
     display: block;
     position: absolute;
     top: 0px;
@@ -51,38 +61,45 @@ header.top > * {
     width: 100%;
     height: 100%;
     background-color: black;
-    opacity: 0.2;
-    z-index: -0;
+    opacity: 0.5;
+    z-index: 0;
 
 
 }
+
+#main_menu ul{
+    /* hauptmenu ausblenden */
+    display: none;
+}
+
 
 h1{ 
     font-weight: 900;
     color: white;
-    padding-left: 34px;
-    padding-right: 34px;
+    
+    margin-right: 34px;
+    /* damit es vor der #hero-image::before Fläche ist muss die position relativ sein und der Z-Index höher */
+    position: relative;
+    z-index: 1;
+
 }
 
-h3{
-    color: var(--dred);
-    font-weight: bold;
-    font-size: 18px;
+h2{
+    font-size: 24px;
+    font-style: bold;
+    margin-left: 37px;
+
 }
 
-.a_article{
-    color: var(--dred);
-    text-decoration: underline;
-}
 
-a{
+/* footer a{
     color: black;
     text-decoration: none;
 }
 
-a:hover{
+footer a:hover{
     text-decoration: underline;
-}
+} */
 
 #b_entdecken{
     /* Schriftstyle ist bei buttons separat zu definieren */
@@ -96,7 +113,12 @@ a:hover{
     font-weight: 600;
     font-size: 16px;
 
+    position: relative;
+    z-index: 1;   
+}
 
+#b_entdecken:hover{
+    background-color: black;
 }
 
 .endline{
@@ -124,4 +146,14 @@ nav#footer-nav{
 #footer-nav ul li::marker {
     color: red;
     padding-right: 15px;
+}
+
+/* maximale breite festlegen und inhalte Zentrieren */
+.inner_wrapper{
+    max-width: 1024px;
+
+    /* zentriert ein Block Element
+     */
+    margin-left: auto;
+    margin-right: auto;
 }

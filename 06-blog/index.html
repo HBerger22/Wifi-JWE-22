@@ -6,17 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog</title>
     <link rel="stylesheet" href="css/style.css">
-    <link rel="" href="" class="">
+    <link rel="stylesheet" href="css/content.css">
 </head>
+<!-- Vorgabe: https://xd.adobe.com/view/9de37703-21ba-4c66-aae7-3b2ef4c0a8f9-c8b0/screen/d55f4137-a1b1-4103-acce-ccbf298e147c/ -->
 <body>
     <div class="wrapper">
         <header class="top" >
             <div id="logo">
                 <a href="index.html">
-                    <img src="bilder/logo.svg" alt="Stocard Logo Image">
+                    <img id="img_logo" src="bilder/logo.svg" alt="Stocard Logo Image">
                 </a>
             </div>
-            <nav>
+            <nav id="main_menu">
                 <a href="#">
                     <img src="bilder/nav-icon.svg" alt="Navigation Icon">
                 </a>
@@ -30,55 +31,68 @@
         
         <main>
             <div id="hero-image">
+
+                <!-- hier wäre das notwendige Div Tag, aber mit dem Before attribut ist das nicht notwendig #hero-image::before -->
+
                 <h1>Blog of best UX-Design for human kind</h1>
-                <form action="#">
+                
                     <button id="b_entdecken">Entdecke die neuen Designs</button>
-                </form>  
+                 
             </div>
         
 
-            <article>
-                <header>
+            <section class="inner_wrapper">
+                <h2>
                     Unsere neuen Designs für Euch in einer gesammelten Liste:
-                </header>
-                
-                <p> 
+                </h2>
+                 <p> 
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim amet porro quo sequi consectetur officiis odio nihil ad minus, temporibus, praesentium rem nulla. Repellendus maiores maxime fugit natus deserunt quas.
                 </p>
-            </article>
             
-            <article>
-                <h3>Design No. 1</h3>
-                <img src="bilder/design1-1.png" alt="Bild1">
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima atque, quibusdam maxime illum error, vitae voluptatem aliquid incidunt     assumenda modi, earum saepe dolores cumque mollitia ipsa consectetur ut dolor odit.
-                </p>
-                <a class="a_article" href="#">Dieses Design genauer betrachten</a>
-            </article>
+            
+                <div class="flexibel">
+                    <article>
+                        <h3>Design No. 1</h3>
+                        <img class="img_article" src="bilder/design1-1.png" alt="Bild1">
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima atque, quibusdam maxime illum error, vitae voluptatem aliquid incidunt     assumenda modi, earum saepe dolores cumque mollitia ipsa consectetur ut dolor odit.
+                        </p>
+                        <a class="a_article" href="#">Dieses Design genauer betrachten</a>
+                    </article>
 
-            <article>
-                <h3>Design No. 2</h3>
-                <img src="bilder/design1-2.png" alt="Bild2">
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam ea molestias debitis amet sequi sapiente, reiciendis incidunt eligendi dignissimos accusantium sunt porro, minus maxime soluta magnam sit labore asperiores officiis.
-                </p>
-                <a class="a_article" href="#">Dieses Design genauer betrachten</a>
-            </article>
+                    <article>
+                        <h3>Design No. 2</h3>
+                        <img class="img_article" src="bilder/design1-2.png" alt="Bild2">
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam ea molestias debitis amet sequi sapiente, reiciendis incidunt eligendi dignissimos accusantium sunt porro, minus maxime soluta magnam sit labore asperiores officiis.
+                        </p>
+                        <a class="a_article" href="#">Dieses Design genauer betrachten </a> &#9656
+                    </article>
 
-            <article>
-                <h3>Design No. 3</h3>
-                <img src="bilder/design1-3.png" alt="">
-                <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit iste, dolorum nemo, nobis doloribus quaerat quidem neque magni doloremque reiciendis voluptatum expedita at nisi explicabo animi quae, quas hic deleniti?
-                </p>
-                <a class="a_article" href="#">Dieses Design genauer betrachten</a>
-            </article>
+                    <article>
+                        <h3>Design No. 3</h3>
+                        <img class="img_article" src="bilder/design1-3.png" alt="">
+                        <p>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit iste, dolorum nemo, nobis doloribus quaerat quidem neque magni doloremque reiciendis voluptatum expedita at nisi explicabo animi quae, quas hic deleniti?
+                        </p>
+                        <a class="a_article" href="#">Dieses Design genauer betrachten</a>
+                    </article>
 
+                    <article>
+                        <h3>Design No. 4</h3>
+                        <img class="img_article" src="bilder/design1-1.png" alt="">
+                        <p>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit iste, dolorum nemo, nobis doloribus quaerat quidem neque magni doloremque reiciendis voluptatum expedita at nisi explicabo animi quae, quas hic deleniti?
+                        </p>
+                        <a class="a_article" href="#">Dieses Design genauer betrachten</a>
+                    </article>
+                </div>
+            </section>
             <footer class="the-only-one">
                 <nav id="footer-nav">
                     <ul>
                         <li><a href="#">Kontakt</a></li>
-                        <li><a href="#">Datenschutz</a></li>
+                        <li><a href="#">Datenschutz </a></li>
                         <li><a href="#">Presse</a></li>
                         <li><a href="#">Impressum</a></li>
                         <li><a href="#">AGB</a></li>
