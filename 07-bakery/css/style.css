@@ -1,0 +1,142 @@
+:root{
+    --braun: #c39065 ;
+    --lgrau: #cccccc ;
+    --dgrau: #707070 ;
+}
+
+/* definition des Schriftstils (muss in einem Verzeichnis auf der Homepage sein(hier unterverzeichnis /fonts) und nicht ein Link auf irgendeine andere Homepage
+das hat DSGVO rechtliche Gründe das die Schriftart auf einen EU Server liegen muss!! */
+@font-face {
+    font-family: joe;
+    src: url(../fonts/josefin-sans-v20-latin-300.woff2);
+    font-weight: lighter;
+}
+@font-face {
+    font-family: joe;
+    src: url(../fonts/josefin-sans-v20-latin-regular.woff2);
+    font-weight: normal;
+}
+@font-face {
+    font-family: joe;
+    src: url(../fonts/josefin-sans-v20-latin-700.woff2);
+    font-weight: bold;
+}
+html, body{
+    margin: 0px;
+    padding: 0px;
+}
+
+html *{
+    box-sizing: border-box;
+}
+
+body{
+    font-family: joe;
+}
+
+img{
+    max-width: 100%;
+    height: auto;
+}
+
+
+
+
+
+
+
+#kopf{
+    display: flex;
+    justify-content:space-between ;
+}
+
+#kopf ul{
+    display: none;
+}
+
+#kopf img{
+    margin: 20px;
+}
+
+#img_logo{
+    width: 170px;
+}
+
+#div_mainimg{
+    /* position: absolute; */
+    z-index: -1;
+    
+}
+
+#quality{
+    position: relative; 
+    display: block;
+    margin-left: auto;
+    margin-right: 20px;
+    top: -75px;
+
+    background-image: url(../img/qualitaetssiegel-goldene-eichel_300.png) ;
+    background-repeat: no-repeat;
+    background-size: contain; /* Bild wird auf die grösse des Elements (75x75) angepasst */
+    width: 100px;
+    height: 100px;
+}
+
+h1{
+    text-align: center;
+    font-weight: lighter;
+}
+
+#products{
+    /* gap:30px; ist der Abstand zwischen den einzelnen elementen (oben/unten) */
+    text-align: center;
+    /* display: flex;
+    flex-flow: column; */
+}
+
+.button{
+    /* inline-block: ist wie ein blockelement, allerdings fliest es mit dem text mit */
+    display: inline-block;
+    background-color: white;
+    color: var(--lgrau);
+    border: 2px solid var(--dgrau);
+    padding: 0.5em;
+    font-size: 1.5rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
+#nav_footer{
+    background-color: var(--braun);
+    color: white;
+    text-align: center;
+    /* overflow: hidden; wird verwendet um "versteckte" margin zu eliminieren wie zum beispiel beim p-tag
+    wenn der fehlt, dann ist zwischen dem braunen nav-tag und endline-tag ein weißer abstand  */
+    overflow: hidden;
+}
+
+#nav_footer a{
+    
+    color: white;
+    text-decoration: none;
+    line-height: 2em
+}
+
+#nav_footer ul{
+    /* margin: 0; */
+    list-style-type: none;
+    padding: 2em 0em;
+    overflow: hidden;
+}
+
+#endline{
+    padding: 15px;
+    margin: 200;
+    background-color: var(--dgrau);
+    color: white;
+    text-align: center;
+    overflow: hidden;
+}
+
+
