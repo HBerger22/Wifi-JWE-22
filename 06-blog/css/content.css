@@ -1,28 +1,30 @@
+article{
+    max-width: 300px;
+    /* margin-bottom: 42px;
+    text-decoration: none; */
+    margin-left: 37px;
+}
+
 article h3{
     color: var(--dred);
     font-weight: bold;
     font-size: 18px;
-    margin-left: 37px;
+    
 }
 
-article{
-    max-width: 380px;
-    margin-bottom: 42px;
-    text-decoration: none;
-}
 
-article a{
+
+ a{
     color: var(--dred);
-    margin-left: 37px;    
+       
 }
 
-article a::after{
+ article::after{
     content: "\25b8";
     padding-left: 5px;
-    color: green;
+    color: var(--dred);
     text-decoration: none;
 }
-
 
 /* .a_article{
     color: var(--dred);
@@ -38,21 +40,19 @@ article a::after{
 
 p{
     font-size: 16;
-    margin-left: 37px;
-       
+   
 }
 
 .img_article{
-    margin-left: 37px;
-    margin-right: 37px;
-    filter: grayscale();
+    
+    filter: blur(5px);
 }
 
 @media screen and (min-width: 768px) {
-    body{
+    /* body{
         background-color: green;
         
-    }
+    } */
     
     .flexibel{
         display: flex;
@@ -63,5 +63,8 @@ p{
         max-width: 100%;
     }
 
-   
+    article{
+        margin-left: 0px;
+        
+    }
 }

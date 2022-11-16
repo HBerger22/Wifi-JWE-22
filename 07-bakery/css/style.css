@@ -47,20 +47,60 @@ img{
 
 #kopf{
     display: flex;
-    justify-content:space-between ;
+    /* justify-content:space-between ; */
+    
+}
+
+/* flex:1 gibt allen elementen unter id kopf den platzbedarf 1 da es 2 Elemente gibt a und nav bekommt jedes 1 --> 2 =1/2 oder 50% */
+#kopf > * {
+   flex: 1;
 }
 
 #kopf ul{
     display: none;
+    list-style-type: none;
+    
+    position: absolute;
+    top: 80px;
+    left: 0px;
+    width: 100%;
+    
+    font-size: 2em;
+    font-weight: bold;
+    padding: 1em;
+    
+
+    text-align: center;
+    background-color: var(--braun);
+}
+
+#kopf  ul.sichtbar{
+    display: block;
+}
+
+#kopf ul li{
+    padding: 0.55em;
+
+}
+
+#kopf ul li a{
+    
+    text-decoration: none;
+    color: white;
 }
 
 #kopf img{
     margin: 20px;
 }
 
-#img_logo{
-    width: 170px;
+#kopf nav  {
+ text-align: right;   
 }
+
+
+/* #img_logo{
+    width: 170px;
+} */
 
 #div_mainimg{
     /* position: absolute; */
@@ -139,4 +179,15 @@ h1{
     overflow: hidden;
 }
 
+@media screen and (min-width: 576px) {
+    html{
+
+    
+    background-color: green;
+    }
+
+    #products {
+        display: flex;
+    }
+}
 

@@ -18,10 +18,10 @@
                 </a>
             </div>
             <nav id="main_menu">
-                <a href="#">
+                <a href="#ul">
                     <img src="bilder/nav-icon.svg" alt="Navigation Icon">
                 </a>
-                <ul>
+                <ul id="ul">
                     <li><a href="#">Link 1</a></li>
                     <li><a href="#">Link 2</a></li>
                     <li><a href="#">Link 3</a></li>
@@ -34,7 +34,7 @@
 
                 <!-- hier wäre das notwendige Div Tag, aber mit dem Before attribut ist das nicht notwendig #hero-image::before -->
 
-                <h1>Blog of best UX-Design for human kind</h1>
+                <h1  >Blog of best UX-Design for human kind</h1>
                 
                     <button id="b_entdecken">Entdecke die neuen Designs</button>
                  
@@ -66,9 +66,9 @@
                         <p>
                             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam ea molestias debitis amet sequi sapiente, reiciendis incidunt eligendi dignissimos accusantium sunt porro, minus maxime soluta magnam sit labore asperiores officiis.
                         </p>
-                        <a class="a_article" href="#">Dieses Design genauer betrachten </a> &#9656
+                        <a class="a_article" href="#">Dieses Design genauer betrachten </a> 
                     </article>
-
+<!-- &#9656 kleiner Pfeil nach rechts in Html -->
                     <article>
                         <h3>Design No. 3</h3>
                         <img class="img_article" src="bilder/design1-3.png" alt="">
@@ -77,15 +77,16 @@
                         </p>
                         <a class="a_article" href="#">Dieses Design genauer betrachten</a>
                     </article>
+                    
 
-                    <article>
+                    <!-- <article>
                         <h3>Design No. 4</h3>
                         <img class="img_article" src="bilder/design1-1.png" alt="">
                         <p>
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit iste, dolorum nemo, nobis doloribus quaerat quidem neque magni doloremque reiciendis voluptatum expedita at nisi explicabo animi quae, quas hic deleniti?
                         </p>
                         <a class="a_article" href="#">Dieses Design genauer betrachten</a>
-                    </article>
+                    </article> -->
                 </div>
             </section>
             <footer class="the-only-one">
@@ -106,7 +107,10 @@
                     </ul>
 
                 </nav>
-                <p class="endline">© 2020 by JWE 21. Alle Rechte vorbehalten.</p>
+                <div id="div_bottom">
+                    <img id="img_bottom" src="bilder/logo.svg" alt="Stocard Logo">
+                    <p class="endline">© 2020 by JWE 21. Alle Rechte vorbehalten.</p>
+                </div>
             </footer>
         </main>
 

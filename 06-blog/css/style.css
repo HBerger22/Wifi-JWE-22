@@ -53,7 +53,7 @@ header.top > * {
 
 #hero-image::before{
     /* hier wird eine graue fläche über den hero image drübergelegt, damit der weiße text darunter besser lesbar ist */
-    content: "123";
+    content: "";
     display: block;
     position: absolute;
     top: 0px;
@@ -67,11 +67,23 @@ header.top > * {
 
 }
 
-#main_menu ul{
-    /* hauptmenu ausblenden */
-    display: none;
+#main_menu{
+    margin: 10px;
 }
 
+#main_menu li{
+    list-style-type: none;
+}
+
+#main_menu  ul{
+    /* hauptmenu ausblenden */
+    display: none;
+    padding-left: 0px;   
+}
+
+:target{
+    display: block;
+} 
 
 h1{ 
     font-weight: 900;
@@ -92,14 +104,14 @@ h2{
 }
 
 
-/* footer a{
+footer a{
     color: black;
     text-decoration: none;
 }
 
 footer a:hover{
     text-decoration: underline;
-} */
+} 
 
 #b_entdecken{
     /* Schriftstyle ist bei buttons separat zu definieren */
@@ -124,6 +136,7 @@ footer a:hover{
 .endline{
     font-size: 12px;
     text-align: center;
+    color: var(--dgrey);
 
 }
 
@@ -148,6 +161,13 @@ nav#footer-nav{
     padding-right: 15px;
 }
 
+#img_bottom{
+    display: none;
+    filter: grayscale();
+    
+    
+}
+
 /* maximale breite festlegen und inhalte Zentrieren */
 .inner_wrapper{
     max-width: 1024px;
@@ -156,4 +176,39 @@ nav#footer-nav{
      */
     margin-left: auto;
     margin-right: auto;
+
+    margin-bottom: 15px;
+}
+
+@media screen and ( min-width: 768px) {
+    .the-only-one{
+        display: flex;
+        justify-content: space-between;
+
+        max-width: 1024px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    #img_bottom{
+        display: flex;
+        width: 177px;
+        margin-left: auto;
+
+        
+
+    }
+    
+    #div_bottom {
+        margin-top: 15px;
+        margin-right: 15px;
+        display: flex;
+        justify-content: space-between ;
+        flex-direction: column;
+        float: right;
+
+    }
+    
+   
+    
 }
