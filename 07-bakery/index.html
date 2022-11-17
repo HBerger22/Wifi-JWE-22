@@ -11,7 +11,7 @@
 </head>
 <body>
     <div id="wrapper">
-        <header id="logo">
+        <header id="logo" class="inner_wrapper">
             <div id="kopf">
                 <a href="index.html">
                     <img id="img_logo" src="img/Logo-placeholder.png" alt="Logo">
@@ -29,42 +29,58 @@
             
         </header>
 
-        <main>
+        <main >
             <div id="div_mainimg">
                 <img id="img_main" src="img/pexels-klaus-nielsen-6287298_large.jpg" alt="Placeholder">
             </div>
-            <div id="quality">
-                
+            <div class="inner_wrapper">
+                <div id="quality" >
+            </div>    
             </div>
                 <H1>Unser Sortiment</H1>
             
-            <section id="products">
-                <p>
-                    <img src="https://via.placeholder.com/256.png" alt="Placeholder">
-                </p>
+            <div class="inner_wrapper">
+                <section id="products" >
+                    <p>
+                        <img src="https://via.placeholder.com/256.png" alt="Placeholder">
+                    </p>
 
-                <p>
-                    <img src="https://via.placeholder.com/256.png" alt="Placeholder">
-                </p>
+                    <p>
+                        <img src="https://via.placeholder.com/256.png" alt="Placeholder">
+                    </p>
 
-                <p>
-                    <img src="https://via.placeholder.com/256.png" alt="Placeholder">
-                </p>
+                    <p>
+                        <img src="https://via.placeholder.com/256.png" alt="Placeholder">
+                    </p>
 
-                <p>
-                    <img src="https://via.placeholder.com/256.png" alt="Placeholder">
-                </p>
-            
+                    <p>
+                        <img src="https://via.placeholder.com/256.png" alt="Placeholder">
+                    </p>
+                </section>
 
-                <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elite.
-                </p>
-                <a href="unterseiten/kontakt.html" class="button">Bestellung aufgeben</a>
-            </section>
+                <section id="bestellung">
+                    <p >
+                        Lorem ipsum dolor sit amet consectetur adipisicing elite.
+                    </p>
+                    <a href="unterseiten/kontakt.html" class="button">Bestellung aufgeben</a>
+                </section>
+            </div>
         </main>
 
-        <footer>
-            <nav id="nav_footer">
+        <footer style="background-color:var(--braun)"> 
+            <!-- der obere Style ist notwendig damit der Hintergrund bis zum linken Rechten Rand braun ist. dadurch das jetzt der Inner-Wrapper folgt würde das braun nicht bis ganz raus gehen -->
+            
+            <nav id="nav_footer" class="inner_wrapper">
+                <address>
+                    Konditorei Bakery <br>
+                    Musterstraße 1 <br>
+                    2345 Stadt
+                    <p>
+                        Tel. 0123 123 123 53 <br>
+                        Email: bakery@mail.com
+                    </p>
+                </address> 
+
                 <ul>
                     <li><a href="unterseiten\ueber_uns.html">Über uns</a></li>
                     <li><a href="unterseiten\unser_team.html">Unser Team</a></li>

@@ -134,9 +134,14 @@ h1{
     flex-flow: column; */
 }
 
+#bestellung {
+    text-align: center;
+}
+
 .button{
     /* inline-block: ist wie ein blockelement, allerdings fliest es mit dem text mit */
     display: inline-block;
+    
     background-color: white;
     color: var(--lgrau);
     border: 2px solid var(--dgrau);
@@ -145,6 +150,7 @@ h1{
     text-decoration: none;
     text-transform: uppercase;
     margin-bottom: 20px;
+    text-align: center;
 }
 
 #nav_footer{
@@ -170,6 +176,10 @@ h1{
     overflow: hidden;
 }
 
+address{
+    display: none;
+}
+
 #endline{
     padding: 15px;
     margin: 200;
@@ -180,14 +190,87 @@ h1{
 }
 
 @media screen and (min-width: 576px) {
-    html{
 
-    
-    background-color: green;
+
+    #img_logo{
+        max-width: 200px;
+
+    }
+    #nav_oben {
+        display: flex;
+        justify-content: center;
+        
+
+    }
+
+    #nav_oben img{
+        display: none;
+    }
+
+    #nav_oben ul{
+        display: flex;
+        position: relative;
+        background-color: white;
+        color: var(--dgrau);
+        gap: 1em;
+        white-space: nowrap;
+        top: auto;
+        right: auto;
+        font-size: medium;
+
+    }
+
+    #nav_oben ul li a{
+        color: var(--dgrau);
+    }
+
+    #img_main{
+        width: 100%;
+        max-height: 50vh;
+        object-fit: cover;
     }
 
     #products {
         display: flex;
+        justify-content: center;
+        gap: 1em;
+        margin: 10px;  
+    }
+
+    #products img {
+        /* flex: 1; */
+        /* max-width: calc(25% - 40px); */
+    }
+
+
+    #nav_footer {
+        display: flex;
+        justify-content: space-between;
+
+    }
+
+    #nav_footer address {
+        display: block;
+        font-style: normal;
+        padding: 2em 0em;
+        line-height: 2em;
+        padding-left: 30px;
+        text-align: left;
+        margin: 1.5em 0em;
+
+
+    }
+
+    #nav_footer ul {
+        text-align: right;
+        padding-right: 30px;
+
+    }
+
+    .inner_wrapper {
+        max-width: 1200px;
+        margin-left: auto;
+        margin-right: auto;
     }
 }
 

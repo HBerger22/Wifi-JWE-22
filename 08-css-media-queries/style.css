@@ -1,0 +1,17 @@
+h1{
+    position: absolute;
+    top: 25%;
+    left: 20%;
+    background-color: blueviolet;
+    color: white;
+    padding: 50px;
+    white-space: nowrap;
+}
+
+@media screen and (min-width: 500px) {
+    h1{
+    background-color: green;
+    color: brown;
+    }
+    
+}
