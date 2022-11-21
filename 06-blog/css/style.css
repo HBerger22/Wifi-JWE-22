@@ -81,7 +81,7 @@ header.top > * {
     padding-left: 0px;   
 }
 
-:target{
+#main_menu ul:target{
     display: block;
 } 
 

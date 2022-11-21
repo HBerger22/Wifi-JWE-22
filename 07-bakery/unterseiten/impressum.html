@@ -1,12 +1,75 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="..\css\style.css">
+    <link rel="stylesheet" href="..\css\inhalt">
+
+    <title>Bakery</title>
 </head>
 <body>
-    Impressum
+    <div id="wrapper">
+        <header id="logo" class="inner_wrapper">
+            <div id="kopf">
+                <a href="..\index.html">
+                    <img id="img_logo" src="../img/Logo-placeholder.png" alt="Logo">
+                </a>
+                <nav id="nav_oben">
+                    <img src="../img/nav-icon.svg" alt="Navigation">
+                    <ul>
+                        <li><a href="..\unterseiten\ueber_uns.html">Über uns</a></li>
+                        <li><a href="..\unterseiten\unser_team.html">Unser Team</a></li>
+                        <li><a href="..\unterseiten\gallerie.html">Gallerie</a></li>
+                        <li><a href="..\unterseiten\kontakt.html">Kontakt</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div id="div_mainimg">
+                <img id="img_main" src="../img/pexels-klaus-nielsen-6287298_large.jpg" alt="Placeholder">
+            </div>
+        </header>
+
+        <main >
+            
+ 
+        </main>
+
+        <footer style="background-color:var(--braun)"> 
+            <!-- der obere Style ist notwendig damit der Hintergrund bis zum linken Rechten Rand braun ist. dadurch das jetzt der Inner-Wrapper folgt würde das braun nicht bis ganz raus gehen -->
+            
+            <nav id="nav_footer" class="inner_wrapper">
+                <address>
+                    Konditorei Bakery <br>
+                    Musterstraße 1 <br>
+                    2345 Stadt
+                    <p>
+                        Tel. 0123 123 123 53 <br>
+                        Email: bakery@mail.com
+                    </p>
+                </address> 
+
+                <ul>
+                    <li><a href="..\unterseiten\ueber_uns.html">Über uns</a></li>
+                    <li><a href="..\unterseiten\unser_team.html">Unser Team</a></li>
+                    <li><a href="..\unterseiten\gallerie.html">Gallerie</a></li>
+                    <li><a href="..\unterseiten\kontakt.html">Kontakt</a></li>
+                    <li><a href="..\unterseiten\impressum.html">Impressum</a></li>
+                    <li><a href="..\unterseiten\dsgvo.html">Datenschutz &amp; Cookies</a></li>
+                </ul>
+            </nav>
+            <div id="endline">
+                <p>&copy; 2018 Bakery | copyright by JWE22</p>
+            </div>
+        </footer>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" ></script>
+
+    <script>
+        $('#nav_oben img').on('click', function() {
+            $('#nav_oben > ul').toggleClass('sichtbar');
+        } );
+    </script>
 </body>
 </html>

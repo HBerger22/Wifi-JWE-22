@@ -123,8 +123,10 @@ img{
 }
 
 h1{
+    position: relative;
     text-align: center;
     font-weight: lighter;
+   
 }
 
 #products{
@@ -191,14 +193,26 @@ address{
 
 @media screen and (min-width: 576px) {
 
+    #kopf{
+        position: static;
+        top: 0;
+    }
 
     #img_logo{
         max-width: 200px;
-
+        
     }
+
+    #kopf a {
+        background-color: white;
+        text-align: center;
+    }
+    
     #nav_oben {
         display: flex;
-        justify-content: center;
+        justify-content: space-between;
+        background-color: white;
+        white-space: nowrap ;
         
 
     }
@@ -207,8 +221,14 @@ address{
         display: none;
     }
 
+    /* notwendig sonst ist das menu als block (untereinander) dargestellt sollte vorher die Klasse sichtbar aktiv gewesen sein*/
+    #kopf ul.sichtbar{
+        display: flex;
+    }
+
     #nav_oben ul{
         display: flex;
+        justify-content: center;
         position: relative;
         background-color: white;
         color: var(--dgrau);
@@ -217,22 +237,35 @@ address{
         top: auto;
         right: auto;
         font-size: medium;
-
     }
+
+
 
     #nav_oben ul li a{
         color: var(--dgrau);
     }
 
     #img_main{
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
         width: 100%;
-        max-height: 50vh;
+        max-height: 47vh;
         object-fit: cover;
+        object-position: center;
+        z-index: -10;
+    }
+    
+    .platzhalter{
+        height: 300px;
     }
 
     #products {
+        position: relative;
+        
         display: flex;
-        justify-content: center;
+        
         gap: 1em;
         margin: 10px;  
     }
