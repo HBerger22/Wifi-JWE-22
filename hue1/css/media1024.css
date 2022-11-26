@@ -1,7 +1,74 @@
 @media screen and (min-width: 1024px ) {
-    body{
-
     
-    background-color: green ;
+    .headline{
+        display: block;
+        text-align: center;
+        right: 15vw;
+
+    }
+
+    .section1 {
+        display: flex;
+        justify-content: center;
+        gap: 42px;
+        
+     
+       
+        
+        
+      
+        
+    }
+    
+    .section1 section h2{
+        
+        width: 100%;
+        height: 2em;
+    }
+    .p_img {
+        display: flex;
+         width: 100%;
+         height: 50vh;
+         object-fit: cover;
+         object-position: center ;
+         margin-bottom: 20px;
+         /* max-width: calc(100% + 105px); */
+     }
+     
+     .section1 section p img{
+         object-fit: cover;
+         object-position: center ;
+     }
+
+
+
+
+    .kaempfer{
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+
+        max-width: 1200px;
+        margin-left: auto;
+        margin-right: auto;
+        
+    }
+    
+    .kaempfer p{
+        display: flex;
+  
+        flex: 1; 
+        
+    }
+    
+    .section2 p{
+        max-width: 1200px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .inner_wrapper{
+        max-width: 1200px;
+        margin-left: auto;
+        margin-right: auto;
     }
 }
