@@ -1,0 +1,229 @@
+:root{
+    --tuerkis: #47AED4;
+    --grau1: #B4B4B4;
+    --grau2: #777777;
+    --grau3: #686868;
+    --grau4: #444444;
+}
+
+@font-face {
+    font-family: montserat;
+    src: url(../fonts/Montserrat-VariableFont_wght.ttf);
+}
+
+html *{
+    box-sizing: border-box;
+}
+html, body{
+    margin: 0px;
+    padding: 0px;
+}
+
+body{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 14px;
+}
+
+img{
+    max-width: 100%;
+    height: auto;
+}
+
+a{
+   
+    color: var(--tuerkis);
+}
+
+
+
+header{
+    display: flex;
+    justify-content: space-between;
+}
+
+header a{
+    padding: 30px;
+}
+
+header nav{
+    padding: 40px 34px;
+}
+
+.main_img img{
+    width: 100%;
+    /* height: 90vh; */
+    object-fit: cover;
+    object-position: center;
+    
+    
+}
+
+.headline{
+    /* text-align: right; */
+    position: absolute;
+    top: 110px;
+    right: 33px;
+    /* background-color: green; */
+    max-width: 224px;
+   
+}
+
+h1{
+    text-transform: uppercase;
+    font-family: montserat;
+    font-size: 35px;
+    font-weight: bold;
+    text-align: right;
+    color: white;
+    
+}
+
+.headline p{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 18px;
+    text-align: right;
+    color: var(--tuerkis);
+}
+
+.button{    
+    color: white;
+    background-color: var(--tuerkis);
+    text-align: center;
+    padding: 13px 32px;
+    border-radius: 25px;
+    border: 2px solid #66d2f9 ;
+
+}
+.headline div a{
+    
+    font-family: montserat;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-decoration: none;
+    color:white;
+}
+
+h2{
+    font-family: montserat;
+    font-weight: bold;
+    color: var(--tuerkis);
+    font-size: 18px;
+}
+
+.section1, .section3 {
+    margin: 15px 30px;
+}
+
+.section1 img{
+    width: 100%;
+}
+
+.section1 p{
+    color: var(--grau2);
+}
+
+.section1 a{
+    display: flex;
+    margin-bottom: 50px;
+}
+
+.section2{
+    padding: 15px 30px;
+
+    background-color: var(--grau4);
+}
+
+.section2 h2{
+    text-align: center;
+}
+
+.section2 p{
+    text-align: center;
+}
+
+#bild_kaempfer img{
+    display: flex;
+    height: auto;
+    width: 100%;
+    flex: 1;
+}
+
+
+#bild{
+    display: flex;
+    width: 100%;
+    height: auto;
+    flex: 1;
+}
+
+#bilder{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-flow: column;
+    gap: 14px;
+    flex: 1;
+    
+}
+#bilder3 {
+    width: 100%;
+    display: flex;
+    
+    flex: 1;
+    gap: 15px;
+}
+
+.kaempfer p{
+    color: var(--grau1);
+}
+
+.section3 h2{
+    text-align: center;
+}
+
+.section3 p{
+    color: var(--grau2);
+    text-align: center;
+}
+
+.button2{    
+    color: white;
+    background-color: var(--tuerkis);
+    text-align: center;
+    padding: 13px 32px;
+    border-radius: 25px;
+    border: 2px solid #66d2f9 ;
+    margin: 45px;
+}
+
+.button2 a{
+    font-family: montserat;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-decoration: none;
+    color:white;
+}
+
+footer{
+    background-color: var(--tuerkis);
+    color: white;
+    text-align: center;
+}
+footer a img{
+    margin-top: 44px;
+}
+footer p{
+    margin: 35px 0px;
+}
+.endline{
+    background-color: var(--grau4);
+    padding: 30px;
+    font-size: 10px;
+    
+    
+}
+.endline p{
+    margin: 0;
+}

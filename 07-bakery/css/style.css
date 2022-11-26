@@ -79,12 +79,13 @@ img{
 }
 
 #kopf ul li{
-    padding: 0.55em;
+    padding: 0.5em 0.3em;
+    font-size: small;
 
 }
 
 #kopf ul li a{
-    
+    /* font-size: large; */
     text-decoration: none;
     color: white;
 }
@@ -199,7 +200,7 @@ address{
     }
 
     #img_logo{
-        max-width: 200px;
+        max-width: 180px;
         
     }
 
