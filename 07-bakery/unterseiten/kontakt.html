@@ -8,6 +8,57 @@
     <link rel="stylesheet" href="..\css\inhalt">
 
     <title>Bakery</title>
+
+    <style>
+        label{
+            font-weight: bold;
+            margin-top: 15px;
+            margin-left: 10px;
+        }
+        form > div{
+            margin-top: 15px;
+        }
+
+        form input:focus, select:focus, textarea:focus{
+            outline: none; 
+            background-color: var(--lgrau);
+        }
+
+        /* gilt für alle input elemente ausser für das "radio Element, es geht auch ":not([type="radio"] , [type="date"])"*/
+        input:not([type="radio"],[type="checkbox"]), select, textarea {
+            font-family: joe;
+            border: 2px solid var(--braun);
+            padding: 5px;
+            margin: 5px 10px;
+            min-width: 200px;
+            width: calc(100% - 20px);
+            /* resize: none; hiermit kann unterbunden werden das die Größe der Textarea geändert werden kann*/
+        }
+
+        /* Hier wird nur das Input Element vom Type submit angesprochen! */
+        input[type="submit"]{
+            background-color: var(--braun);
+            color: white;
+        }
+
+        #radio input{
+            margin: 10px;
+            /* padding: 0px;
+            min-width: 0px; */
+        }
+        #radio label{
+            margin: 0px;
+        }
+        textarea{
+            min-height: 100px;
+            max-height: 400px;
+            max-width: 400px;
+        }
+
+        @media screen and (min-width: 768px) {
+            
+        }
+    </style>
 </head>
 <body>
     <div id="wrapper">
@@ -22,17 +73,96 @@
                         <li><a href="..\unterseiten\ueber_uns.html">Über uns</a></li>
                         <li><a href="..\unterseiten\unser_team.html">Unser Team</a></li>
                         <li><a href="..\unterseiten\gallerie.html">Gallerie</a></li>
-                        <li><a href="..\unterseiten\kontakt.html">Kontakt</a></li>
+                        <li class="active">Kontakt</li>
                     </ul>
                 </nav>
             </div>
             <div id="div_mainimg">
-                <img id="img_main" src="../img/pexels-klaus-nielsen-6287298_large.jpg" alt="Placeholder">
+                <img id="img_main" src="../img/pexels-meruyert-gonullu-6152263.jpg" alt="Placeholder">
             </div>
         </header>
 
-        <main >
-            
+        <main>
+            <h1>Schreiben Sie uns eine Nachricht</h1>
+
+            <section>
+                <form action="contact.html" method="get">
+                    <!--  -->
+                    <div id="radio">
+                        <input type="radio" name="anrede" id="salutation_herr" value="herr">
+                        <label for="salutation_herr">Herr</label>
+
+                        <input type="radio" name="anrede" id="salutation_frau" value="frau">
+                        <label for="salutation_frau">Frau</label>
+
+                        <input type="radio" name="anrede" id="salutation_firma" value="firma">
+                        <label for="salutation_firma">Firma</label>
+                    </div>
+
+                    <div>
+                        <label for="name">Name</label><br>
+                        <input type="text" name="name" id="name">
+                    </div>
+
+                    <div>
+                        <label for="email">E-Mail*</label><br>
+                        <input type="email" name="email" id="email" required>
+                    </div>
+                    <div>
+                        <label for="betreff">Betreff</label><br>
+                        <input type="text" name="betreff" id="betreff"  maxlength="30" >
+                            <!-- pattern="####-####" überprüft das feld auf ein vorgegebenes "regular expression" format -->
+                    </div>  
+                    <div>
+                        <label for="ldat1">Wunsch-Lieferdatum</label><br>
+                        <input type="date" name="ldat1" id="ldat1">
+                    </div>
+                    <div>
+                        <label for="ldat2">Wunsch-Lieferdatum</label><br>
+                        <input type="date" name="ldat2" id="ldat2">
+                    </div>
+
+                    <div>
+                        <label for="box">Ich interessiere mich für folgendes Produkt:</label>
+                        <select name="box" id="box" size="3" multiple>
+                            <option value="1">Kleine Frühstücksbox</option>
+                            <option value="2">Große Frühstücksbox</option>
+                            <option value="3">English Breakfastbox</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="nachricht">Ihre Nachricht</label>
+                        <textarea name="nachricht" id="nachricht" cols="30" rows="10">
+
+                        </textarea>
+                    </div>
+
+                    <div>
+                        <input type="checkbox" name="dsgvo" id="dsgvo" required>
+                        <label for="dsgvo">Ich stimme den Datenschutzbestimmungen zu.</label>
+                    </div>
+
+                    <input type="submit">
+
+                </form>
+            </section>
+
+            <address id="adresse"></address>
+                <p>
+                    Konditorei Bakery <br>
+                    Salzburgerstr. 55 <br>
+                    5620 Schwarzach
+                </p>
+                <p>
+                    +43(0) 123456123456
+                    x@y.com
+                </p>
+            </address>
+
+            <section>
+                Anfahrtsplan
+            </section>
  
         </main>
 

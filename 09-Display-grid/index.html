@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grid System</title>
+    <style>
+        #wrapper{
+            display:grid;
+            grid-template-columns: auto 80% auto;
+            grid-template-rows: 200px auto 50px ;
+            grid-template-areas: 
+                ".  header  ."
+                ".  main    ."
+                ".  footer  .";
+
+        }
+
+        #main-header{
+            background: brown;
+            grid-area: header;
+        }
+
+        main{
+            background-color: burlywood;
+            grid-area: main;
+        }
+
+        #main-footer{
+            background-color: aqua;
+            grid-area: footer;
+        }
+
+        #bild{
+            width: 100%;
+            height: 60vh;
+            object-fit: cover;
+            object-position: left;
+            
+        }
+    </style>
+</head>
+<body>
+    <img id="bild" src="../06-blog/bilder/design1-1.png" alt="">
+
+    <div id="wrapper">
+        <header id="main-header">        </header>
+        <main >       irgendwas </main>
+
+        <footer id="main-footer">        </footer>
+    </div>
+</body>
+</html>

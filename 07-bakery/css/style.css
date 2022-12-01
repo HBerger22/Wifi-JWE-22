@@ -98,7 +98,9 @@ img{
  text-align: right;   
 }
 
-
+.active{
+    color: var(--braun) ;
+}
 /* #img_logo{
     width: 170px;
 } */
