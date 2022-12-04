@@ -1,0 +1,178 @@
+:root{
+    --türkis:   #47AED4;
+    --hgrau:    #B4B4B4;
+    --mgrau:    #777777;
+    --dgrau:    #444444;
+}
+
+@font-face {
+    font-family: monti;
+    src: url(../fonts/Montserrat-VariableFont_wght.ttf);
+}
+html *{
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0px;
+    padding: 0px;
+}
+
+body{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 14px;
+    line-height: 22px;
+    color: var(--mgrau);
+}
+
+img{
+        max-width: 100%;
+        height: auto;
+}
+    
+h1{
+
+    font-family: monti;
+    font-weight: bold;
+    color: white;
+    /* text-align: right; */
+    padding: 32px 0px 0px;
+    margin: 0px 33px 0px 0px;
+    line-height: normal;
+    
+}
+
+h2{
+    color: var(--türkis);
+    font-family: monti;    
+}
+
+main a{
+    color: var(--türkis);
+    font-size: 14px;
+    
+} 
+
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 30px;
+}
+
+#hero-img{
+    background: url(../bilder/header-image.jpg) no-repeat center top / cover;
+    text-align: right;
+    object-fit: cover;
+}
+
+#hero-img p{
+    color: var(--türkis);
+    font-size: 18px;
+    text-align: right;
+    max-width: 200px;
+    margin-left: auto;
+    margin-right: 30px;
+}
+
+
+button {
+    margin: 0px  30px 265px 0px; 
+    color: white;
+    background-color: var(--türkis);
+    padding: 13px 32px;
+    border-radius: 22px;
+    border: 3px solid #6abbd9;
+}
+
+#section1 {
+    margin: 26px 30px 0px;
+    
+}
+#section1 section{
+    margin: 0px 0px 50px;
+}
+#section1 section img{
+    display: flex;
+    width: calc(100% - 60px);
+}
+
+
+#section2{
+    background-color: var(--dgrau);   
+}
+
+#section2 h2, #section2 p{
+    margin: 0px 30px ;
+    padding: 25px 0px;
+    text-align: center;
+}
+#section2 p{
+    color: var(--hgrau);
+}
+
+#grid{
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: auto auto auto;
+    grid-template-areas: 
+        "bild1 bild1"
+        "bild2 bild4"
+        "bild3 bild4";
+        gap: 15px;
+    margin: 0px 30px;
+}
+
+
+#bild1{
+    display: flex;
+    grid-area: bild1;
+    
+}
+#bild2{
+    
+    display: flex;
+    grid-area: bild2;
+}
+#bild3{
+    display: flex;
+    grid-area: bild3;
+}
+#bild4{
+    display: flex;
+    width: auto;
+    height: auto;
+    grid-area: bild4;
+}
+#grid div img  {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    display: flex;  
+}
+
+.section3{
+    margin: 60px 30px 0px;
+    text-align: center;
+}
+.section3 button{
+    margin-bottom: 70px;
+}
+
+footer{
+    background-color: var(--türkis);
+    color: white;
+    text-align: center;
+    
+}
+footer a img{
+    padding-top: 45px;
+}
+address{
+    font-style: normal;
+}
+#endline{
+    background-color: var(--dgrau);
+    padding: 30px;
+}
+

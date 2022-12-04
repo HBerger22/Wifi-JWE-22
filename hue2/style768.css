@@ -1,0 +1,39 @@
+@media  screen and (min-width: 768px) {
+    #section1 div {
+        display: flex;
+        justify-content: space-between;
+        gap: 15px;
+        margin: 26px auto 0px;
+        
+    }
+
+    #section1 div section{
+        flex: 1;
+        text-align: center;
+    }
+    #section1 div section img{
+
+        width: 100%;
+        height: auto;
+    }
+
+    #section2 h2{
+         margin: 0px auto;
+         margin-right: auto;
+         
+    }
+
+    #grid{
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-template-rows: auto auto;
+        grid-template-areas: 
+            "bild1 bild1 bild2 bild4"
+            "bild1 bild1 bild3 bild4";
+    }
+    .inner_wrapper{
+        max-width: 964px;
+        margin-left: auto;
+        margin-right: auto;
+    }   
+}
+
