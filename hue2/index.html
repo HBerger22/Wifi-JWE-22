@@ -11,14 +11,19 @@
     <title>X-Signage Version 2</title>
 </head>
 <body>
-    <div class="inner_wrapper"></div>
+    <div class="inner_wrapper">
         <header >
             <a href="#">
                 <img src="bilder/logo-x-signage.png" alt="Logo">
             </a>
-            <div>
+            <nav id="main_nav">
                 <img src="bilder/nav-icon.png" alt="Navigation">
-            </div>
+                <ul>
+                    <li><a href="#section2"> Unsere Angebote</a></li>
+                    <li><a href="#">Über uns</a></li>
+                    <li><a href="#">Unser Team</a></li>
+                </ul>
+            </nav>
         </header>    
     </div>
     
@@ -117,6 +122,12 @@
 
 
     </footer>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" ></script>
 
+    <script>
+        $('#main_nav img').on('click', function() {
+            $('#main_nav > ul').toggleClass('sichtbar');
+        } );
+    </script>
 </body>
 </html>
