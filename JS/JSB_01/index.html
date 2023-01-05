@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java Script Buch 1</title>
+</head>
+<body>
+    <h2>HTML Inhalte verändern</h2>
+    <p id="absatz">
+        Ursprünglicher Text
+    </p>
+    <button type="button" onclick="document.getElementById('absatz').innerHTML = 'Veränderter Text'">Inhalt vom Absatz ändern</button>
+    <br>
+
+    <h2>Layout verändern</h2>
+    <p id="absatz2" style="background-color: aqua;">
+        Ich habe eine Hintergrundfarbe
+    </p>
+    <button type="button" onclick="document.getElementById('absatz2').style.backgroundColor='#f5f505'">Das Layout verändern</button>
+    <br>
+
+    <h2>Auf System resourcen zugreifen</h2>
+    <p id="absatz3">
+        Hier steht jetzt bald das Datum:&nbsp;
+    </p>
+    <button type="button" onclick="document.getElementById('absatz3').innerHTML =document.getElementById('absatz3').innerHTML+Date() ">Das Datum hinzufügen</button>
+    <br>
+
+    <h2>Mehrere Dinge gleichzeitig ändern</h2>
+    <p id="absatz4">
+        Ursprünglicher Text
+    </p>
+    <button type="button" onclick="document.getElementById('absatz4').innerHTML = 'Veränderter Text', document.getElementById('absatz4').style.color='red' ">Inhalt und Style vom Absatz ändern</button>
+    <br>
+
+    <h2>Das Bild austauschen</h2>
+    <p>
+        <img src="img/bild1.png" alt="Bild 1"  id="bild">
+    </p>
+    <button type="button" onclick="document.getElementById('bild').src='img/bild2.png' ">Bilder austauschen</button>
+    
+    <br>
+
+    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reiciendis velit ad praesentium obcaecati temporibus qui cumque fugiat illum, id quasi odit quaerat expedita suscipit amet. Reiciendis sequi vel voluptates similique.
+</body> 
+</html>

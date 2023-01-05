@@ -54,8 +54,8 @@ header nav{
     justify-content: right;
   
     
-    object-fit: cover;
-    object-position: top;
+    /* object-fit: cover; */
+    /* object-position: top; */
    
 }
 
