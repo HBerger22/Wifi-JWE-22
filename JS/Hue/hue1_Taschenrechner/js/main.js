@@ -16,10 +16,10 @@ function berechnen(elem){
     if(typeof(elem)=='number' && letzteTasteZahl==true){
         if (operator==0){
             zahl1=zahl1*10+elem;
-            document.getElementById('ergebnis').innerHTML='Zahl 1: ' + zahl1;
+            document.getElementById('ergebnis').innerHTML='1. Zahl: ' + zahl1;
         } else {
             zahl2=zahl2*10+elem;
-            document.getElementById('ergebnis').innerHTML='Zahl 2: ' + zahl2;
+            document.getElementById('ergebnis').innerHTML='2. Zahl: ' + zahl2;
             aktiveZahl=2;
         }
     } else if (typeof(elem)=='number' && letzteTasteZahl==false){
@@ -28,10 +28,10 @@ function berechnen(elem){
             console.log('1. Fall');
             console.log(elem);
             console.log(zahl1);
-            document.getElementById('ergebnis').innerHTML='Zahl 1: ' + zahl1;
+            document.getElementById('ergebnis').innerHTML='1. Zahl: ' + zahl1;
         } else {
             zahl2=elem;
-            document.getElementById('ergebnis').innerHTML='Zahl 2: ' + zahl2;
+            document.getElementById('ergebnis').innerHTML='2. Zahl: ' + zahl2;
             aktiveZahl=2;
         }
         letzteTasteZahl=true;
@@ -60,10 +60,12 @@ function berechnen(elem){
             case "/":
                 ergebnis=zahl1/zahl2;
                 break;
+            default: // Dieser Fall kann nur dann eintrete, wenn jemand in der Console herumspielt, ... ;-)
+                ergebnis ='Es ist ein Fehler aufgetreten!';
                         
         }
         // if(elem=='enter'){
-            document.getElementById('ergebnis').innerHTML='Ergebnis: ' + ergebnis;
+            document.getElementById('ergebnis').innerHTML= zahl1 + ' ' + operator + ' ' + zahl2 + ' = <br>' + ergebnis;
             letzteTasteZahl=false;
             ergebnis=0;
             operator=0;
@@ -76,10 +78,10 @@ function berechnen(elem){
     } else if(typeof(elem)=='string' && elem != 'enter' && elem == 'vz'){
         if(aktiveZahl==1){
             zahl1=zahl1 * -1;
-            document.getElementById('ergebnis').innerHTML='Zahl 1: ' + zahl1;
+            document.getElementById('ergebnis').innerHTML='1. Zahl: ' + zahl1;
         } else{
             zahl2=zahl2 * -1;
-            document.getElementById('ergebnis').innerHTML='Zahl 2: ' + zahl2;
+            document.getElementById('ergebnis').innerHTML='2. Zahl: ' + zahl2;
         }
         console.log('mistding3');
         console.log(zahl1);

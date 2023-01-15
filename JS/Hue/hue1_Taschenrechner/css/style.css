@@ -1,5 +1,7 @@
 
-
+html{
+    box-sizing: border-box;
+}
 
 #tabelle{
     display: grid;
@@ -10,6 +12,7 @@
         ". n4 n5 n6 minus ."
         ". n7 n8 n9 mal ."
         ". n0  vz enter dividiert .";
+    border: 3px solid green;     
 }
 
 #nr1{grid-area: n1;}
@@ -33,11 +36,17 @@ h1{
     text-align: center;
 }
 #tabelle{
-    border: 3px solid black;
+    /* border: 3px solid black; */
+    padding:20px;
+    
 }
 
 button{
+    font-size: 16px;
+    font-style: bold;
+    background-color: rgb(234, 228, 124);
     border-radius: 100%;
+    box-shadow: 5px 5px rgb(80, 103, 80);
     width:60px;
     height: 60px;
 } 
