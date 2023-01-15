@@ -1,0 +1,49 @@
+
+
+
+#tabelle{
+    display: grid;
+    grid-template-columns: auto 10% 10% 10% 10% auto ;
+    gap: 20px;
+    grid-template-areas: 
+        ". n1 n2 n3 plus ."
+        ". n4 n5 n6 minus ."
+        ". n7 n8 n9 mal ."
+        ". n0  vz enter dividiert .";
+}
+
+#nr1{grid-area: n1;}
+#nr2{grid-area: n2;}
+#nr3{grid-area: n3;}
+#nr4{grid-area: n4;}
+#nr5{grid-area: n5;}
+#nr6{grid-area: n6;}
+#nr7{grid-area: n7;}
+#nr8{grid-area: n8;}
+#nr9{grid-area: n9;}
+#nr0{grid-area: n0;}
+#plus{grid-area: plus;}
+#minus{grid-area: minus;}
+#mal{grid-area: mal;}
+#dividiert{grid-area: dividiert;}
+#enter{grid-area: enter;}
+#vorzeichen{grid-area: vz;}
+
+h1{
+    text-align: center;
+}
+#tabelle{
+    border: 3px solid black;
+}
+
+button{
+    border-radius: 100%;
+    width:60px;
+    height: 60px;
+} 
+
+#ergebnis{
+    text-align: center;
+    font-size: 40px;
+    font-weight: bold;
+}
