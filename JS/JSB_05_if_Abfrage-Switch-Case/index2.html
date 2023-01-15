@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>
+    <H1>Alternativ zur IF Abfrage gibt es auch noch den SWITCH-CASE befehl</H1>
+    <p>Preise für Produkte:</p>
+    <script>
+        "use strict";
+/*        let artikel=prompt("Welches Produkt suchen sie? ");
+        if (artikel=="Bohrmaschine"){
+            alert("Preis: € 89,99");
+        } else if (artikel=="Schraubenzieher"){
+            alert("Preis: € 8,99");
+        } else if (artikel=="Hammer"){
+            alert("Preis: € 15,99");
+        } else if (artikel=="Bandschleifer"){
+            alert("Preis: € 69,99");
+        } else if (artikel=="Kreissäge"){
+            alert("Preis: € 37,99");
+        } else if (artikel=="Nägel"){
+            alert("Preis: € 12,99");
+        } else {
+            alert("Produkt ist leider nicht verfügbar!");
+        }
+
+        // Alternativ kann das auch mit einer Switch-Case Abfrage programmiert werden.
+        switch (artikel){
+            case "Bohrmaschine":
+                document.writeln(artikel + ":<br>");
+                document.writeln("Preis: € 89,99");
+                break;
+            
+            case "Schraubenzieher":
+                document.writeln(artikel + ":<br>");
+                document.writeln("Preis: € 8,99");
+                break;
+
+            case "Hammer":
+                document.writeln(artikel + ":<br>");
+                document.writeln("Preis: € 15,99");
+                break;
+
+            case "Bandschleifer":
+                document.writeln(artikel + ":<br>");
+                document.writeln("Preis: € 69,99");
+                break;
+
+            case "Kreissäge":
+                document.writeln(artikel + ":<br>");
+                document.writeln("Preis: € 37,99");
+                break;
+
+            case "Nägel":
+                document.writeln(artikel + ":<br>");
+                document.writeln("Preis: € 12,99");
+                break;
+
+            default:
+                document.writeln("Artikel ist leider nicht verfügbar!");
+
+        }
+        document.writeln ("<br>");
+        // Aufgabe 1: User und Pass abfragen
+        const user = "helmut";
+        const pass = "helmut";
+        let usere = prompt("Bitte geben sie Ihren User Namen ein:");
+        let passe = prompt("Bitte geben sie Ihr Passwort ein:");
+
+        if (user == usere && pass==passe){
+            document.writeln ("Die Anmeldedaten sind korrekt");
+        } else if (user==usere && pass!=passe) {
+            document.writeln ("Passwort falsch!");
+        } else {
+            document.writeln ("Username falsch!");
+        }
+        document.writeln ("<br>");
+        */
+        // Aufgabe 2: 5 Rechenaufgaben
+        let richtige = 0;
+        let a1=prompt("Aufgabe 1: Wieviel ist: 2-1 ?");
+        if (a1==1){ richtige ++;}
+        let a2=prompt("Aufgabe 1: Wieviel ist: 7+1 ?");
+        if (a2==8){ richtige ++;}
+        let a3=prompt("Aufgabe 1: Wieviel ist: 2+1 ?");
+        if (a3==3){ richtige ++;}
+        let a4=prompt("Aufgabe 1: Wieviel ist: 2*1 ?");
+        if (a4==2){ richtige ++;}
+        let a5=prompt("Aufgabe 1: Wieviel ist: 2/1 ?");
+        if (a5==2){ richtige ++;}
+        // document.writeln (richtige);
+        document.writeln ("<br>");
+
+        switch (richtige){
+            case 0:
+            case 1:
+                document.writeln ("Sie sollten nochmal in die Volksschule gehen?!");
+                break;
+            case 2:
+            case 3:
+                document.writeln ("Sie sollten Mathe-Nachhilfe nehmen!");
+                break;
+            case 4:
+                document.writeln ("Sie haben 4 Aufgaben richtig! Sehr gut gemacht");
+                break;
+            
+            case 5:
+                document.writeln ("Sie haben alle Aufgaben richtig gelöst! Ausgezeichnet!<br>");
+                break;
+            
+            default:
+                document.writeln ("Es ist ein Fehler aufgetreten<br>");
+                break;
+        }
+    </script>
+</body>
+</html>

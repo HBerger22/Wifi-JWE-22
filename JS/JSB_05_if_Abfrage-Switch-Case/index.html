@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>if-Abfragen</title>
+</head>
+<body>
+    <h1>IF-Abfragen</h1>
+    <script>
+        "use strict";
+        let var1 = false;
+        if (var1){
+            document.writeln ("Der Variablenwert ist TRUE !");
+        }
+
+        let var2= Number(prompt("Wieviel ist 5-3 ? "))
+        if (var2==2){
+            document.writeln ("Das Ergebnis ist richtig Juhuuu! <br>" );
+        } 
+        if (var2<2) {
+            document.writeln ("Das Ergebnis ist zu klein!<br>");
+        }
+        if (var2>2) {
+            document.writeln ("Das Ergebnis ist zu groß!<br>");
+        }
+
+        // 2 If-Abfragen logisch verknüpft &&
+        let var3 = Number(prompt("Wieviel ist 3*3 ?"));
+        let var4 = Number(prompt("Wieviel ist 3*5 ?"));
+        
+        if (var3==9 && var4==15){
+            document.writeln(" Das stimmt 3*3=9 und 3*5=15 <br>");
+        }
+        if (var3==9 || var4==15) {
+            document.writeln(" Mindestens eine Aufgabe ist richtig <br>");
+        }
+
+        // Verwendung der Else Schleife für das erste Beispiel
+        if (var2==2){
+            document.writeln ("Das Ergebnis ist richtig Juhuuu2! <br>" );
+        } else{
+            document.writeln ("Das Ergebnis ist leider falsch2!<br>");
+        }  
+        
+        // Verwendung von else if
+        if (var3==9 && var4==15){
+            document.writeln(" Das stimmt 3*3=9 und 3*5=15 2.Version<br>");
+        } else if (var3==9 || var4==15)  {
+            document.writeln(" Mindestens eine Aufgabe ist richtig Version2<br>");
+        } else {
+            document.writeln ("Leider sind beide Berechnungen falsch2!<br>");
+        }
+        </script>
+</body>
+</html>

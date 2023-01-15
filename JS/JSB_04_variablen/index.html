@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Was haben wir für eine Variable</title>
+</head>
+<body>
+    <H1>Verschieden Variablentypen</H1>
+    <script>
+        "use strict";
+        let ganzeZahl =3;
+        let komaZahl = 2.34;
+        let buchstabe = "a";
+        let wort = 'Hallo';
+        let wahrheitswert = true;
+        let ohneInitialisierung;
+
+        document.writeln ("Ganze Zahl: " + typeof ganzeZahl + "<br>");
+        document.write ("Kommazahl: " + typeof komaZahl + "<br>");
+        document.write ("Buchstabe: " + typeof buchstabe + "<br>");
+        document.write ("Wort: " + typeof wort + "<br>");
+        document.write ("Wahrheitswert: " + typeof wahrheitswert + "<br>");
+        document.write ("Ohne Initialisierung: " + typeof ohneInitialisierung + "<br><br>");
+        
+        // Variablen können während dem Lauf den Typ ändern !!!
+        document.writeln ("Variablen können ihren Typ ändern: <br>");
+        let meineVariable = 3; 
+        document.writeln ("Momentan bin ich eine: " + typeof meineVariable + " und habe den Inhalt: " + meineVariable + "<br>");
+
+        meineVariable = "Hallo"; 
+        document.writeln ("Momentan bin ich ein: " + typeof meineVariable + " und habe den Inhalt: " + meineVariable + "<br>");
+
+        meineVariable = true; 
+        document.writeln ("Momentan bin ich eine: " + typeof meineVariable + " und habe den Inhalt: " + meineVariable + "<br>");
+
+        // Datentypen können auch durch den Programmierer geändert werden
+        document.writeln ("Datentypen können auch vom Programmierer geändert werden !<br>")
+        let eingabe =prompt ("Bitte geben sie eine Zahl ein");
+        document.writeln ("Datentyp: " + typeof eingabe + "<br>");
+        document.writeln ("Inhalt: " + eingabe + 5 + "<br><br>");
+        eingabe = Number(eingabe);
+        document.writeln ("Datentyp: " + typeof eingabe + "<br>");
+        document.writeln ("Inhalt: " + (eingabe + 5) + "<br><br>");
+
+
+        // Aufgabe 1:
+        let var1=3;
+        let var2="Test";
+        let var3=true;
+        alert("Wert var1: " + var1 + " Type: " + typeof var1);
+        alert("Wert var2: " + var2 + " Type: " + typeof var2);
+        alert("Wert var3: " + var3 + " Type: " + typeof var3);
+
+        // Aufgabe 2:
+        let var4 = prompt("Bitte eine Zahl eingeben: ");
+        let var5 = prompt("Bitte noch eine Zahl eingeben: ");
+
+        // var4 = Number(var4); //ist nicht notwendig da javascript erkennt das es eine Rechenoperation (*) ist und die einzelnen Variablen selbstständig umwandelt (gilt nicht für addition!!!)
+        // var5 = Number(var5);
+
+        let var6 = var5 * var4;
+        document.writeln("Wert 1 * Wert 2 = Produkt: " + var4 + " x " + var5 + " = " + var6 );
+        
+
+    </script>
+    
+</body>
+</html>
