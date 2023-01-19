@@ -23,3 +23,4 @@ $(images).each(function(index, element){
     html.find('img').attr('src'), replace('#',element);
     $('body').append(html);
 });
+
