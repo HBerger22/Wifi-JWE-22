@@ -1,0 +1,35 @@
+"use strict";
+$('#wuerfel').delay(30000);
+$('#wuerfel').css('top','500px');
+$('#wuerfel').delay(30000);
+$('#wuerfel').css('top','400px');
+$('#wuerfel').delay(30000);
+$('#wuerfel').css('top','300px');
+$('#wuerfel').delay(30000);
+$('#wuerfel').css('top','200px');
+$('#wuerfel').delay(30000);
+$('#wuerfel').css('top','100px');
+$('#wuerfel').delay(30000);
+$('#wuerfel').css('top','0px');
+console.log('hallo');
+
+window.setTimeout(
+    function(){
+        $('#wuerfel').css('top','500px')
+        },2000
+);
+window.setTimeout(
+    function(){
+        $('#wuerfel').css('top','400px')
+        },2000
+);
+window.setTimeout(
+    function(){
+        $('#wuerfel').css('top','300px')
+        },2000
+);
+window.setTimeout(
+    function(){
+        $('#wuerfel').css('top','100px')
+        },2000
+);

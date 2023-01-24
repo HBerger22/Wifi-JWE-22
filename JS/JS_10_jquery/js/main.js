@@ -12,7 +12,6 @@ $('#headline').css({
     'color': 'orange',
     'text-decoration':'underline',
     'font-size': myVariable +'px'
-
 });
 
 // Getter: Abfragen von css informationen (nur attribut ohne wert = getter), gibt die Farbe von der id headline zurück
@@ -24,13 +23,16 @@ Windows.setTimeout hat 2 Attribute,
 1. die Funktion, die danach ausgeführt werden soll
 2. nach welcher Zeit es ausgeführt werden soll
 */
+
 window.setTimeout(
     function(){
         $('.alert').slideDown()
-        },2000);
+        },2000
+);
 
-// mehrere befehle hintereinander schreiben
+mehrere befehle hintereinander schreiben
 $('.alert').
+    fadeIn().
     delay(3000).
     fadeOut().
     delay(3000).
@@ -64,7 +66,7 @@ spanTags.removeClass('nw');
 // ein Strong Tag in den Span tag einfügen
 spanTags.wrapInner('<strong></strong>');
 
-// ein Strong Tag um den Span tag einfügen
+// ein Strong Tag um den Span tag herum einfügen
 // spanTags.wrap('<strong></strong>');
 
 spanTags.each(
