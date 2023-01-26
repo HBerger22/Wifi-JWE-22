@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+        <title>mmenu.js playground</title>
+        <meta charset="utf-8" />
+        <link href="layout.css" rel="stylesheet" />
+
+        <!-- Include mmenu files -->
+        <link href="mmenu.css" rel="stylesheet" />
+        <script src="mmenu.js"></script>
+
+        <!-- Fire the plugin -->
+        <script>
+            document.addEventListener(
+                "DOMContentLoaded", () => {
+                    new Mmenu( "#menu", {
+                       "offCanvas": {
+                          "position": "bottom"
+                       },
+                       "theme": "black",
+                       "iconbar": {
+                          "use": true,
+                          "top": [
+                             "<a href='#/'><i class='fa fa-home'></i></a>",
+                             "<a href='#/'><i class='fa fa-user'></i></a>"
+                          ],
+                          "bottom": [
+                             "<a href='#/'><i class='fa fa-twitter'></i></a>",
+                             "<a href='#/'><i class='fa fa-facebook'></i></a>",
+                             "<a href='#/'><i class='fa fa-linkedin'></i></a>"
+                          ]
+                       },
+                       "iconPanels": {
+                          "add": true,
+                          "visible": 1
+                       }
+                    });
+                }
+            );
+        </script>
+
+    </head>
+    <body>
+
+        <!-- The page -->
+        <div class="page">
+            <div id="header">
+                <a href="#menu"></a>
+                Demo
+            </div>
+            <div class="content">
+                <p><strong>This is a demo.</strong><br>
+                    Click the menu icon to open the menu.</p>
+            </div>
+        </div>
+
+        <!-- The menu -->
+        <nav id="menu">
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/work">Our work</a></li>
+                <li><span>About us</span>
+                    <ul>
+                        <li><a href="/about/history">History</a></li>
+                        <li><span>The team</span>
+                            <ul>
+                                <li><a href="/about/team/management">Management</a></li>
+                                <li><a href="/about/team/sales">Sales</a></li>
+                                <li><a href="/about/team/development">Development</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li><span>Services</span>
+                    <ul>
+                        <li><a href="/services/design">Design</a></li>
+                        <li><a href="/services/development">Development</a></li>
+                        <li><a href="/services/marketing">Marketing</a></li>
+                    </ul>
+                </li>
+                <li><a href="/contact">Contact</a></li>
+            </ul>
+        </nav>
+
+    </body>
+</html>

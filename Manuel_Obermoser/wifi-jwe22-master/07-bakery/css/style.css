@@ -1,0 +1,281 @@
+:root {
+    --gold: #c39065;
+    --grey: #707070;
+}
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+html * {
+    box-sizing: border-box;
+}
+@font-face {
+    font-family: joe;
+    src: url(../fonts/josefin-sans-v20-latin-regular.woff) format('woff'),
+        url(../fonts/josefin-sans-v20-latin-regular.woff2) format('woff2');
+    font-weight: normal;
+}
+@font-face {
+    font-family: joe;
+    src: url(../fonts/josefin-sans-v20-latin-300.woff),
+        url(../fonts/josefin-sans-v20-latin-300.woff2);
+    font-weight: lighter;
+}
+@font-face {
+    font-family: joe;
+    src: url(../fonts/josefin-sans-v20-latin-700.woff),
+        url(../fonts/josefin-sans-v20-latin-700.woff2);
+    font-weight: bold;
+}
+
+
+
+body {
+    font-family: joe;
+    font-size: 16px;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+
+
+
+#main-header {
+    display: flex;
+    justify-content: space-between;
+    gap: 1em;
+    padding: 1em;
+}
+
+#main-header #logo {
+    flex: 2;
+}
+
+#main-header #main-nav {
+    flex: 1;
+}
+
+
+/* Main menu / Navigation */
+#main-nav {
+    text-align: right;
+}
+
+#main-nav > a {
+    display: inline-block;
+    padding: 1em;
+}
+
+#main-nav > ul {
+    display: none;
+    width: 100%;
+    list-style: none;
+    text-align: center;
+    background-color: var(--gold);
+    position: absolute;
+    top: 80px;
+    right: 0;
+    padding: 1em;
+    font-size: 1.5em;
+    z-index: 10;
+}
+
+#main-nav > ul.show {
+    display: block;
+}
+
+#main-nav ul li {
+    margin-top: 1em;
+    margin-bottom: 1em;
+    border-bottom: 2px dashed rgba(255, 255, 255, 0.325);
+}
+#main-nav ul li:last-child {
+    border-bottom: none;
+}
+
+#main-nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    line-height: 2em;
+    text-transform: uppercase;
+}
+
+.active {
+    color: var(--gold) !important;
+}
+
+
+
+#quality {
+    position: relative;
+    background-image: url(../img/qualitaetssiegel-goldene-eichel_300.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 125px;
+    height: 125px;
+    display: block;
+    margin-left: auto;
+    top: -75px;
+    margin-bottom: -62px;
+}
+
+h1 {
+    font-weight: lighter;
+    text-align: center;
+}
+
+#products {
+    display: flex;
+    flex-flow: column;
+    gap: 75px;
+    padding: 50px;
+}
+
+
+.button {
+    display: inline-block;
+    width: 75%;
+
+    background-color: white;
+    color: var(--grey);
+    border: 2px solid var(--grey);
+    font-size: 1.5rem;
+    padding: 0.75em 0.5em;
+    text-decoration: none;
+    text-align: center;
+    text-transform: uppercase;
+
+    align-self: center;
+}
+
+
+#footer-nav {
+    background: var(--gold);
+    color: white;
+    text-align: center;
+}
+
+#footer-nav ul {
+    list-style: none;
+    padding: 2rem 0;
+    margin: 0;
+}
+
+#footer-nav a {
+    color: white;
+    text-decoration: none;
+    line-height: 2em;
+    
+}
+
+nav#footer-nav address {
+    padding-top: 2.5em;
+    display: none;
+}
+
+#end {
+    background-color: var(--grey);
+    color: #fff;
+    padding: 2.5em;
+    text-align: center;
+}
+
+#end p  {
+    margin: 0;
+}
+
+
+
+/* Tablet */
+@media screen and (min-width: 576px) {
+
+    #logo {
+        max-width: 200px;
+        height: auto;
+        display: flex;
+        flex-flow: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #main-nav > a {
+        display: none;
+    }
+
+    #main-nav > ul {
+        display: flex !important;
+        justify-content: flex-end;
+        gap: 1em;
+        white-space: nowrap;
+        position: relative;
+        top: auto;
+        right: auto;
+        background-color: transparent;
+        font-size: 1em;
+        margin: 0;
+        padding: 1em;
+    }
+
+    #main-nav ul li {
+        border: none;
+        margin: 0;
+    }
+
+    #main-nav ul li a {
+        color: var(--grey);
+        text-transform: none;
+        font-weight: bold;
+    }
+
+
+    #hero img {
+        width: 100%;
+        max-height: 50vh;
+        object-fit: cover;
+        object-position: center center;
+    }
+
+
+    #products {
+        flex-flow: row;
+        gap: 30px;
+        padding: 0;
+        justify-content: center;
+    }
+
+    #products img {
+        flex: 1;
+        max-width: calc(25% - 40px);
+        
+    }
+
+    
+    nav#footer-nav address {
+        display: block;
+        text-align: left;
+        font-style: normal;
+        line-height: 2em;
+    }
+
+    #footer-nav {
+        display: flex;
+        justify-content: space-between;
+        padding: 30px;
+    }
+
+    #footer-nav ul {
+        text-align: right;
+    }
+
+    .inner-wrapper {
+        max-width: 1200px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+
+}
