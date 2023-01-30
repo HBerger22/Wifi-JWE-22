@@ -30,8 +30,8 @@ let html='';
 // products[index]. = element.
 $(products).each(function (index,element){
 // $.each(products,function(i){
-    // console.log(product.uid+product.title);
-    html=html + '\n'+ `
+    // console.log(product.uid+product.title); //  \n = newline im code nicht auf der Website
+    html=html + '\n'+ ` 
         <div class="product">
             <h1>${products[index].title}</h1>
             <div class="price">€ ${element.price.toFixed(2)}</div>

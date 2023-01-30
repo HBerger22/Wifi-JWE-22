@@ -1,19 +1,22 @@
-const ele = $('elevator');
+const ele = $('#elevator');
 
-function move('floor'){
+function move(floor){
+    console.log('bin da: ' +floor)
     ele.attr('class','floor-'+floor); // mit attr kann man direkt attribute setzen
-    // ele.addClass('floor-'+floor);
-    window.setTimeout(() => {}, 2000);
+    ele.addClass('floor-'+floor);
+    // window.setTimeout(() => {}, 2000);
 
 };
 
 function checkCode(){
     if($('#code').val()== 8989){
-        $('#secret-btn').fadeIn();
+        $('#secret-btn').show();
+        console.log('ddd');
     } else {
-        $('#secret-btn').fadeOut();
-    }
-}
+        $('#secret-btn').hide();
+        console.log('keine Ahnung was falsch ...');
+    };
+};
 
-$('#code').keyup(checkCode());
+$('#code').keyup(function(){checkCode()});
 // $('#code').on('keyup',function(){checkCode()})

@@ -1,22 +1,21 @@
-.house {
+#house {
     background-color: bisque;
     width: 25vw;
-    height: 80vh;
+    height: 75vh;
     position: absolute;
     bottom: 0;
     left: 5vw;
-
 }
 
-.elevator {
+#elevator {
     position: absolute;
     bottom: 0;
     left: 25%;
 
     width: 27%;
-    height: 33%;
+    height: 27%;
     background: black;
-    transition: all 1s ease-in-out;
+    transition: all 1.5s ease-in-out;
 }
 
 .floor-2 {
@@ -34,3 +33,4 @@
 .floor-3 {
     bottom: 100% !important;
 }
+

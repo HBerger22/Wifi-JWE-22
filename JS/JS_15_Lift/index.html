@@ -4,19 +4,22 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/main.css">
     <title>Lift</title>
 </head>
 <body>
-    code eingeben: <input type="password" name="pwd" id="code">
+    Code eingeben: <input type="text" name="pwd" id="code" maxlength="4">
 
-    <button onclick="move(2)" id="2">2</button>
+    <div >
+        <button id="secret-btn" onclick="move(3)"  style="display: none">Roof</button>
+    </div>
     <button onclick="move(2)" id="2">2</button>
     <button onclick="move(1)" id="1">1</button>
     <button onclick="move(0)" id="eg">EG</button>
 
-    <div class="house"></div>
-    <div class="elevator"></div>
-    
+    <div id="house">
+        <div id="elevator"></div>
+    </div>
 
 
 

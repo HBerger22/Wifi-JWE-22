@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Wetter Daten</title>
+</head>
+<body>
+    <div class="kopf">
+        <h1>Aktuelle Wetterdaten</h1>
+    </div>
+    
+    
+    <div class="eingabe">
+        <p>
+            Hier können sie die Koordinaten eingeben. <br>
+            Breitengrade zwischen: &nbsp; -90.0000 und &nbsp 90.0000 <br>
+            Längengrade zwischen: -180.0000 und 180.0000 
+            
+        </p>
+        
+        <p>
+            <label for="lg">Längengrad: </label>
+            <input type="text" name="Längengrad" maxlength="8" id="lg">
+        </p>
+        <p>
+            <label for="bg">Breitengrad: </label>
+            <input type="text" name="Breitengrad" maxlength="7" id="bg">
+        </p>
+        <button id="btn_wetter">Aktuelle Wetterdaten laden</button>
+    </div>
+    <div id="cont">
+        <div id="wetterdaten"></div>
+        <div id="wicon"></div>
+    </div><img src="" alt="">
+
+     <!-- <img style="background-color: black;" src="https://openweathermap.org/themes/openweathermap/assets/vendor/owm/img/widgets/01d.png" alt="01">
+    <img src="https://openweathermap.org/themes/openweathermap/assets/vendor/owm/img/widgets/01n.png" alt="01">
+    <img style="background-color: black;" src="https://openweathermap.org/themes/openweathermap/assets/vendor/owm/img/widgets/02n.png" alt="02">
+    <img src="https://openweathermap.org/themes/openweathermap/assets/vendor/owm/img/widgets/03n.png" alt="03">
+    <img src="https://openweathermap.org/themes/openweathermap/assets/vendor/owm/img/widgets/04n.png" alt="04">
+    <img src="https://openweathermap.org/themes/openweathermap/assets/vendor/owm/img/widgets/05n.png" alt="05">
+    <img src="https://openweathermap.org/themes/openweathermap/assets/vendor/owm/img/widgets/06n.png" alt="06">
+    <img src="https://openweathermap.org/themes/openweathermap/assets/vendor/owm/img/widgets/07n.png" alt="07">
+    <img src="https://openweathermap.org/themes/openweathermap/assets/vendor/owm/img/widgets/08n.png" alt="08">
+    <img src="https://openweathermap.org/themes/openweathermap/assets/vendor/owm/img/widgets/09n.png" alt="09">
+    <img src="https://openweathermap.org/themes/openweathermap/assets/vendor/owm/img/widgets/10n.png" alt="10">
+    <img src="https://openweathermap.org/themes/openweathermap/assets/vendor/owm/img/widgets/11n.png" alt="11">
+    <img src="https://openweathermap.org/themes/openweathermap/assets/vendor/owm/img/widgets/12n.png" alt="12">
+    <img src="https://openweathermap.org/themes/openweathermap/assets/vendor/owm/img/widgets/13n.png" alt="13">
+    <img src="https://openweathermap.org/themes/openweathermap/assets/vendor/owm/img/widgets/14n.png" alt="14">
+    <img src="https://openweathermap.org/themes/openweathermap/assets/vendor/owm/img/widgets/15n.png" alt="15">
+    <img src="https://openweathermap.org/themes/openweathermap/assets/vendor/owm/img/widgets/16n.png" alt="16">
+    <img src="https://openweathermap.org/themes/openweathermap/assets/vendor/owm/img/widgets/17n.png" alt="17">
+    <img src="https://openweathermap.org/themes/openweathermap/assets/vendor/owm/img/widgets/18n.png" alt="18">
+    <img src="https://openweathermap.org/themes/openweathermap/assets/vendor/owm/img/widgets/19n.png" alt="19">
+    <img src="https://openweathermap.org/themes/openweathermap/assets/vendor/owm/img/widgets/50n.png" alt="20">
+
+    <img src="http://openweathermap.org/img/w/04d.png" alt="04" width="100px"> -->
+    <div style="text-align: center;" id="text"></div>
+    <footer>
+        <div id="copyrigth">Wetter daten von: <a href="https://openweathermap.org/">Openweathermap.org</a></div>
+    </footer>
+    
+    <!-- <div id="openweathermap-widget-11"></div>
+    <script src='//openweathermap.org/themes/openweathermap/assets/vendor/owm/js/d3.min.js'></script>
+    <script>window.myWidgetParam ? window.myWidgetParam : window.myWidgetParam = [];  window.myWidgetParam.push({id: 11,cityid: '2766824',appid: 'fb4d7b9e7ec7eac624a0ec238a6ae26f',units: 'metric',containerid: 'openweathermap-widget-11',  });  (function() {var script = document.createElement('script');script.async = true;script.charset = "utf-8";script.src = "//openweathermap.org/themes/openweathermap/assets/vendor/owm/js/weather-widget-generator.js";var s = document.getElementsByTagName('script')[0];s.parentNode.insertBefore(script, s);  })();</script> -->
+    
+    <script src="js/jquery-3.6.3.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
+
+
+<!-- https://api.openweathermap.org/data/2.5/weather?lat=47.7972&lon=13.0477&appid={fb4d7b9e7ec7eac624a0ec238a6ae26f} -->
+
+<!-- https://tile.openweathermap.org/map/{test}/{z}/{x}/{y}.png?appid={fb4d7b9e7ec7eac624a0ec238a6ae26f} -->
