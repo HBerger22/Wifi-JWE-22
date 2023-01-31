@@ -30,7 +30,7 @@ window.setTimeout(
         },2000
 );
 
-mehrere befehle hintereinander schreiben
+// mehrere befehle hintereinander schreiben
 $('.alert').
     fadeIn().
     delay(3000).

@@ -2,5 +2,9 @@ https://jwe.obinet.at/ajax/victuals.html
 
 https://jwe.obinet.at/api/victuals.php?apiKey=r5oS3YYSsnGX47UBrbl7Nm1MkZOsrg8uDbJKIQG5oyNMDbI7R68wPAcug8Wcxkjr
 
-parseint
-parsefloat
+parseint: wandelt einen String in eine Int um
+parsefloat: wandelt String in Gleitkomazahl um, Bei Fehler kommt NaN zurück.
+.toFixed(1) es wird fix 1 Nachkomastelle mitgegeben
+Math.round(Zahl,Stellen)
+
+https://jwe.obinet.at/skillchecklist.html
