@@ -36,8 +36,13 @@ $('#username').on('keyup',function(){
 // })
 
 // rechtsklick vermeiden und alarmmeldung rausgeben nicht vollständig
-// $('body').on('contextmenu',function(event){
-//     $('<div class="alert alert-danger"> Kein Rechtsklick möglich</div>').appendTo('body').css()
-//     event.preventDefault();
+$('body').on('contextmenu',function(event){
+    $('.alert').remove();
+    $('<div class="alert alert-danger"> Kein Rechtsklick möglich</div>').appendTo('body').css({
+        'position': 'absolute',
+        'top': event.clientY,
+        'left': event.clientX
+    });
+    event.preventDefault();
 
-// })
+});

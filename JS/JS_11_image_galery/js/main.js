@@ -12,7 +12,7 @@ $(proto).find('img').attr('src');
 console.log($(proto).find('img').attr('src'));
 
 let images = [
-    1,
+    1, //'images/1.jpg"><img src="images/thumbs/1.jpg',
     2,
     3,
     4

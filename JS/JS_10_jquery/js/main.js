@@ -72,10 +72,10 @@ spanTags.wrapInner('<strong></strong>');
 spanTags.each(
     function(index, element){
         console.log(element)
-        console.log($(element).html()); // alles was innerhalb des Span tags steht auch tags selber
-        console.log($(element).text()); // alles was innerhalb des Span tags steht ohne tags selber
+        console.log('.html: '+ $(element).html()); // alles was innerhalb des Span tags steht auch tags selber
+        console.log('.text: '+ $(element).text()); // alles was innerhalb des Span tags steht ohne tags selber
         $(element).append('<sup>'+(index +1)+'</sup> '); //füge den index hochgestellt dazu
-        $(element).find('sup').css('color','red');
+        $(element).find('sup').css('color','rgb(250, 10, 0)');
     }
 )
 

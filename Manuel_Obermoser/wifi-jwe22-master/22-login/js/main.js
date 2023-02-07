@@ -85,23 +85,24 @@ $('#username').on(
     function(event) {
         console.log($(this).val());
 
-        console.log(event);
+        console.log(event.key);
 
     }
 );
 
 
-$('body').on('contextmenu', function(event){
-    console.log(event);
+// Kein Rechtsklick möglich
+// $('body').on('contextmenu', function(event){
+//     console.log(event);
 
-    $('.alert').remove();
+//     $('.alert').remove();
 
-    $('<div class="alert alert-danger">keine Rechtsklick möglich</div>').appendTo('body').css({
-        'position': 'absolute',
-        'top': event.clientY,
-        'left': event.clientX
-    })
+//     $('<div class="alert alert-danger">Kein Rechtsklick möglich</div>').appendTo('body').css({
+//         'position': 'absolute',
+//         'top': event.clientY,
+//         'left': event.clientX
+//     })
 
-    event.preventDefault();
-});
+//     event.preventDefault();
+// });
 

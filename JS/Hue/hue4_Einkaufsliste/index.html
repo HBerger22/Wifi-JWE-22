@@ -11,8 +11,12 @@
     <h1>Unsere Einkaufsliste</h1>
 
     <div class="innerWrapper">
-        <label for="e_dazu">Gegenstand hinzufügen</label> <br>
-        <input type="text" id="e_dazu" value="">
+        <label for="e_dazu">Gegenstand hinzufügen (Menge, Einheit, Artikel): </label> <br>
+        <input type="number" name="menge" id="menge">
+        <select name="einheit" id="einheit"  >
+            
+        </select>
+        <input type="text" id="e_dazu">
         
         <div id="gegenstaende">
 
@@ -21,9 +25,10 @@
         <button id="e_entfernen"> Entfernen</button>
         <button id="listeLeeren"> Gesamte Liste löschen </button>
     </div>
+    <div id="info"></div>
 
     <script src="js/cookie.umd.min.js"></script>
     <script src="js/jquery-3.6.3.js"></script>
-    <script src="js/main.js"></script>
+    <script src="js/main_nochmal.js"></script>
 </body>
 </html>

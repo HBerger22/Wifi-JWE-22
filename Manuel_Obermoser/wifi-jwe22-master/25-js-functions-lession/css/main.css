@@ -1,0 +1,53 @@
+#building {
+    background: gray;
+    width: 25vw;
+    height: 80vh;
+    position: absolute;
+    bottom: 0;
+    left: 5vw;
+}
+
+#elevator {
+    position: absolute;
+    bottom: 0;
+    left: 25%;
+
+    width: 27%;
+    height: 33%;
+    background: black;
+    transition: all 1s ease-in-out;
+}
+
+#controls {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    background: silver;
+    border-radius: 10px;
+    padding: 1em;
+}
+
+.floor-eg {
+    bottom: 0 !important;
+}
+
+.floor-1 {
+    bottom: 33% !important;
+}
+
+.floor-2 {
+    bottom: 66% !important;
+}
+.floor-rooftop {
+    bottom: 100% !important;
+}
+
+button {
+    padding: 1em;
+}
+
+#code {
+    width: 50px;
+    padding: 1em;
+    text-align: center;
+}

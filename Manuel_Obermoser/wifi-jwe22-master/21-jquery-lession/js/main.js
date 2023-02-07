@@ -120,3 +120,55 @@ let myObject = {
 // Object Zugriff
 console.log(myObject.meinName);
 console.log(myObject['meinName']);
+
+
+
+let product = {
+    title: 'Wienerschnitzel',
+    prices: {
+        0: '12.00',
+        1: '15.00'
+    }
+};
+
+
+console.log(product.prices[1])
+
+
+let allProducts = {
+    0: {
+        product: {
+            title: 'Wienerschnitzel',
+            prices: {
+                0: '12.00',
+                1: '15.00'
+            }
+        }
+    },
+    1: {
+        product: {
+            title: 'Haussalat',
+            prices: {
+                0: '8.00'
+            }
+        }
+    }
+};
+
+
+let allProductsArray = [
+    [
+        'Wienerschnitzel',
+        [
+            '12.00',
+            '15.00'
+        ]
+    ],
+    
+    [
+        'Haussalat',
+        [
+            '8.00'
+        ]
+    ]
+];

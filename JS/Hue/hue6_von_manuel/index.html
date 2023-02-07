@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="de" class="h-100">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JavaScript und jQuery - Skillcheck 1</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+
+
+    <!--
+
+
+            Einleitung:
+             - Löse alle folgend aufgelisteten Aufgaben und kommentiere so gut du kannst (in DE oder EN) jeweils was der Code macht.
+             - Der Code muss frei von Fehler sein (keine Syntax-Fehler und keine Fehler in der Console*)
+
+             *) mit Console ist die Developer Console von Google Chrome gemeint
+
+
+            Aufgaben:
+
+             1. lade jQuery herunter und binde es lokal aus deiner Ordnerstruktur in dieses HTML-Dokument ein
+
+             2. Erstelle eine eigene JavaScript-Datei mit dem namen "main" und binde diese ebenfalls in dieses HTML-Dokument ein
+
+             3. Deklariere eine Konstante "MYPASSWORD" und speichere dort Wert "DeinVorname123!"
+
+             4. Erstelle eine JavaScript-Funktion die den Inhalt des Passwort-Feldes prüft sobald der Login-Button geklickt wird.
+
+             5. Ist die Eingabe gleich der Konstante MYPASSWORD, blende eine Erfolgsmeldung dafür ein innerhalb des "Message"-Div.
+
+             6. Ist die Eingabe nicht gleich der Konstante MYPASSWORD, blende eine Negativ-Meldung dafür ein innerhalb des "Message"-Div.
+
+
+
+        -->
+
+
+</head>
+
+
+
+<body class="h-100 d-flex flex-column align-items-center justify-content-center bg-dark text-light">
+
+
+
+    <div class="container">
+        <div class="row align-items-center justify-content-center">
+            <div class="col-10 bg-success rounded p-5">
+
+                <h1>Hi! <br><br>Test your JavaScript &amp; jQuery Skills NOW!</h1>
+                <p>Löse alle Aufgaben die in den Kommentaren genannt werden</p>
+
+                <div class="row">
+                    <div class="col">
+
+                        <form class="mt-5">
+
+
+
+                            <div class="row">
+                                <div class="col">
+
+                                    <div class="alert" id="message">
+                                        <!-- hier die Meldung nach Passwort Check -->
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+                            <!-- Formular -->
+                            <div class="form-row">
+                                <div class="col-10">
+                                    <input type="password" id="password" class="form-control" placeholder="Passwort">
+                                </div>
+
+                                <div class="col-2">
+                                    <input type="button" class="btn btn-dark" id="login" value="Login">
+                                </div>
+                            </div>
+
+
+
+                        </form>
+
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+    <!-- JavaScript Code und Bibliotheken hier einbinden -->
+
+    <script src="js/jquery-3.6.3.js"></script>
+    <script src="js/main.js"></script>
+
+
+    <!-- KEINEN CODE NACH DIESEM KOMMENTAR SCHREIBEN ODER ENTFERNEN !!! -->
+    <script src="js/vendor/bootstrap.js"></script>
+    <script src="js/vendor/do-not-remove-this-file.js"></script>
+</body>
+</html>

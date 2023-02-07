@@ -58,7 +58,7 @@ document.getElementById('new_element').addEventListener('keydown', function(even
         
         createHtml();
 
-         cookie.set('artikelCookie', artikel, 3);
+        // cookie.set('artikelCookie', artikel, 2);
 
     }
 

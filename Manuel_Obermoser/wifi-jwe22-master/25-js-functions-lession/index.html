@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Functions in JavaScript</title>
+
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+    
+
+    <div id="controls">
+        
+    Geheim-Code eingeben:
+    <input type="text" name="code" id="code" maxlength="4" autocomplete="off">
+
+        <button id="secret-btn" onclick="move('rooftop')" style="display: none">Rooftop</button>
+        <button onclick="move(2)">2</button>    
+        <button onclick="move(1)">1</button>
+        <button onclick="move('eg')">EG</button>
+    </div>
+    
+
+    <div id="building">
+
+        <div id="elevator">
+
+        </div>
+
+    </div>
+
+
+
+
+
+
+    <script src="js/jquery-3.6.3.min.js"></script>
+    <script src="js/main.js"></script>
+
+</body>
+</html>
