@@ -41,10 +41,10 @@ $('button').click(function(event){
     } else if(taste=='♥'){ // wurde der ♥ Button gedrückt?
         $('#eingabe').val(MYCHANNEL);       //
         $('#tv').html('<h2>Kanal: Mein Lieblingskanal ;-)</h2>');
-    }else if(taste=='🛈'){ // wurde der ♥ Button gedrückt?
+    }else if(taste=='\uD83D\uDEC8'){ // wurde der 🛈 = \uD83D\uDEC8 (unicode) = #128712; (html) Button gedrückt?
         $('#eingabe').val('0000');       //
         $('#tv').html('<h2>Information: <br>Sie können über die Fernbedienung einen 4-stelligen Sender auswählen. Oder sie drücken auf das ♥ um Ihren Lieblingssender zu sehen. ;-)</h2>');
     }; 
 });
 
-console.log('123 🛈 uF6C8 ');
+console.log('123 🛈 \uD83D\uDEC8  ');
