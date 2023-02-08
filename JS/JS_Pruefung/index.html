@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="de" class="h-100">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JavaScript und jQuery - EXAM - 2023-02-08</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/main.css">
+
+
+    <!--
+
+
+            Einleitung:
+            ***********************************************************************
+            Löse alle folgend aufgelisteten Aufgaben und kommentiere so gut du kannst (in DE oder EN) jeweils was der Code macht.
+            Der Code muss frei von Fehler sein (keine Syntax-Fehler und keine Fehler in der Console*)
+
+             *) mit Console ist die Developer Console von Google Chrome gemeint
+
+             
+            Du siehst hier einen TV im Hintergrund der von der Remote (Fernbedienung) gesteuert werden soll.
+
+            Der TV nimmt deine Sender-Befehle entgegen. Dazu musst du nur ein paar Dinge beachten:
+
+            Das <input>-Feld mit der ID #eingabe kann über JavaScript mit einer "value" befüllt werden. 
+             
+            Diese Eingaben werden vom TV entgegen genommen und er reagiert darauf.
+
+            Einige Befehle funktionieren bereits. Andere sind von dir zu ergänzen.
+
+
+            Aufgaben:
+            ***********************************************************************
+
+             1. Lade jQuery herunter und binde es lokal aus deiner Ordnerstruktur 
+                in dieses HTML-Dokument ein.
+
+
+
+             2. Erstelle eine eigene JavaScript-Datei mit dem namen "main" 
+                und binde diese ebenfalls in dieses HTML-Dokument ein.
+
+
+
+             3. Deklariere eine Konstante "MYCHANNEL" mit einer beliebigen 
+                4-stelligen Ganzzahl zwischen 1000 - 9999
+
+
+
+                
+             4. Setze einen jQuery oder JavaScript Click-Handler für die 3 Buttons:
+                Netflix, Disney+ und YouTube
+                
+                Netflix Button: <button id="netflix"> 
+                => Beim Klick soll ein String "netflix" in <input id="eingabe"> übertragen werden
+                
+                Disney+ Button: <button id="disney">
+                => Beim Klick soll ein String "disney" in <input id="eingabe"> übertragen werden
+                
+                YouTube Button: <button id="youtube">
+                => Beim Klick soll ein String "youtube" in <input id="eingabe"> übertragen werden   
+
+
+                Beispiel: Klick auf Button "netflix" soll <input id="eingabe" value="netflix"> bewirken.
+
+
+
+
+             5. Setze einen jQuery oder JavaScript Click-Handler für jeden Zahlen-Button:
+                
+                # Klick-Event
+                Der Click auf den jeweiligen Button soll dessen Wert (Zahl) 
+                in das <input id="eingabe"> übertragen und ergänzen.
+
+                Beispiel: 
+                    
+                    Klick auf Button "1" soll <input id="eingabe" value="1"> bewirken.
+                    Klick auf Button "2" soll <input id="eingabe" value="12"> bewirken.
+                    Klick auf Button "8" soll <input id="eingabe" value="128"> bewirken.
+                    Klick auf Button "0" soll <input id="eingabe" value="1280"> bewirken.
+
+                # Conditions / Wenn-Dann
+                Prüfe beim jedem Klick auf einen Button auf eine beliebige 4-stellige 
+                Zahlenkombination im "value" des <input id="eingabe">
+
+                ACHTUNG: nur nicht den selben wie die Kontakte MYCHANNEL!
+
+                # Einfügen von dynamischem HTML-Code 
+                Wenn der Kanal auf der Fernbedienung/Remote eingegeben wird, 
+                sollte eine Textmeldung im TV <div id="tv"></div> erscheinen.
+                Füge dazu einen Text oder HTML z.B. <h2>MTV</h2> in <div id="tv"> ein.
+                
+        
+
+                PS: Teste deine Kombintation aus 4 Zahlen (MYCHANNEL) auch funktioniert!
+
+
+        -->
+
+
+</head>
+
+
+
+<body class="h-100 d-flex flex-column align-items-center justify-content-center bg-secondary text-light">
+
+
+    <!-- EINGABE -->
+    <input id="eingabe" type="text" value="" readonly class="form-control">
+    <!-- EINGABE -->
+
+    <div id="tv"></div>
+
+    <div class="container">
+
+
+
+
+        <div id="remote">
+
+            <div class="row align-items-center justify-content-center">
+                <div class="col-12 bg-dark shadow-lg p-3 text-center" style="max-width: 14rem; border-radius: 1.5rem;">
+    
+                    <div class="row mt-2 mb-5">
+                        <div id="activeLight" class="col-12 pl-4 text-left bg-dark border-circle d-block">&bull;</div>
+                    </div>
+    
+
+
+
+
+                    <!-- BUTTONS ANFANG -->
+
+                    <div class="row my-1">
+                        <div class="col">
+                            <button type="button" class="btn btn-lg btn-danger" id="netflix">&nbsp;&nbsp;</button>
+                            <button type="button" class="btn btn-lg btn-primary" id="disney">&nbsp;&nbsp;</button>
+                            <button type="button" class="btn btn-lg btn-dark" id="youtube">&nbsp;&nbsp;</button>
+                        </div>
+                    </div>
+                    
+                    
+                    <div class="row my-2">
+                        <div class="col">
+                            <button type="button" class="btn btn-lg btn-light">1</button>
+                            <button type="button" class="btn btn-lg btn-light">2</button>
+                            <button type="button" class="btn btn-lg btn-light">3</button>
+                        </div>
+                    </div>
+                    
+                    <div class="row my-2">
+                        <div class="col">
+                            <button type="button" class="btn btn-lg btn-light">4</button>
+                            <button type="button" class="btn btn-lg btn-light">5</button>
+                            <button type="button" class="btn btn-lg btn-light">6</button>
+                        </div>
+                    </div>
+                    
+                    <div class="row my-2">
+                        <div class="col">
+                            <button type="button" class="btn btn-lg btn-light">7</button>
+                            <button type="button" class="btn btn-lg btn-light">8</button>
+                            <button type="button" class="btn btn-lg btn-light">9</button>
+                        </div>
+                    </div>
+                    
+                    <div class="row my-2">
+                        <div class="col">
+                            <button type="button" class="btn btn-lg btn-light">&#128712;</button>
+                            <button type="button" class="btn btn-lg btn-light">0</button>
+                            <button type="button" class="btn btn-lg btn-light">♥</button>
+                        </div>
+                    </div>
+                    
+                    <!-- BUTTONS ENDE -->
+    
+                </div>
+            </div>
+
+        </div>
+        
+    </div>
+
+
+
+
+
+
+    <!-- JavaScript Code und Bibliotheken hier einbinden -->
+
+
+
+
+    <script src="js/jquery-3.6.3.js"></script>
+    <script src="js/main.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- KEINEN CODE NACH DIESEM KOMMENTAR SCHREIBEN ODER ENTFERNEN !!! -->
+    <script src="js/vendor/bootstrap.js"></script>
+    <script src="js/vendor/do-not-remove-this-file.js"></script>
+</body>
+</html>

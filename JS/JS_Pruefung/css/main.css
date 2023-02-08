@@ -1,0 +1,127 @@
+/* 
+
+
+
+
+
+
+
+
+
+
+        WAS MACHST DU HIER?
+
+        ZURÜCK INS JAVASCRIPT, VERLIERE KEINE ZEIT ;-)
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+
+
+
+*/
+
+
+
+
+
+
+
+
+
+body {
+    overflow: hidden;
+}
+
+#status {
+    display: inline-block;
+    padding: 3rem;
+    border-radius: 50%;
+    background: black;
+}
+
+#remote {
+    transition: all 1s ease-in;
+}
+
+#remote button {
+    width: 3.5rem;
+    height: 3.5rem;
+}
+
+#tv {
+    position: absolute;
+    top: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(60px * 16);
+    height: calc(60px * 9);
+    background: blue;
+    border: 3rem solid black;
+    border-radius: 1rem;
+    box-shadow: 2px 2px 10px 0 inset black;
+    outline: 3px solid rgba(0,0,0,0.4);
+    filter: blur(15px);
+    transition: all 1s ease;
+    padding: 1rem;
+
+}
+
+#tv video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+#tv iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+#eingabe {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    z-index: 10;
+    max-width: 10rem;
+    text-align: right;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+#netflix {
+    background: black url(../img/Netflix_icon.svg) no-repeat center / 75%;
+}
+#youtube {
+    background: white url(../img/youtube-icon.svg) no-repeat center / 65%;
+}
+#disney {
+    background: #1e2161 url(../img/Download.png) no-repeat center / 75%;
+}
