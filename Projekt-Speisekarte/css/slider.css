@@ -1,0 +1,74 @@
+.schalter {
+    display: block;
+    position:relative ;
+    cursor: pointer;
+    width: 40px;
+    height: 20px;
+    /* border-radius: 1em;
+    background-color: var(--fisch);
+    border: 2px solid black; */
+    
+}
+.schalter input{
+    display: none;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    -webkit-transition: .4s;
+    transition: .4s;
+    border-radius: 1em;
+    background-color: var(--fisch);
+    border: 1.5px solid black;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    border-radius: 12px;
+    height: 12px;
+    width: 12px;
+    left: 4px;
+    bottom: 2.5px;
+    background-color: var(--mittag);
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+input:checked + .slider {
+    background-color: var(--jause);
+}
+
+input:checked + .slider:before {
+    -webkit-transform: translateX(18px);
+    -ms-transform: translateX(18px);
+    transform: translateX(18px);
+    background-color: var(--gril);
+}
+
+/* Beschriftung des Sliders vorne */
+.schalter::before{
+    font-size: 10px;
+    position: absolute;
+    content: "Speisen";
+    font-weight: bold;
+    left: -43px;
+    margin-top: 3.5px;
+}
+
+/* Beschriftung des Sliders hinten */
+.schalter::after{
+    font-size: 10px;
+    position: absolute;
+    content: "Getränke";
+    font-weight: bold;
+    left: 47px;
+    margin-top: 3.5px;
+}
+
+/* https://www.w3schools.com/howto/howto_css_switch.asp */

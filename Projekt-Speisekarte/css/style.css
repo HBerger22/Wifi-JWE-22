@@ -1,0 +1,148 @@
+:root{
+    --hauptfarbe: rgb(223,227,218); /*oder (215,192,148) */
+    --fisch: rgb(212,237,252);
+    --gril: rgb(240,131,117);
+    --salat: rgb(191,219,164);
+    --vorspeise: rgb(255,245,154);
+    --suppe: rgb(249,188,115);
+    --klassik: rgb(254,220,167);
+    --vegan: rgb(210,223,131);
+    --jause: rgb(248,198,200);
+    --kinder: rgb(246,163,73);
+    --nachtisch: rgb(255,247,178);
+    --mittag: rgb(150,210,215);
+}
+
+html {
+    box-sizing: border-box;
+}
+
+html, body{
+    margin: 0px;
+    padding: 0px;
+}
+body{
+    background-color: var(--hauptfarbe);
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    /* overflow-y: hidden; */
+}
+
+h1{
+    text-align: center;
+    margin-bottom: 12px;
+}
+
+#speisen, #drinks{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    text-align: center;
+    gap: 8px;
+    /* background-color: brown; */
+}
+#drinks{
+    display: none;
+}
+
+button{
+    padding: 10px 0px;
+    width: 250px;
+    border-radius: 30px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+#s1{
+    background-color: var(--mittag);    
+}
+#s2,#d1{
+    background-color: var(--vorspeise);    
+}
+#s3{
+    background-color: var(--suppe);    
+}
+#s4, #d2{
+    background-color: var(--salat);
+}
+#s5,#d4{
+    background-color: var(--gril);
+}
+#s6,#d5{
+    background-color: var(--fisch);    
+}
+#s7{
+    background-color: var(--klassik);
+}
+#s8,#d3{
+    background-color: var(--vegan);
+}
+#s9{
+    background-color: var(--jause);
+}
+#s10{
+    background-color: var(--kinder);    
+}
+#s11{
+    background-color: var(--nachtisch);
+}
+
+button:hover{
+    transform: scale(105%);
+    box-shadow: 0px 0px 5px black;
+}
+
+/* Slider */
+#auswahl{
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 10px;
+    margin-left: 43px;
+    
+}
+
+ul{
+    display: none;
+    /* height: 0px; */
+    transition: 4s;
+    padding-left: 0px;
+    max-width: 220px;
+    list-style-type: '\25B8';
+}
+
+li::before{
+    
+    
+
+}
+
+.produkt{
+    
+    font-weight: bold;
+}
+.details{
+    font-size: 12px;
+    padding-bottom: 4px;
+}
+.preis{
+    text-align: right;
+    font-weight: bold;
+    padding-bottom: 12px;
+}
+
+
+
+
+
+#innerWrapper{
+    /* Max width auf 1024 setzen und im Mediascreen für handy auf 250px setzen */
+    max-width: 250px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media screen {
+    
+}
+

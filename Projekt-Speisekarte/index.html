@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/slider.css">
+    <title>U-Keller - Speisekarte</title>
+</head>
+<body>
+
+    <div id="innerWrapper">
+        <header>
+            <h1>Unsere Speise- und Getränkekarte </h1>
+            
+            <div id="auswahl">
+            
+                <label class="schalter">
+                    
+                    <input type="checkbox" name="sod" id="sod">
+                    <span class="slider"></span>
+                </label>
+                <div id="menu">
+                    <img src="img/filter4.svg" alt="Filter" height="25px" style="color: #000; : aqua;"> 
+                </div>
+            </div>
+            <div id="filter">
+                <input type="checkbox" id="al-A" name="Allergene" value="al-A">
+                <label for="al-A"> Gluten</label><br>
+                <input type="checkbox" id="al-B" name="Allergene" value="al-B">
+                <label for="al-B"> Krebstiere</label><br>
+                <input type="checkbox" id="al-C" name="Allergene" value="al-C">
+                <label for="al-C"> Eier</label><br>
+                <input type="checkbox" id="al-D" name="Allergene" value="al-D">
+                <label for="al-D"> Fische</label><br>
+                <input type="checkbox" id="al-E" name="Allergene" value="al-E">
+                <label for="al-E"> Erdnüsse</label><br>
+                <input type="checkbox" id="al-F" name="Allergene" value="al-F">
+                <label for="al-F"> Sojabohnen</label><br>
+                <input type="checkbox" id="al-G" name="Allergene" value="al-G">
+                <label for="al-G"> Milch</label><br>
+                <input type="checkbox" id="al-H" name="Allergene" value="al-H">
+                <label for="al-H"> Schalenfrüchte</label><br>
+                <input type="checkbox" id="al-L" name="Allergene" value="al-L">
+                <label for="al-L"> Sellerie</label><br>
+                <input type="checkbox" id="al-M" name="Allergene" value="al-M">
+                <label for="al-M"> Senf</label><br>
+                <input type="checkbox" id="al-N" name="Allergene" value="al-N">
+                <label for="al-N"> Sesamsamen</label><br>
+                <input type="checkbox" id="al-O" name="Allergene" value="al-O">
+                <label for="al-O"> Schwefeldioxid / Sulphite</label><br>
+                <input type="checkbox" id="al-P" name="Allergene" value="al-P">
+                <label for="al-P"> Lupinen</label><br>
+                <input type="checkbox" id="al-R" name="Allergene" value="al-R">
+                <label for="al-R"> Weichtiere</label><br>
+
+                
+            </div>
+        </header>
+        <main>
+            <div id="test"></div>
+            <div id="speisen">
+                <button id="s1">Mittagsmenu</button>
+                    <ul id="s1u">
+                        <li> 
+                            <div class="produkt"> Wienerschnitzel vom Magalitzerschwein </div> 
+                            <div class="details">mit Pommes und kleinen Salat</div>
+                            <div class="preis">€12,90</div> 
+                            
+                        </li>
+                        <li> 
+                            <div class="produkt"> Schweinsbraten <br> nach Art des Hauses </div> 
+                            <div class="details">mit Pommes und kleinen Salat und lauter andere tolle köstlichkeiten (A,B,G *)</div>
+                            <div class="preis">€14,90</div> 
+                            
+                        </li>
+                    </ul>           
+                <button id="s2">Vorspeise</button>
+                    <ul id="s2u">
+                        <li>test</li>
+                    </ul>           
+                <button id="s3">Suppe</button>
+                    <ul id="s3u">
+                        <li>sowas</li>
+                    </ul>           
+                <button id="s4">Frische Salate</button>
+                <button id="s5">Frisch und Saftig vom Grill</button>
+                <button id="s6">Fischspezialität</button>
+                <button id="s7">Klassiker</button>
+                <button id="s8">Vegetarisch / Vegan</button>
+                <button id="s9">Zur Jausn</button>
+                <button id="s10">Kinderkarte</button>
+                <button id="s11">Zum Nachtisch</button>
+            </div>
+            <div id="drinks">
+                <button id="d1">Biere</button>            
+                <button id="d2">Alkoholfrei - Flaschen</button>
+                <button id="d3">Alkoholfrei - Offen</button>
+                <button id="d4">Heiße Getränke</button>
+                <button id="d5">Spirituosen</button>
+            </div>
+        </main>
+    
+
+
+        <footer>
+            <a href="#">* Allergene Übersicht</a> Copyright 2023
+        </footer>
+
+    </div>
+
+    <script src="js/jquery-3.6.3.js"></script>
+    <script src="js/cookie.umd.min.js"></script>
+    <script src="js/main.js" ></script>
+
+</body>
+</html>

@@ -43,7 +43,7 @@ $('button').click(function(event){
         $('#tv').html('<h2>Kanal: Mein Lieblingskanal ;-)</h2>');
     }else if(taste=='\uD83D\uDEC8'){ // wurde der 🛈 = \uD83D\uDEC8 (unicode) = #128712; (html) Button gedrückt?
         $('#eingabe').val('0000');       //
-        $('#tv').html('<h2>Information: <br>Sie können über die Fernbedienung einen 4-stelligen Sender auswählen. Oder sie drücken auf das ♥ um Ihren Lieblingssender zu sehen. ;-)</h2>');
+        $('#tv').html('<h2>Information: <br>Sie können über die Fernbedienung einen 4-stelligen Sender auswählen. Oder sie drücken auf das ♥, um Ihren Lieblingssender zu sehen. ;-)</h2>');
     }; 
 });
 
