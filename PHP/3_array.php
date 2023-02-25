@@ -22,6 +22,7 @@
         echo "</pre>";
 
         $daten[]= "Mario";
+        $daten[7]= "irgendwas"; // es kann auch ein index vorgegeben werden, aber die Frage ist ob es sinnvoll ist ein loch zu haben?!!!
 
         echo"<pre>";
         print_r($daten);

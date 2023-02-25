@@ -15,10 +15,9 @@
         echo '<br>';
         // Hier ist es schöner, da der HTML Tag im Echo befehl für einen Umbruch sorgt.
         echo "Hallo Welt! <br>";
-        echo "Hallo "; echo "Welt!";
+        echo "Hallo "; echo "Welt! <br>";
 
-
-
+       
        
 
 
