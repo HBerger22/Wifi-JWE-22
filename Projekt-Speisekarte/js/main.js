@@ -1,5 +1,7 @@
 "use strict";
 
+
+
 // Auswahl Speisen oder Getränke
 $('#sod').click(function(){
     if($('#sod:checked').length ==1){
@@ -11,25 +13,38 @@ $('#sod').click(function(){
     }
 });
 
+
+// Ein und Ausblenden des Filters
+$('#menu img').click(function(){
+    if ($('#filter').css('display')=='none') {
+        $('#filter').css('display','flex');
+console.log('true');
+    } else{
+        $('#filter').css('display','none');
+console.log('false');
+    }
+});
+
+// Ein und Ausblenden der einzelnen Speisen
 let taste;
 let aMenu=''; //altes Menu
 $('button').click(function(event){
     taste=event.target.id;
     let uMenu='#'+taste+'u'; //uMenu = Untermenu z.b.: s1u
-    if (aMenu==''){
+    if (aMenu==''){ //wenn kein untermenu ausgeklappt ist, öffne das neue Menu
         $(uMenu).css({
             'display':'block',
             // 'height':'auto',
             'transition': '4s'
         });
         aMenu=uMenu;
-    } else if(aMenu==uMenu){
+    } else if(aMenu==uMenu){ //wenn das aktuelle Menu bereits ausgeklappt ist, klappe es wieder ein
         $(uMenu).css({
             'display':'none'
             // 'height':'0px'
         });
         aMenu=''; // Variable zurücksetzen
-    } else
+    } else // wenn bereits ein untermenu eingeblendet ist, blende es aus und das neue ein.
     {
         $(uMenu).css({      //neues Menu einblenden
             'display':'block'
@@ -44,6 +59,6 @@ $('button').click(function(event){
 });
 
     
-    $('#test').html('111 u ' +uMenu + ' a' +aMenu);
-    console.log('222 ' + taste);
+    // $('#test').html('111 u ' +uMenu + ' a' +aMenu);
+    // console.log('222 ' + taste);
 

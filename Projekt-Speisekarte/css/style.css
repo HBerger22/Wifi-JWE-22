@@ -1,7 +1,7 @@
 :root{
     --hauptfarbe: rgb(223,227,218); /*oder (215,192,148) */
     --fisch: rgb(212,237,252);
-    --gril: rgb(240,131,117);
+    --grill: rgb(240,131,117);
     --salat: rgb(191,219,164);
     --vorspeise: rgb(255,245,154);
     --suppe: rgb(249,188,115);
@@ -27,6 +27,10 @@ body{
     /* overflow-y: hidden; */
 }
 
+.unsichtbar{
+    display: none;
+}
+
 h1{
     text-align: center;
     margin-bottom: 12px;
@@ -44,6 +48,20 @@ h1{
 #drinks{
     display: none;
 }
+
+#f_allergene{
+    font-size: 12px;
+}
+
+#filter{
+    display:none;
+    margin-bottom: 20px;
+}
+
+#f_allergene{
+    display: grid;
+}
+
 
 button{
     padding: 10px 0px;
@@ -67,7 +85,7 @@ button{
     background-color: var(--salat);
 }
 #s5,#d4{
-    background-color: var(--gril);
+    background-color: var(--grill);
 }
 #s6,#d5{
     background-color: var(--fisch);    

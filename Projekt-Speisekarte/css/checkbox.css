@@ -1,0 +1,68 @@
+/* The container */
+.allergene{
+    display: block;
+    position: relative;
+    cursor: pointer;
+    margin-top: 4px;
+    padding-left: 22px;
+    
+}
+/* Hide the browser's default checkbox */
+.allergene input{
+    display: none;
+}
+/* Create a custom checkbox */
+.checkmark {
+    position: absolute;
+    border-radius: 50%;
+    border: 1.5px solid black;
+    top: 0px;
+    left: 5px;
+    height: 12px;
+    width: 12px;
+    background-color: var(--fisch);
+}
+
+/* wenn die mouse über die gesamte classe "allergene drüberfährt soll sich in der class checkmark die Hintergrundfarbe ändern" */
+.allergene:hover  .checkmark{
+    background-color: var(--mittag);
+}
+
+/* When the checkbox is checked, add a red background */
+.allergene input:checked ~ .checkmark{
+    background-color: var(--jause);
+}
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after{
+    content: "";
+    position: absolute;
+    display: none ;
+}
+/* Show the checkmark when checked */
+.allergene input:checked ~ .checkmark:after{
+    display: block;
+}
+
+.allergene:hover input:checked ~ .checkmark{
+    background-color: var(--grill);
+}
+/* Style the checkmark/indicator */
+.allergene .checkmark:after{
+    left: 0.3em;
+    top: 0.1em;
+    width: 3px;
+    height: 7px;
+    border: solid var(--grill);
+    border-width: 0 2px 2px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+
+
+/* 
+<label class="container">Four
+  <input type="checkbox">
+  <span class="checkmark"></span>
+</label> */
