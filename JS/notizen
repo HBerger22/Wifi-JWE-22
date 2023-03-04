@@ -8,3 +8,6 @@ parsefloat: wandelt String in Gleitkomazahl um, Bei Fehler kommt NaN zurück.
 Math.round(Zahl,Stellen)
 
 https://jwe.obinet.at/skillchecklist.html
+
+
+
