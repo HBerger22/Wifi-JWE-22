@@ -1,7 +1,7 @@
 :root{
     --hauptfarbe: rgb(223,227,218); /*oder (215,192,148) */
     --fisch: rgb(212,237,252);
-    --grill: rgb(240,131,117);
+    --grill: rgb(240,131,117); /*#F08375*/
     --salat: rgb(191,219,164);
     --vorspeise: rgb(255,245,154);
     --suppe: rgb(249,188,115);
@@ -11,6 +11,7 @@
     --kinder: rgb(246,163,73);
     --nachtisch: rgb(255,247,178);
     --mittag: rgb(150,210,215);
+    --schalterfarbe: rgb(31,197,242); /*#1fc5f2*/ 
 }
 
 html {
@@ -25,16 +26,28 @@ body{
     background-color: var(--hauptfarbe);
     font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     /* overflow-y: hidden; */
+    font-size: 14px;
 }
 
 .unsichtbar{
     display: none;
+    display: inline;
 }
 
 h1{
     text-align: center;
     margin-bottom: 12px;
 }
+
+#menu img:hover{
+    cursor: pointer;
+}
+
+#menu img {
+    border: 1.5px solid black;
+    border-radius: 50%;
+}
+
 
 #speisen, #drinks{
     display: flex;
@@ -55,12 +68,69 @@ h1{
 
 #filter{
     display:none;
+    flex-direction: column;
+    /* align-items: center; */
+    text-align: center;
     margin-bottom: 20px;
+    
 }
 
-#f_allergene{
-    display: grid;
+ #suche{  /*#suchfeld ,*/
+    background-color: var(--fisch);
+    color: var(--schalterfarbe);
+    margin-bottom: 5px;
+    margin-top: 5px;
+    border: 1.5px solid black;
+    border-radius: 15px;
+    padding: 2px 10px;
 }
+
+/* allergene Grid */
+#f_allergene {
+    display: grid; 
+    grid-template-columns: 45% 45%; 
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr ; 
+    gap: 0px 0px; 
+    grid-template-areas: 
+      "a1 a2"
+      "a3 a4"
+      "a5 a6"
+      "a7 a8"
+      "a9 a10"
+      "a11 a12"
+      "a13 a14"; 
+    justify-content: space-evenly; 
+    width: 250px;
+  }
+  
+  .a1 { grid-area: 1 / 1 / 2 / 2; }
+  
+  .a2 { grid-area: 1 / 2 / 2 / 3; }
+  
+  .a3 { grid-area: 2 / 1 / 3 / 2; }
+  
+  .a4 { grid-area: 2 / 2 / 3 / 3; }
+  
+  .a5 { grid-area: 3 / 1 / 4 / 2; }
+  
+  .a6 { grid-area: 3 / 2 / 4 / 3; }
+  
+  .a7 { grid-area: 4 / 1 / 5 / 2; }
+  
+  .a8 { grid-area: 4 / 2 / 5 / 3; }
+  
+  .a9 { grid-area: 5 / 1 / 6 / 2; }
+  
+  .a10 { grid-area: 5 / 2 / 6 / 3; }
+  
+  .a11 { grid-area: 6 / 1 / 7 / 2; }
+  
+  .a12 { grid-area: 6 / 2 / 7 / 3; }
+  
+  .a13 { grid-area: 7 / 1 / 8 / 2; }
+  
+  .a14 { grid-area: 7 / 2 / 8 / 3; }
+  
 
 
 button{
@@ -127,6 +197,12 @@ ul{
     padding-left: 0px;
     max-width: 220px;
     list-style-type: '\25B8';
+    margin-top: 0px;
+}
+
+li{
+    list-style-type: '\25B8';
+    border-bottom: 1px solid black;
 }
 
 li::before{
@@ -138,6 +214,7 @@ li::before{
 .produkt{
     
     font-weight: bold;
+    padding-top: 10px;
 }
 .details{
     font-size: 12px;
@@ -146,10 +223,27 @@ li::before{
 .preis{
     text-align: right;
     font-weight: bold;
-    padding-bottom: 12px;
+    padding-bottom: 2px;
 }
 
+.preiseinheit{
+    display: flex;
+    justify-content: space-between;
+    /* font-size: small; */
+}
+.einheit{
+    margin-left: 20px;
+    text-align: left;
+}
 
+footer{
+    text-align: center;
+    margin: 10px 0px;
+}
+
+footer span:hover{
+    cursor: pointer;
+}
 
 
 

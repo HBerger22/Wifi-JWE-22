@@ -25,7 +25,7 @@
 
 /* wenn die mouse über die gesamte classe "allergene drüberfährt soll sich in der class checkmark die Hintergrundfarbe ändern" */
 .allergene:hover  .checkmark{
-    background-color: var(--mittag);
+    background-color: var(--schalterfarbe);
 }
 
 /* When the checkbox is checked, add a red background */

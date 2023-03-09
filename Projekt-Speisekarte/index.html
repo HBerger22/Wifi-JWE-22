@@ -15,75 +15,88 @@
     <div id="innerWrapper">
         <header>
             <h1>Unsere Speise- und Getränkekarte </h1>
-            
+
             <div id="auswahl">
-            
                 <label class="schalter">
-                    
                     <input type="checkbox" name="sod" id="sod">
                     <span class="slider"></span>
                 </label>
                 <div id="menu">
-                    <img src="img/filter4.svg" alt="Filter" height="25px" > 
+                    <img src="img/filter_1.png" alt="Filter" height="25px" style="background-color: var(--fisch);
+                    "> 
                 </div>
             </div>
+
             <div id="filter">
-                <div id=""></div>
-                <div id="f_allergene">
-                    <label class="allergene"> Gluten
-                        <input type="checkbox" id="al-A" name="Allergene" value="al-A">
+                <div id="zutatenauswahl">
+                    <label for="name">Welche Zutat möchten sie haben?</label>
+                    <input type="search" name="suche" id="suche" list="zutaten">
+                        <datalist id="zutaten">
+                            <option value="Schwein" >
+                            <option value="Kartoffel" >
+                            <option value="Linsen" >
+                        </datalist>
+                    </input>
+                    <br>
+                    <!-- <input type="search" name="suchfeld" id="suchfeld"> -->
+                    <label class="" for="name">Haben Sie Allergien?</label>
+                </div>
+                <div id="f_allergene"> 
+                    
+                    <label class="allergene a1"> Gluten
+                        <input class="all" type="checkbox" id="al_1" name="Allergene" value="al-AGluten">
                         <span class="checkmark"></span>
                     </label>
-                    <label class="allergene"> Krebstiere  
-                        <input type="checkbox" id="al-B" name="Allergene" value="al-B">
+                    <label class="allergene a2"> Krebstiere  
+                        <input class="all" type="checkbox" id="al_2" name="Allergene" value="al-B">
                         <span class="checkmark"></span>
                     </label>
-                    <label class="allergene"> Eier
-                        <input type="checkbox" id="al-C" name="Allergene" value="al-C">
+                    <label class="allergene a3"> Eier
+                        <input class="all" type="checkbox" id="al_3" name="Allergene" value="al-C">
                         <span class="checkmark"></span>
                     </label>
-                    <label class="allergene"> Fische
-                        <input type="checkbox" id="al-D" name="Allergene" value="al-D">
+                    <label class="allergene a4"> Fische
+                        <input class="all" type="checkbox" id="al_4" name="Allergene" value="al-D">
                         <span class="checkmark"></span>
                     </label>
-                    <label class="allergene"> Erdnüsse
-                        <input type="checkbox" id="al-E" name="Allergene" value="al-E">
+                    <label class="allergene a5"> Erdnüsse
+                        <input class="all" type="checkbox" id="al_5" name="Allergene" value="al-E">
                         <span class="checkmark"></span>
                     </label>
-                    <label class="allergene"> Sojabohnen
-                        <input type="checkbox" id="al-F" name="Allergene" value="al-F">
+                    <label class="allergene a6"> Sojabohnen
+                        <input class="all" type="checkbox" id="al_6" name="Allergene" value="al-F">
                         <span class="checkmark"></span>
                     </label>
-                    <label class="allergene"> Milch
-                        <input type="checkbox" id="al-G" name="Allergene" value="al-G">
+                    <label class="allergene a7"> Milch
+                        <input class="all" type="checkbox" id="al_7" name="Allergene" value="al-G">
                         <span class="checkmark"></span>
                     </label>
-                    <label class="allergene"> Schalenfrüchte
-                        <input type="checkbox" id="al-H" name="Allergene" value="al-H">
+                    <label class="allergene a8"> Schalenfrüchte
+                        <input class="all" type="checkbox" id="al_8" name="Allergene" value="al-H">
                         <span class="checkmark"></span>
                     </label>
-                    <label class="allergene"> Sellerie
-                        <input type="checkbox" id="al-L" name="Allergene" value="al-L">
+                    <label class="allergene a9"> Sellerie
+                        <input class="all" type="checkbox" id="al-9" name="Allergene" value="al-L">
                         <span class="checkmark"></span>
                     </label>
-                    <label class="allergene"> Senf
-                        <input type="checkbox" id="al-M" name="Allergene" value="al-M">
+                    <label class="allergene a10"> Senf
+                        <input class="all" type="checkbox" id="al-10" name="Allergene" value="al-M">
                         <span class="checkmark"></span>
                     </label>
-                    <label class="allergene"> Sesamsamen
-                        <input type="checkbox" id="al-N" name="Allergene" value="al-N">
+                    <label class="allergene a11"> Sesamsamen
+                        <input class="all" type="checkbox" id="al-11" name="Allergene" value="al-N">
                         <span class="checkmark"></span>
                     </label>
-                    <label class="allergene"> Schwefeld. / Sul.
-                        <input type="checkbox" id="al-O" name="Allergene" value="al-O">
+                    <label class="allergene a12"> Schwefeld. / Sul.
+                        <input class="all" type="checkbox" id="al-12" name="Allergene" value="al-O">
                         <span class="checkmark"></span>
                     </label>
-                    <label class="allergene"> Lupinen
-                        <input type="checkbox" id="al-P" name="Allergene" value="al-P">
+                    <label class="allergene a13"> Lupinen
+                        <input class="all" type="checkbox" id="al-13" name="Allergene" value="al-P">
                         <span class="checkmark"></span>
                     </label>
-                    <label class="allergene"> Weichtiere
-                        <input type="checkbox" id="al-R" name="Allergene" value="al-R">
+                    <label class="allergene a14"> Weichtiere
+                        <input class="all" type="checkbox" id="al-14" name="Allergene" value="al-R">
                         <span class="checkmark"></span>
                     </label>
                 </div>
@@ -91,22 +104,20 @@
             </div>
         </header>
         <main>
-            <input type="checkbox" id="al-A" name="Allergene" value="al-A">
-                       
             <div id="test"></div>
             <div id="speisen">
-                <button id="s1">Mittagsmenu</button>
+                <button  id="s1">Mittagsmenu</button>
                     <ul id="s1u">
-                        <li> 
+                        <li class="c_al_1 c_al_2 c_al_4"> 
                             <div class="produkt"> Wienerschnitzel vom Magalitzerschwein </div> 
-                            <div class="details">mit Pommes und kleinen Salat</div>
-                            <div class="preis">€12,90</div> 
+                            <div class="details">mit Pommes und kleinen Salat (A,B,D *)</div>
+                            <div class="preis">€ 12,90</div> 
                             
                         </li>
-                        <li> 
+                        <li class="c_al_1 c_al_2 c_al_7"> 
                             <div class="produkt"> Schweinsbraten <br> nach Art des Hauses </div> 
                             <div class="details">mit Pommes und kleinen Salat und lauter anderen tollen Köstlichkeiten (A,B,G *)</div>
-                            <div class="preis">€14,90</div> 
+                            <div class="preis">€ 14,90</div> 
                             
                         </li>
                     </ul>           
@@ -116,11 +127,48 @@
                     </ul>           
                 <button id="s3">Suppe</button>
                     <ul id="s3u">
-                        <li>sowas</li>
+                        <li> 
+                            <div class="produkt">Kräftige Rindssuppe vom Bio-Ochsen</div> 
+                            <div class="details"></div>
+                            <div class="preiseinheit">
+                                <div class="einheit" > mit Frittaten </div>
+                                <div class="preis">€ 4,90</div> 
+                            </div> 
+                            <div class="preiseinheit c_al_1">
+                                <div class="einheit" > mit Leberknödel </div>
+                                <div class="preis">€ 5,90</div> 
+                            </div> 
+                            <div class="preiseinheit c_al_1">
+                                <div class="einheit" > mit Kaspressknödel </div>
+                                <div class="preis">€ 6,20</div> 
+                            </div> 
+                         </li>
+                         <li> 
+                            <div class="produkt">Hausgemachte Gemüsebouillon</div> 
+                            <div class="details"></div>
+                            <div class="preiseinheit">
+                                <div class="einheit" > mit Frittaten </div>
+                                <div class="preis">€ 3,90</div> 
+                            </div> 
+                            <div class="preiseinheit c_al_1">
+                                <div class="einheit" > mit Kaspressknödel </div>
+                                <div class="preis">€ 5,60</div> 
+                            </div>  
+                         </li>
+                         <li> 
+                            <div class="produkt">Erdäpfel-Steinbierschaumsuppe</div> 
+                            <div class="details">mit Buttercroútons</div>
+                            <div class="preis">€ 6,90</div> 
+                         </li>
+                         <li> 
+                            <div class="produkt"> Steinpilzsuppe mit Erdäpfel </div> 
+                            <div class="details"></div>
+                            <div class="preis">€ 5,60</div> 
+                         </li>
                     </ul>           
                 <button id="s4">Frische Salate</button>
                 <button id="s5">Frisch und Saftig vom Grill</button>
-                <button id="s6">Fischspezialität</button>
+                <button class="c_al_4" id="s6">Fischspezialität</button>
                 <button id="s7">Klassiker</button>
                 <button id="s8">Vegetarisch / Vegan</button>
                 <button id="s9">Zur Jausn</button>
@@ -128,7 +176,30 @@
                 <button id="s11">Zum Nachtisch</button>
             </div>
             <div id="drinks">
-                <button id="d1">Biere</button>            
+                <button id="d1">Biere</button>  
+                <ul id="d1u">
+                    <li> 
+                        <div class="produkt"> Gusswerk vom Fass </div> 
+                        <div class="details">mit Pommes und kleinen Salat</div>
+                        <div class="preiseinheit">
+                            <div class="einheit" >0,33 l </div>
+                            <div class="preis">€ 12,90</div> 
+                        </div>
+                        <div class="preiseinheit">
+                            <div class="einheit" >0,50 l </div>
+                            <div class="preis">€ 21,90</div> 
+                        </div>
+                    </li>
+                    <li> 
+                        <div class="produkt"> Gusswerk Flaschenbier </div> 
+                        <div class="details">mit Pommes und kleinen Salat und lauter anderen tollen Köstlichkeiten (A,B,G *)</div>
+                        <div class="preiseinheit">
+                            <div class="einheit" > 0,33l </div>
+                            <div class="preis">€ 12,90</div> 
+                        </div>
+                        
+                    </li>
+                </ul>               
                 <button id="d2">Alkoholfrei - Flaschen</button>
                 <button id="d3">Alkoholfrei - Offen</button>
                 <button id="d4">Heiße Getränke</button>
@@ -139,7 +210,10 @@
 
 
         <footer>
-            <a href="#">* Allergene Übersicht</a> Copyright 2023
+            <a href="#">* Allergene Übersicht</a> 
+            <div> Alle Preise in € inkl. gesetzlicher Mwst. 
+                Copyright 2023 <span>&#128271</span>
+            </div>
         </footer>
 
     </div>
