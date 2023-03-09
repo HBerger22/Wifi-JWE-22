@@ -1,5 +1,5 @@
 <?php
-// Die Aufgabe ist die bestehende 
+// Die Aufgabe ist die bestehenden Homepage von HTML ins PHP zu übertragen.
 // $seite="home";
 if ( empty($_GET["seite"])){
     $seite ="home";

@@ -78,6 +78,7 @@
         echo "<em><strong>Eine Funktion die einen Text kürzt und ... anhängt ab einer gewissen Länge (10 Zeichen): </strong></em><br>";
         $text1 = "Ein text mit mehr als 10 Zeichen";
         $text2 = "\"Ein Text\"";
+        
         function text_kuerzen($text,$laenge=10){
             if(mb_strlen($text) <= $laenge){
                 return $text;
