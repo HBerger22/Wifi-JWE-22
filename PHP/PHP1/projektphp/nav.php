@@ -16,7 +16,7 @@ foreach ($nav_punkte as $href => $nav_punkt){
     }
     
     echo ">";
-    echo "<a href='index.php?seite=" . $href . "'>" . $nav_punkt ."</a>";
+    echo "<a href='?seite=" . $href . "'>" . $nav_punkt ."</a>";
     echo "</li>";
     
     

@@ -23,7 +23,7 @@ $('#loginForm').on(
                 
                 $('#passwordHelpBlock').text('Ihr Passwort entspricht nicht den Kriterien.');
 
-                // Prüfen auf Sonderzeichen: @$!%*#?&
+                // Prüfen auf Sonderzeichen: @$!%*#?&   
                 if(pass.match(/[@$!%*#?&]/) == null) {
 
                     $('#passwordHelpBlock').html(

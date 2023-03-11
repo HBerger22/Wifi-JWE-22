@@ -1,11 +1,15 @@
 <?php
 // Die Aufgabe ist die bestehenden Homepage von HTML ins PHP zu übertragen.
 // $seite="home";
-if ( empty($_GET["seite"])){
+if ( empty($_GET["seite"])){  //es gibt auch "isset"
     $seite ="home";
 } else {
     $seite = $_GET["seite"];
 }
+
+echo"<pre>";
+print_r($_POST); //alternativ kann auch var_dump() verwendet werden, enthält zusätzliche Infos.
+echo"</pre>";
 
 if($seite == "home"){
     $include_datei="home.php";

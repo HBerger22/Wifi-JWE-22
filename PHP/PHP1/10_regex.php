@@ -10,7 +10,7 @@
     <h1>Regular Expression - Komplexe Suchmuster</h1>
 
     <?php
-        $name= "12";
+        $name= "hal1Q@lo";
         $datum= "24.02.2025";
         // Benutzername auf gültige Zeichen überprüfen.
         echo "<em><strong>Benutzernamen auf gültige Zeichen überprüfen.</strong></em>"; 
@@ -18,7 +18,13 @@
         echo "Name: ".$name;
         echo "<br>";
         
-        if(preg_match("/^[0-9]+$/",$name)){
+        // if(preg_match("/^[0-9]+$/",$name)){
+        //     echo "Gültig. <br>";
+        // } else {
+        //     echo "Der benutzer namen enthält ungültige Zeichen!";
+        // }
+
+        if(preg_match("/(?=.*[a-zA-Z]+.*){1,}(?=.*\d+.*){1,}(?=.*[@$!%*#?&]+.*){1,}/",$name)){
             echo "Gültig. <br>";
         } else {
             echo "Der benutzer namen enthält ungültige Zeichen!";
