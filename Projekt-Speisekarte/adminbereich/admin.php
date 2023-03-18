@@ -48,7 +48,7 @@ if($_SESSION["login"]==0){
         if($con->connect_error){
             exit("Fehler beim Verbindungsaufbau");
         };
-        $sql="select passwort from benutzer where benutzer='". $_POST["ben"]."'";
+        $sql="SELECT passwort FROM benutzer WHERE benutzer='". $_POST["ben"]."'";
         if($result=$con->query($sql)){ 
             if($result->num_rows == 0){//abfragen ob der Benutzer existiert
                 $fehlermeldung="Benutzer nicht vorhanden!";
@@ -104,8 +104,8 @@ if($_SESSION["login"]==0){
     
 }
 
-echo "Session char seite stelle1: ". $_SESSION["seite"][0] ."<br>";
-echo "include datei: " . $include_datei."<br>";
+// echo "Session char seite stelle1: ". $_SESSION["seite"][0] ."<br>";
+// echo "include datei: " . $include_datei."<br>";
 
 // password_verify($passwort, $hash)
 //überprüfung sollte noch von der DB kommen!!!
