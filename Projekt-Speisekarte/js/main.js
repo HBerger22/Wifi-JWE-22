@@ -130,7 +130,7 @@ $('button').click(function(event){
 // Zugang zum Verwaltungsbereich durch klick auf das Schlossymbol im footer
     $('footer span').click(function(){
         $('#test').html('111 u ');
-        window.open('adminbereich/admin.html','_self');
+        window.open('adminbereich/admin.php','_self');
     });
 
 // allgemeine Funktionen
