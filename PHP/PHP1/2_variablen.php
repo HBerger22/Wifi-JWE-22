@@ -60,7 +60,7 @@
         echo ">".$nichts."<"; // es erfolgt ebenfalls keine ausgabe
         echo "<br>";
         
-        // Konatanten: 
+        // Konstanten: 
         define("datenbank","jwe.mysql.com");
         echo datenbank;
         echo "<br>";

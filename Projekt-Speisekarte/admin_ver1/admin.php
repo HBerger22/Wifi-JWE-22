@@ -1,5 +1,6 @@
 <?php
-$db='"","root","","speisekarte"';
+include "inhalt/funktionen.php";
+$db="speisekarte";
 $fehlermeldung="";
 // if( isset($login_ok)){
 //     $login_ok=0;
@@ -44,10 +45,7 @@ echo "</pre>";
 if($_SESSION["login"]==0){
     if(!empty($_POST) && isset($_POST["ben"])){
         // Datenbankverbindung herstellen und benutzer abfragen
-        $con= @new mysqli("","root","","speisekarte"); //Das @ bedeutet silent und unterdrückt die ausgabe von Fehlermeldungen (notwendig gegen Hackerangriffe die sonst eine Info zur DB bekommen würden)
-        if($con->connect_error){
-            exit("Fehler beim Verbindungsaufbau");
-        };
+        $con= db_con($db);
         $sql="SELECT passwort FROM benutzer WHERE benutzer='". $_POST["ben"]."'";
         if($result=$con->query($sql)){ 
             if($result->num_rows == 0){//abfragen ob der Benutzer existiert

@@ -89,7 +89,15 @@
         echo text_kuerzen("Hallo heute ist ein schöner Tag!",15); echo "<br>";
         echo text_kuerzen($text2); echo "<br>";
 
+        $floatzahl = "1.116,90";
+        echo $floatzahl;
+        echo "aaa: ". stripos($floatzahl,",")." ";
+        
+        
+        if(stripos($floatzahl,","))
+            $floatzahl[stripos($floatzahl,",")]=".";
 
+        echo $floatzahl;
         
 
 

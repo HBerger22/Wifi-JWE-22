@@ -129,8 +129,9 @@ $('button').click(function(event){
 
 // Zugang zum Verwaltungsbereich durch klick auf das Schlossymbol im footer
     $('footer span').click(function(){
-        $('#test').html('111 u ');
-        window.open('adminbereich/admin.php','_self');
+        // $('#test').html('111 u ');
+        window.open('adminbereich/index.php','_self');
+        // window.open('https://bergerhe.jwe.obinet.at/projekt/adminbereich/index.php','_self');
     });
 
 // allgemeine Funktionen

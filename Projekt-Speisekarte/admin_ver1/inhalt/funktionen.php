@@ -1,43 +1,90 @@
-<?php 
-$laengeSessionSeite=strlen($_SESSION["seite"]);
-echo "laenge: ". $laengeSessionSeite. "<br>";
-$herkunft=substr($_SESSION["seite"],2,2);
-$untermenu=substr($_SESSION["seite"],5,$laengeSessionSeite-1);
-echo "laenge: ". $herkunft. "<br>";
-echo "laenge: ". $untermenu. "<br>";
+<?php
 
 
+    $con= @new mysqli("","root","","speisekarte"); //Das @ bedeutet silent und unterdrückt die ausgabe von Fehlermeldungen (notwendig gegen Hackerangriffe die sonst eine Info zur DB bekommen würden)
+        if($con->connect_error){
+            exit("Fehler beim Verbindungsaufbau");
+        };
 
 
-if($untermenu=="hinzu"){
-    echo "<h2>Speise hinzufügen</h2>";
-    if($herkunft=="um"){ //herkunft vom um = Untermenu oder fa=Formular abgeschickt
-        formular_s_hinzu();
-    } else {
-        formular_s_hinzu_in_db_eintragen();
-        // eintrag in die db prüfen und vornehmen
-    }
-
-}else if($untermenu=="aendern"){
-    echo "<h2>Speise ändern</h2>";
-}else if($untermenu=="loeschen"){
-    echo "<h2>Speise löschen!</h2>";
-}else {
-    $fehlermeldung="Es ist ein Fehler bei der Speisenverwaltung aufgetreten";
+function escape ($wort){
+    global $con;
+    return mysqli_real_escape_string($con, $wort);
 }
 
-// echo $fehlermeldung;
+// einfache funktion ohne grossartige überprüfung um in einer Zahl das komma gegen einen Punkt zu tauschen.
+function punkt_statt_komma($zahl){
+    if(stripos($zahl,","))
+        $zahl[stripos($zahl,",")]=".";
+    return $zahl;
+}
+
+function speise_uebersicht(){
+    // $con=db_con();
+    global $con;
+    $sql="SELECT * FROM speisen";
+    if($result=$con->query($sql)){ 
+        if($result->num_rows == 0){//abfragen ob der Benutzer existiert
+            $fehlermeldung="Keine Speisen vorhanden!";
+        } else{
+            echo "<div id='tabelle'>
+                    <div class='reihe'>
+                        <div class='spalte center'> bearbeiten </div> 
+                        <div class='spalte center'> löschen </div> 
+                        <div class='spalte center'> ID </div> 
+                        <div class='spalte center'> Name </div> 
+                        <div class='spalte center'> Beschreibung </div> 
+                        <div class='spalte center'> Preis </div> 
+                    </div>";
+            while ($daten_satz = $result->fetch_assoc()){
+                echo "<div class='reihe'>
+                        <div class='spalte center' > <button class='mini_buttons' name='seite' value='s_um_aendern'>b</button> </div> 
+                        <div class='spalte center'> <button class='mini_buttons' name='seite' value='s_um_aendern'>l</button> </div>
+                        <div class='spalte'> {$daten_satz['id']} </div> 
+                        <div class='spalte'> {$daten_satz['name']} </div> 
+                        <div class='spalte'> {$daten_satz["beschreibung"]} </div> 
+                        <div class='spalte'> {$daten_satz["preis"]} </div> 
+                    </div>";
+            }
+            echo "</div>";
+                
+            $result->close();
+        }
+    }
+    $con->close();
+}
+
 
 function formular_s_hinzu_in_db_eintragen(){
-    echo " Formular wurde abgeschickt und muss jetzt noch geprüft und in die DB eingetragen werden.";
+    global $con;
+    $sql_name = escape($_POST["name"]);
+    $sql_beschr = escape($_POST["beschreibung"]);
+    $sql_preis = escape($_POST["preis"]);
+    $sql_preis= punkt_statt_komma($sql_preis);
+    
+    
+    $sql="SELECT * FROM speisen where name = '{$sql_name}'";
+    if($result=$con->query($sql)){ 
+        if($result->num_rows == 0){//abfragen ob der Benutzer existiert
+            $sql="INSERT INTO `speisen`(`name`, `beschreibung`, `preis`) VALUES ('{$sql_name}','{$sql_beschr}','{$sql_preis}')";
+            if($result=$con->query($sql)){ 
+                $fehlermeldung="Speise erfolgreich eingetragen.";
+            } else {
+                $fehlermeldung="Es ist ein Fehler aufgetreten!";
+            }
+        } else{
+            $fehlermeldung = "Speise existiert bereits";
+        }
+    }
+
 };
 
 function formular_s_hinzu(){
     echo" Bitte füllen sie alle Felder ordnungsgemäß aus.<br>";
 ?>
     <form action="" method="post">
-    <label for="titel">Titel eingeben:</label>
-    <input type="text" name="titel" maxlength="80"><br>
+    <label for="name">Titel eingeben:</label>
+    <input type="text" name="name" maxlength="80"><br>
 
     <label for="beschreibung">Beschreibung eingeben:</label>
     <input type="text" name="beschreibung" maxlength="120"><br>
@@ -110,6 +157,3 @@ function formular_s_hinzu(){
 
 <?php 
 };
-
-
-?>
