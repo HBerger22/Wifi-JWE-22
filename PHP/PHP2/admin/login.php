@@ -32,6 +32,7 @@ include "funktionen.php";
                     // Login war erfolgreich, sezten der Variable $_Session["eingeloggt"] damit er auf den weiteren seiten nicht rausfliegt.
                     $_SESSION["eingeloggt"]=true;
                     $_SESSION["benutzername"]=$row["benutzername"];
+                    $_SESSION["benutzer_id"]=$row["id"];
 
                     //letztes Login & Anzahl in DB speichern.
                     query("UPDATE `benutzer` SET `letztes_login`=now(),`anzahl_logins`=anzahl_logins+1 WHERE benutzername='{$row["benutzername"]}'");

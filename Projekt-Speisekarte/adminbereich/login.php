@@ -35,7 +35,7 @@
             $sql_ben= mysqli_real_escape_string($con, $_POST["ben"]);
             $sql_pwort= mysqli_real_escape_string($con, $_POST["pwort"]);
 
-            $sql="SELECT passwort FROM benutzer WHERE benutzer='". $sql_ben."'";
+            $sql="SELECT passwort FROM benutzer WHERE `benutzer`='". $sql_ben."'";
             if($result=$con->query($sql)){ 
                 if($result->num_rows == 0){//abfragen ob der Benutzer existiert
                     $fehlermeldung="Benutzernamen oder Passwort nicht korrekt!";

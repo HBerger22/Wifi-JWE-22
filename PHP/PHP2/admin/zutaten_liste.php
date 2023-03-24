@@ -13,7 +13,7 @@ include "kopf.php";
 
 <?php
 $result = query("SELECT * from `zutaten`");
-var_dump($result);
+// var_dump($result);
 
 echo "<table border='1'>";
     echo "<thead>";
@@ -28,7 +28,9 @@ echo "<table border='1'>";
                 echo "<td>".$row["id"]."</td>";
                 echo "<td>".$row["name"]."</td>";
                 echo "<td>".$row["kcal_pro_100"]."</td>";
-                echo "<td> <a href='zutaten_bearbeiten.php?id=".$row["id"]."'>bearbeiten</a></td>";
+                echo "<td> <a href='zutaten_bearbeiten.php?id=".$row["id"]."'>bearbeiten</a> <br>
+                    <a href='zutaten_entfernen.php?id=".$row["id"]."'>entfernen</a>
+                </td>";
             echo "</tr>";
         }
        

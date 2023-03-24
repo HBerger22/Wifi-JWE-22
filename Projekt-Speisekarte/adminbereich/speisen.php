@@ -87,15 +87,15 @@ if(empty($_POST["s_loeschen"]) && empty($_POST["s_loeschen_bestaetigung"])){
     $sql = "SELECT * from speisen order by aktiv desc, name asc;";
 
     if($result=$con->query($sql)){ 
+        echo "<form method='post'>";
+            echo '<button class="sub_buttons" type="submit" name="hinzu" value="1">Speise hinzufügen</button>';
+
         if($result->num_rows == 0){//abfragen ob der Benutzer existiert
             $fehlermeldung="Keine Speisen zum anzeigen vorhanden!";
         } else {
             //setzen der gesamtanzahl an zeilen damit beim aktiv/deaktiv. alle Menupunkte durchlaufen werden.
             $_SESSION["num_rows"]=$result->num_rows; 
-            echo "<form method='post'>";
                 echo '<button class="sub_buttons" type="submit" name="aktivieren" value="1">Aktivieren/deaktivieren</button>';
-                echo '<button class="sub_buttons" type="submit" name="hinzu" value="1">Speise hinzufügen</button>';
-
                 echo "<table border='1'>";
                     echo "<thead>";
                         echo "<th> Aktiv </th> "; 
@@ -138,8 +138,9 @@ if(empty($_POST["s_loeschen"]) && empty($_POST["s_loeschen_bestaetigung"])){
                         }
                     echo "</tbody>";
                 echo "</table border='1'>";
-            echo "</form>";
+            
         }
+        echo "</form>";
     }
 }
 

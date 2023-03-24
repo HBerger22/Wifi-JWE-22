@@ -17,16 +17,17 @@ if(!empty($_POST)){
             
         }
     }
+// var_dump($error);
+    if (empty($error)){
+        if(empty($sql_kcal)){
+            $sql_kcal="NULL";
+        }
+        query("INSERT into zutaten ( name , kcal_pro_100) VALUES ('{$sql_name}', {$sql_kcal})");
+        $erfolg=true;
+    }
 }
 
-// var_dump($error);
-if (empty($error)){
-    if(empty($sql_kcal)){
-        $sql_kcal="NULL";
-    }
-    query("INSERT into zutaten ( name , kcal_pro_100) VALUES ('{$sql_name}', {$sql_kcal})");
-    $erfolg=true;
-}
+
 
 
     // $error = "nicht leer";

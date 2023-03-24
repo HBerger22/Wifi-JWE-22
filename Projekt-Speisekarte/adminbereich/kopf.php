@@ -16,7 +16,7 @@
             <form method="post">
                 <ul >
                     <li>  
-                        <button name="seite" value="a_ansicht">Allergene</button>
+                        <!-- <button name="seite" value="a_ansicht">Allergene</button> -->
                         <button name="seite" value="s_ansicht">Speisen</button> 
                         <button name="seite" value="g_ansicht">Getränke</button>
                         <button name="seite" value="logout" >Abmelden</button>

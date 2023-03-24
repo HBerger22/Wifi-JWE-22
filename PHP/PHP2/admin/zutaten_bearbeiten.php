@@ -27,7 +27,7 @@ if(!empty($_POST)){
         if(empty($sql_kcal)){
             $sql_kcal="NULL";
         }
-    echo " wieso";
+    // echo " wieso";
     query("UPDATE zutaten SET `kcal_pro_100` = '{$sql_kcal}', `name`='{$sql_name}'  WHERE `zutaten`.`id` = {$sql_id};");
 }
 }
