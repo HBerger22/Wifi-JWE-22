@@ -38,6 +38,28 @@ if(!empty($_POST)){
         unset($_POST["titel"]);
         unset($_POST["beschr"]);
         
+        // gibt zurück welche id Zuletzt erstellt wurde
+        $neue_rezepte_id=mysqli_insert_id($db);
+
+        // Zuordnung zu zutaten eintragen
+        foreach($_POST["zutaten_id"] as $key => $zutat_id){
+            if( empty($zutat_id)){
+                continue;
+            }
+            $sql_zutaten_id = escape($zutat_id);
+            $sql_menge = escape($_POST["menge"][$key]);
+            $sql_einheit = escape($_POST["einheit"][$key]);
+
+            query("INSERT INTO bz_rezepte_zutaten set
+                rezepte_id = '{$neue_rezepte_id}',
+                zutaten_id  = '{$sql_zutaten_id}',
+                menge  = '{$sql_menge}',
+                einheit  = '{$sql_einheit}'
+            ");
+
+        }
+
+        
         $erfolg=true;
     }
 }
@@ -56,7 +78,7 @@ include "kopf.php";
     if( $erfolg ){
         echo "<p style='color:green'> Rezept erfolgreich eingetragen <br> 
             <a href='rezepte_liste.php'>Zutaten Liste</a> </p>";
-    } 
+    } else {
 ?>
 
     <form method="post">
@@ -92,6 +114,8 @@ include "kopf.php";
                 } ?> </textarea>
         </div>
 
+
+
         <!-- Zutaten m-n -->
         <div class="zutatenliste">
             <?php
@@ -105,8 +129,8 @@ include "kopf.php";
             ?>
             <div class="zutatenblock">
                 <div>
-                    <label for="zutat_id">Zutat:</label>
-                    <select name="zutaten_id" id="zutaten_id">
+                    <label for="zutaten_id">Zutat:</label>
+                    <select name="zutaten_id[]" id="zutaten_id">
                         <option value=''>-Bitte wählen-</option>
                         <?php
                             $result = query("SELECT * from `zutaten` order by 'name' asc");
@@ -149,6 +173,7 @@ include "kopf.php";
         </div>
     
     </form>
-
+    <?php 
+    } ?>
 <?php
 include "fuss.php";
