@@ -5,7 +5,9 @@ include "funktionen.php";
 include "kopf.php";
 
 echo "<h1>Speisenübersicht</h1>";
-
+echo "<p>Hier haben sie eine Übersicht über die vorhandenen Speisen.</p>";
+echo "<p>Sie können einzelne/mehrere Speisen aktivieren und deaktivieren. Damit erscheinen sie nicht mehr im digitalen 
+    Menu, sie sind aber jederzeit wieder aktivierbar, sollte es diese Speise wieder geben.</p>";
 
     
 if(!empty($_SESSION["erfolg"])){
@@ -38,9 +40,11 @@ if(!empty($_POST["hinzu"])){
 
 // Speise endgültig löschen
 if(!empty($_POST["s_loeschen"]) || !empty($_POST["s_loeschen_bestaetigung"])){
-    if(!empty($_POST["s_loeschen"]))
+    if(!empty($_POST["s_loeschen"])){
         $_SESSION["s_loeschen"]=$_POST["s_loeschen"]; //übergabe der id von $Post an $session
-    $sql="SELECT * from speisen where `id`= {$_SESSION["s_loeschen"]}";
+        escape($_SESSION["s_loeschen"]);
+    }
+    $sql="SELECT * from speise where `id`= {$_SESSION["s_loeschen"]}";
     $result=$con->query($sql);
     $daten_satz=$result->fetch_assoc();
 
@@ -53,7 +57,7 @@ if(!empty($_POST["s_loeschen"]) || !empty($_POST["s_loeschen_bestaetigung"])){
     } else {
         if($_POST["s_loeschen_bestaetigung"] == 1 ){
             $erfolg= "!!! Speise erfolgreich gelöscht !!!";
-            $sql="DELETE from speisen where `id`= '{$_SESSION["s_loeschen"]}'";
+            $sql="DELETE from speise where `id`= '{$_SESSION["s_loeschen"]}'";
             $con->query($sql);
             unset($_SESSION["s_loeschen"]);
             unset($_POST["s_loeschen_bestaetigung"]);
@@ -65,10 +69,22 @@ if(!empty($_POST["s_loeschen"]) || !empty($_POST["s_loeschen_bestaetigung"])){
 if(!empty($_POST["aktivieren"])){
     for ($i=1; $i<=$_SESSION["num_rows"]; $i++){
         $index="cbid".$i;
-        if(!empty($_POST["cb{$i}"])){ // checkbox aktiviert?
-            $sql="UPDATE speisen set aktiv = 1 where id={$_POST['cbid'.$i]}";
+        if(!empty($_POST["cb{$i}"])){ // checkbox aktiviert? --> Speise aktiv setzen und deaktiviert datum auf null setzen
+            $sql="UPDATE speise set aktiv = 1 , deaktiviert_am = null where id={$_POST['cbid'.$i]}";
+
         } else {
-            $sql="UPDATE speisen set aktiv = 0 where id={$_POST['cbid'.$i]}";
+            $sql_datum=date("Y-m-d");
+            // abfragen ob es bereits ein datum in der Spalte Deaktiviert seit gibt
+            $sql = "SELECT `deaktiviert_am` from speise where id={$_POST['cbid'.$i]}";
+            $result=$con->query($sql);
+            $daten_satz=$result->fetch_assoc();
+            if($daten_satz["deaktiviert_am"] == null){
+                // deaktiviert Datum setzen
+                $sql="UPDATE speise set aktiv = 0 , deaktiviert_am ='{$sql_datum}' where id={$_POST['cbid'.$i]}";
+            } else {
+                // kein neues Deaktiviert datum setzen, da bereits ein älteres besteht
+                $sql="UPDATE speise set aktiv = 0 where id={$_POST['cbid'.$i]}";
+            }    
         }
         $con->query($sql); 
         $erfolg= "<p style='color:green'>Speisen erfolgreich aktiviert/deaktiviert!</p>";
@@ -84,18 +100,25 @@ if(!empty($erfolg)){
 
 // vorhandenen speisen auflisten 
 if(empty($_POST["s_loeschen"]) && empty($_POST["s_loeschen_bestaetigung"])){
-    $sql = "SELECT * from speisen order by aktiv desc, name asc;";
+    $sql = "SELECT * from speise order by aktiv desc, name asc;";
 
     if($result=$con->query($sql)){ 
         echo "<form method='post'>";
             echo '<button class="sub_buttons" type="submit" name="hinzu" value="1">Speise hinzufügen</button>';
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
         if($result->num_rows == 0){//abfragen ob der Benutzer existiert
             $fehlermeldung="Keine Speisen zum anzeigen vorhanden!";
         } else {
             //setzen der gesamtanzahl an zeilen damit beim aktiv/deaktiv. alle Menupunkte durchlaufen werden.
             $_SESSION["num_rows"]=$result->num_rows; 
                 echo '<button class="sub_buttons" type="submit" name="aktivieren" value="1">Aktivieren/deaktivieren</button>';
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
                 echo "<table border='1'>";
                     echo "<thead>";
                         echo "<th> Aktiv </th> "; 

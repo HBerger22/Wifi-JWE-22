@@ -15,10 +15,11 @@ echo "<h1>Speise bearbeiten</h1>";
 // echo "</pre>";
 
 if(!empty($_SESSION["s_bearbeiten"])){
-    $sql="SELECT * from speisen where `id`= {$_SESSION["s_bearbeiten"]};";
+    $sql_session_bearbeiten = escape($_SESSION["s_bearbeiten"]);
+    $sql="SELECT * from speise where `id`= {$sql_session_bearbeiten};";
     if($result=$con->query($sql)){ 
         if($result->num_rows == 0){//abfragen ob die Speise existiert
-            $fehlermeldung="Diese Speise existiert nicht!";
+            $fehlermeldung="Diese Speise existiert nicht (mehr)!";
             unset($_SESSION["s_bearbeiten"]);
             header("refresh:5; speisen.php");
             exit();
@@ -39,13 +40,13 @@ if(!empty($_POST)){
         $sql_beschr=escape($_POST["beschr"]);
         $sql_preis=punkt_statt_komma(escape($_POST["preis"]));
         if(!empty($_POST["aktiv"])) $aktiv=1; else $aktiv=0;
-        $sql = "SELECT * from speisen where `name` ='{$sql_name}' and `beschreibung`='{$sql_beschr}' and `preis`='{$sql_preis}' and `aktiv`='$aktiv'";
+        $sql = "SELECT * from speise where `name` ='{$sql_name}' and `beschreibung`='{$sql_beschr}' and `preis`='{$sql_preis}' and `aktiv`='$aktiv'";
         if($result=$con->query($sql)){ 
             if($result->num_rows != 0){//abfragen ob die Speise existiert
                 $fehlermeldung="Speise existiert bereits oder es wurde nichts geändert!";
             } else {
-                $sql="UPDATE speisen set `aktiv`='$aktiv', `name`='$sql_name', `beschreibung`='$sql_beschr', 
-                `preis`='$sql_preis' where `id`= {$_SESSION["s_bearbeiten"]}; ";
+                $sql="UPDATE speise set `aktiv`='$aktiv', `name`='$sql_name', `beschreibung`='$sql_beschr', 
+                `preis`='$sql_preis' where `id`= {$sql_session_bearbeiten}; ";
                 
                 $result=$con->query($sql);
 
@@ -59,7 +60,7 @@ if(!empty($_POST)){
                 // erfolgsmeldung an folgeseite übergeben.
                 $_SESSION["erfolg"] ="Speise erfolgreich geändert";
                 // umleiten auf die hauptseite
-                header("location: speisen.php");
+                header("location: speise.php");
                 exit();
             }
 
@@ -82,11 +83,11 @@ if(!empty($fehlermeldung)){
 <form method='post'>
     <div>
         <label class="form_beschriftung" for="name">Name: </label>
-        <input type="text" name="name" id="name" value="<?php if(!empty($daten_satz["name"])){ echo $daten_satz["name"];} ?> ">
+        <input type="text" name="name" id="name" value="<?php if(!empty($daten_satz["name"])){ echo $daten_satz["name"];} ?>">
     </div>
     <div>
         <label class="form_beschriftung" for="beschr">Beschreibung: </label>
-        <input type="text" name="beschr" id="beschr" value="<?php if(!empty($daten_satz["beschreibung"])){ echo $daten_satz["beschreibung"];} ?> ">
+        <input type="text" name="beschr" id="beschr" value="<?php if(!empty($daten_satz["beschreibung"])){ echo $daten_satz["beschreibung"];} ?>">
     </div>
     <div>
         <label class="form_beschriftung" for="preis">Preis: </label>

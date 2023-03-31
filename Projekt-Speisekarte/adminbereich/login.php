@@ -28,6 +28,8 @@
             
             // Datenbankverbindung herstellen und benutzer abfragen
             $con= @new mysqli("","root","","speisekarte"); //Das @ bedeutet silent und unterdrückt die ausgabe von Fehlermeldungen (notwendig gegen Hackerangriffe die sonst eine Info zur DB bekommen würden)
+            // $con= @new mysqli("localhost","jwe_bh","6td4t~O1jZ75f5@e","obinet_jwe_bh_db1"); //Das @ bedeutet silent und unterdrückt die ausgabe von Fehlermeldungen (notwendig gegen Hackerangriffe die sonst eine Info zur DB bekommen würden)
+
             if($con->connect_error){
                 exit("Fehler beim Verbindungsaufbau");
             };

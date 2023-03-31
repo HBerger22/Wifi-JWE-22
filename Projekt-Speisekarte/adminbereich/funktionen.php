@@ -8,7 +8,11 @@ if(empty($_SESSION["login"])){
 }
 
 $con= @new mysqli("","root","","speisekarte"); //Das @ bedeutet silent und unterdrückt die ausgabe von Fehlermeldungen (notwendig gegen Hackerangriffe die sonst eine Info zur DB bekommen würden)
+<<<<<<< Updated upstream
 // $con= @new mysqli("localhost:3306","jwe_bh","6td4t~O1jZ75f5@e","obinet_jwe_bh_db1"); //Das @ bedeutet silent und unterdrückt die ausgabe von Fehlermeldungen (notwendig gegen Hackerangriffe die sonst eine Info zur DB bekommen würden)
+=======
+// $con= @new mysqli("localhost","jwe_bh","6td4t~O1jZ75f5@e","obinet_jwe_bh_db1"); //Das @ bedeutet silent und unterdrückt die ausgabe von Fehlermeldungen (notwendig gegen Hackerangriffe die sonst eine Info zur DB bekommen würden)
+>>>>>>> Stashed changes
     if($con->connect_error){
         exit("Fehler beim Verbindungsaufbau");
     };
