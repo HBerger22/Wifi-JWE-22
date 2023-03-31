@@ -105,20 +105,12 @@ if(empty($_POST["s_loeschen"]) && empty($_POST["s_loeschen_bestaetigung"])){
     if($result=$con->query($sql)){ 
         echo "<form method='post'>";
             echo '<button class="sub_buttons" type="submit" name="hinzu" value="1">Speise hinzufügen</button>';
-<<<<<<< Updated upstream
-
-=======
->>>>>>> Stashed changes
         if($result->num_rows == 0){//abfragen ob der Benutzer existiert
             $fehlermeldung="Keine Speisen zum anzeigen vorhanden!";
         } else {
             //setzen der gesamtanzahl an zeilen damit beim aktiv/deaktiv. alle Menupunkte durchlaufen werden.
             $_SESSION["num_rows"]=$result->num_rows; 
                 echo '<button class="sub_buttons" type="submit" name="aktivieren" value="1">Aktivieren/deaktivieren</button>';
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
                 echo "<table border='1'>";
                     echo "<thead>";
                         echo "<th> Aktiv </th> "; 

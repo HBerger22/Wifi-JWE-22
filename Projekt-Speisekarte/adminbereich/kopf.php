@@ -16,12 +16,7 @@
             <form method="post">
                 <ul >
                     <li>  
-<<<<<<< Updated upstream
                         <!-- <button name="seite" value="a_ansicht">Allergene</button> -->
-=======
-                        
-
->>>>>>> Stashed changes
                         <button name="seite" value="s_ansicht">Speisen</button> 
                         <button name="seite" value="g_ansicht">Getränke</button>
                         <button name="seite" value="k_ansicht">Kategorie</button>
@@ -50,14 +45,14 @@
 <?php
 
 
-echo'S_Session:';
-echo"<pre>"; //print_r Inhalt aus einem Array darstellen (nur zum debuggen)
-print_r($_SESSION);
-echo "</pre>";
-echo'S_post:';
-echo"<pre>"; //print_r Inhalt aus einem Array darstellen (nur zum debuggen)
-print_r($_POST);
-echo "</pre>";
+// echo'S_Session:';
+// echo"<pre>"; //print_r Inhalt aus einem Array darstellen (nur zum debuggen)
+// print_r($_SESSION);
+// echo "</pre>";
+// echo'S_post:';
+// echo"<pre>"; //print_r Inhalt aus einem Array darstellen (nur zum debuggen)
+// print_r($_POST);
+// echo "</pre>";
 
 
 
