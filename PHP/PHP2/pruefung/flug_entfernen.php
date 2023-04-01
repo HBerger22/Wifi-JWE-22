@@ -40,7 +40,7 @@ if(!fetch($result)){
                         <form method='post'>
                         
                         <button type='submit' name='sicher' id='sicher' value='1'>Ja bitte</button>
-                        <input type='checkbox' name='flug_id' id='flug_id' checked value='{$sql_flug_id}' >
+                        <input type='checkbox' name='flug_id' id='flug_id' checked value='{$sql_flug_id}' style='display: none' >
                     
                     
                         </form> 
