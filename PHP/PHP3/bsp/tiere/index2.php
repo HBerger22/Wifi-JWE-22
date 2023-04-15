@@ -15,7 +15,7 @@
 spl_autoload_register(
     function(string $klasse){
         $basis = __DIR__ ."/"; //Basisverzeichnis __DIR__ ist das Verzeichnis in der die Datei ist. z.B.: C:\XAMPP\HTDOCS\Wifi-JWE-22\PHP\PHP3\bsp\tiere
-        $prefix ="WIFI\\JWE\\";
+        $prefix ="WIFI\\JWE\\";// kommt vom namespace
         $laenge =strlen($prefix);
         // wenn die Klasse nicht das gleiche Prefix hat wird abgebrochen (notwendig für fremdprogrammierte eingebundenen code)
         if($prefix !== substr($klasse,0,$laenge)){
@@ -44,6 +44,14 @@ spl_autoload_register(
 // use WIFI\JWE\Tier\KatzeRichtig;
 // use WIFI\JWE\Tier\HundRichtig;
 // use WIFI\JWE\Tier\Maus;
+// use WIFI\JWE\Tier\Hund;
+// use WIFI\JWE\Tier\Hund\Dogge; dann kann man den hund unten wie folgt aufrufen.
+// $hund = new Hund("Bello");
+
+
+// ansonsten kann man es auch genereller machen, muss aber unten beim erzeugen der Objekte der restliche Pfad angegeben werden.
+
+
 use WIFI\JWE\Tier;
 use WIFI\JWE\Tiere;
 

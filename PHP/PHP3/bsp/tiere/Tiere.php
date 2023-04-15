@@ -3,7 +3,7 @@ namespace WIFI\JWE;
 
 use WIFI\JWE\Tier\TierAbstract;
 
-
+// implements: muss die Interfaces Tiereinterface und das generell Interface \Iterator umsetzen
 class Tiere implements TiereInterface, \Iterator{
 
     private array $herde = array(); // statt array() geht auch []
@@ -26,7 +26,7 @@ class Tiere implements TiereInterface, \Iterator{
         return $ret;
     }
 
-    // Code zum einbauen des globalen \Iterator interface
+    // Code zum einbauen des globalen \Iterator interface (setzt foreach für arrays auf objekte um)
     private int $index=0;
 
     public function current():mixed{

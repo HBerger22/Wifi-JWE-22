@@ -1,7 +1,7 @@
 <?php
 namespace WIFI\JWE\Tier\Hund;
 
-use WIFI\JWE\Tier\HundRichtig;
+use WIFI\JWE\Tier\HundRichtig; //ist wie include
 // Vererbungen können über mehrere Ebenen Gehen
 class Dogge extends HundRichtig{
     public function gibLaut(): string{
