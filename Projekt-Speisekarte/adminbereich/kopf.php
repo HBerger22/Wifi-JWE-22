@@ -45,14 +45,14 @@
 <?php
 
 
-// echo'S_Session:';
-// echo"<pre>"; //print_r Inhalt aus einem Array darstellen (nur zum debuggen)
-// print_r($_SESSION);
-// echo "</pre>";
-// echo'S_post:';
-// echo"<pre>"; //print_r Inhalt aus einem Array darstellen (nur zum debuggen)
-// print_r($_POST);
-// echo "</pre>";
+echo'S_Session:';
+echo"<pre>"; //print_r Inhalt aus einem Array darstellen (nur zum debuggen)
+print_r($_SESSION);
+echo "</pre>";
+echo'S_post:';
+echo"<pre>"; //print_r Inhalt aus einem Array darstellen (nur zum debuggen)
+print_r($_POST);
+echo "</pre>";
 
 
 
@@ -68,6 +68,8 @@
                 header("location: allergene.php");
                 exit;
             }else if($_POST["seite"]=="s_ansicht"){
+                $_SESSION["objekt"]="Speise";
+                $_SESSION["objekte"]="Speisen";
                 header("location: speisen.php");
                 exit;
             }else if($_POST["seite"]=="k_ansicht"){
@@ -75,6 +77,11 @@
                 exit;
             }else if($_POST["seite"]=="e_ansicht"){
                 header("location: einheiten.php");
+                exit;
+            }else if($_POST["seite"]=="g_ansicht"){
+                $_SESSION["objekt"]="Getränk";
+                $_SESSION["objekte"]="Getränke";
+                header("location: speisen.php");
                 exit;
             }
         }

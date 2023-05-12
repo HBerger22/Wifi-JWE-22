@@ -1,7 +1,7 @@
 <?php
-namespace WIFI\Fdb;
+namespace WIFI\SK;
 
-use mysqli;
+use \Mysqli;
 
 class Mysql {
 
@@ -19,28 +19,35 @@ class Mysql {
     }
     //  Singleton Implementierung ENDE
 
-
-    // Eigenschaften:
-    private \mysqli $db; // \ bedeutet nicht in unserem Namespace sondern direkt im hauptverzeichnis von PHP zu suchen
-
-    // funktionen:
-    // private damit kann von aussen keine neue Instanz aufgerufen werden. geht nur mehr über getInstanz()
-    private function __construct(){
+    private \Mysqli $db;
+    
+    private function __construct() {
         $this->verbinden();
+        
     }
 
-    private function verbinden(): void{
-        // Mysqli Objekt erstellen und Verbindung aufbauen
-        $this->db = new \mysqli(MYSQL_HOST,MYSQL_USER,MYSQL_PASS,MYSQL_DB); // der \bedeutet das er nicht in unserem Namespace nachschaut sondern das es sich hier um ein PHP Objekt handelt (im PHP verzeichnis)
+    private function verbinden() {
+        // Verbinden mit der Datenbank mithilfe der Klasse Mysqli (von PHP)
+        $this->db = new \Mysqli(MYSQL_HOST,MYSQL_USER,MYSQL_PASS,MYSQL_DB);
         // Zeichensatz mitteilen
-        $this->db->set_charset("utf8"); //kommt von mysqli
+        $this->db->set_charset("utf8");
     }
 
-    public function escape(string $text):string{
+    public function escape(string $text): string{
         return $this->db->real_escape_string($text);
     }
 
-    public function query(string $sqlBefehl): \mysqli_result|bool {
-        return $this->db->query($sqlBefehl);
+    public function query(string $sql_statemant): \mysqli_result|bool {
+        return $this->db->query($sql_statemant);
+    }
+
+    public function verbindungsfehler(): string | null{
+        return $this->db->connect_error;
+    }
+
+    public function lastId():int{
+        return mysqli_insert_id($this->db);
     }
 }
+
+

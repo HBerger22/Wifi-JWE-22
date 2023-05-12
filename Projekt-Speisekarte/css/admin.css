@@ -65,8 +65,8 @@ ul{
     display:flex; 
     flex-flow: column;
     position: relative;
-    text-align: right;
-    align-items: right;
+    text-align: center;
+    align-items: center;
     max-width: 250px;
 }
 
@@ -80,10 +80,22 @@ li{
 }
 
 form{
-    align-items: center;
-}
-label{
     display: block;
+    flex-flow: column;
+    align-items: center;
+    text-align: center;
+    margin: 10px;
+}
+
+form div{
+    display: block;
+    margin: 10px;
+}
+
+label{
+    /* display: block;
+    text-align: center; */
+
 }
 .sub_buttons{
     margin: 5px;
@@ -110,7 +122,13 @@ button {
 }
 
 .form_beschriftung{
-    width: 80px
+    width: 180px
+}
+
+select {
+    background-color: var(--nachtisch);
+    text-align: center;
+    width: 150px;
 }
 
 #tabelle{

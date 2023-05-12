@@ -1,13 +1,47 @@
-
 <?php
+
+use WIFI\SK\Model\Row\Speise;
+use WIFI\SK\Model\Speisen;
+use WIFI\SK\Validieren;
+use WIFI\SK\Model\Allergene;
+use WIFI\SK\Model\BzAllergene;
+use WIFI\SK\Model\BzKatEinheit;
+use WIFI\SK\Model\Getraenke;
+use WIFI\SK\Model\Row\Getraenk;
+
+use function WIFI\SK\zwei_kommastellen;
+
+include "setup.php";
 include "funktionen.php";
-
 include "kopf.php";
+unset($_SESSION["s_bearbeiten"]);
+unset($_SESSION["kat_id"]);
+unset($_SESSION["s_id_mep"]);
+unset ($_SESSION["mep_bearbeiten"]);
 
-echo "<h1>Speisenübersicht</h1>";
-echo "<p>Hier haben sie eine Übersicht über die vorhandenen Speisen.</p>";
-echo "<p>Sie können einzelne/mehrere Speisen aktivieren und deaktivieren. Damit erscheinen sie nicht mehr im digitalen 
-    Menu, sie sind aber jederzeit wieder aktivierbar, sollte es diese Speise wieder geben.</p>";
+echo "<h1>{$_SESSION["objekte"]}übersicht</h1>";
+echo "<p>Hier haben sie eine Übersicht über die vorhandenen {$_SESSION["objekte"]}.</p>";
+echo "<p>Sie können einzelne/mehrere {$_SESSION["objekte"]} aktivieren und deaktivieren. Damit erscheinen sie nicht mehr im digitalen 
+    Menu, sie sind aber jederzeit wieder aktivierbar, sollte es diese/s {$_SESSION["objekt"]} wieder geben.</p>";
+if($_SESSION["objekt"]=="Speise"){
+    $speisen = new Speisen();
+    $objektId="speise_id";
+} else {
+    $speisen = new Getraenke();
+    $objektId="getraenk_id";
+    
+}
+$alleSpeisen = $speisen -> alleElemente();
+
+$fehler = new Validieren();
+
+$allergene = new Allergene();
+$alleAllergene = $allergene -> alleElemente();
+
+$bzAllergene= new BzAllergene($_SESSION["objekt"]);
+$bzKatEinheit = new BzKatEinheit($_SESSION["objekt"]);
+
+// $db = Mysql::getInstanz();
 
     
 if(!empty($_SESSION["erfolg"])){
@@ -34,7 +68,15 @@ if(!empty($_POST["s_bearbeiten"])){
 
 // speisen hinzufügen
 if(!empty($_POST["hinzu"])){
-    header("location: speise_hinzu.php");
+    header("location: speise_aendern.php");
+    exit();
+}
+
+// Preise bearbeiten
+if(!empty($_POST["s_id_mep"])){
+    $_SESSION["s_id_mep"]=$_POST["s_id_mep"];
+    // $_SESSION["kat_id"]=$_POST["kat_id"];
+    header("location: speise_mep.php");
     exit();
 }
 
@@ -42,23 +84,25 @@ if(!empty($_POST["hinzu"])){
 if(!empty($_POST["s_loeschen"]) || !empty($_POST["s_loeschen_bestaetigung"])){
     if(!empty($_POST["s_loeschen"])){
         $_SESSION["s_loeschen"]=$_POST["s_loeschen"]; //übergabe der id von $Post an $session
-        escape($_SESSION["s_loeschen"]);
     }
-    $sql="SELECT * from speise where `id`= {$_SESSION["s_loeschen"]}";
-    $result=$con->query($sql);
-    $daten_satz=$result->fetch_assoc();
+    if($_SESSION["objekt"]=="Speise"){
+        $speise = new Speise($_SESSION["s_loeschen"]);
+    } else {
+        $speise = new Getraenk($_SESSION["s_loeschen"]);
+    }
 
     if(empty($_POST["s_loeschen_bestaetigung"]) ){
-        echo "<p style='color:red'>??? Wollen sie die ausgewählte Speise wirklich endgültig löschen: ???<br> <strong>{$daten_satz["name"]}</strong></p>";
+        echo "<p style='color:red'>??? Wollen sie die ausgewählte {$_SESSION["objekt"]} wirklich endgültig löschen: ???<br> <strong>{$speise -> getSpalte("name")}</strong></p>";
         echo "<form method='post'>";
                 echo '<button class="sub_buttons" type="submit" name="s_loeschen_bestaetigung" value="1">JA</button>';
                 echo '<button class="sub_buttons" type="submit" name="s_loeschen_bestaetigung" value="0">NEIN</button>';
         echo "</form>";
     } else {
         if($_POST["s_loeschen_bestaetigung"] == 1 ){
-            $erfolg= "!!! Speise erfolgreich gelöscht !!!";
-            $sql="DELETE from speise where `id`= '{$_SESSION["s_loeschen"]}'";
-            $con->query($sql);
+            $erfolg= "!!! {$_SESSION["objekt"]} erfolgreich gelöscht !!!";
+            $speise -> bzLoeschen();
+            $speise -> datensatzLoeschen();
+            $alleSpeisen = $speisen -> alleElemente();
             unset($_SESSION["s_loeschen"]);
             unset($_POST["s_loeschen_bestaetigung"]);
         }
@@ -67,89 +111,184 @@ if(!empty($_POST["s_loeschen"]) || !empty($_POST["s_loeschen_bestaetigung"])){
 
 // einzelne Artiekl Aktivieren/deaktivieren mithilfe der versteckten Checkboxen cbid in der die ID gespeichert ist und session[num_rows].
 if(!empty($_POST["aktivieren"])){
-    for ($i=1; $i<=$_SESSION["num_rows"]; $i++){
-        $index="cbid".$i;
-        if(!empty($_POST["cb{$i}"])){ // checkbox aktiviert? --> Speise aktiv setzen und deaktiviert datum auf null setzen
-            $sql="UPDATE speise set aktiv = 1 , deaktiviert_am = null where id={$_POST['cbid'.$i]}";
-
+    foreach ($alleSpeisen as $speise){
+        if (!empty($_POST["cb".$speise->getSpalte($objektId)])){
+            $erfolgreich=$speise -> akDeakSpeise(1);
+            if(!$erfolgreich){
+                $fehler->fehlerDazu( "{$_SESSION["objekt"]} {$speise->getSpalte("name")} kann nicht aktiviert werden solange es keinen MEP (Menge/Einheit/Preis) gibt!");
+            }
         } else {
-            $sql_datum=date("Y-m-d");
-            // abfragen ob es bereits ein datum in der Spalte Deaktiviert seit gibt
-            $sql = "SELECT `deaktiviert_am` from speise where id={$_POST['cbid'.$i]}";
-            $result=$con->query($sql);
-            $daten_satz=$result->fetch_assoc();
-            if($daten_satz["deaktiviert_am"] == null){
-                // deaktiviert Datum setzen
-                $sql="UPDATE speise set aktiv = 0 , deaktiviert_am ='{$sql_datum}' where id={$_POST['cbid'.$i]}";
-            } else {
-                // kein neues Deaktiviert datum setzen, da bereits ein älteres besteht
-                $sql="UPDATE speise set aktiv = 0 where id={$_POST['cbid'.$i]}";
-            }    
-        }
-        $con->query($sql); 
-        $erfolg= "<p style='color:green'>Speisen erfolgreich aktiviert/deaktiviert!</p>";
+            $speise -> akDeak(0);
+        }        
     }
-    // unset($_SESSION["num_rows"]);
+    $alleSpeisen = $speisen-> alleElemente();     //Daten Aktualisieren  
+}
+
+if(!empty($fehler->fehlerAufgetreten())){
+    echo "<p style='color:red'>".$fehler->fehlerAusgabeHtml()."</p>";
 }
 
 if(!empty($erfolg)){
     echo "<p style='color:green'>".$erfolg."</p>";
 }
 
-
-
 // vorhandenen speisen auflisten 
-if(empty($_POST["s_loeschen"]) && empty($_POST["s_loeschen_bestaetigung"])){
-    $sql = "SELECT * from speise order by aktiv desc, name asc;";
-
-    if($result=$con->query($sql)){ 
+if(!$alleAllergene){
+    $fehler->fehlerDazu( "Bitte legen sie mindestens 1 Allergen an!");
+}else 
+{
+    if(empty($_POST["s_loeschen"]) && empty($_POST["s_loeschen_bestaetigung"])){
         echo "<form method='post'>";
-            echo '<button class="sub_buttons" type="submit" name="hinzu" value="1">Speise hinzufügen</button>';
-        if($result->num_rows == 0){//abfragen ob der Benutzer existiert
-            $fehlermeldung="Keine Speisen zum anzeigen vorhanden!";
+            echo '<button class="sub_buttons" type="submit" name="hinzu" value="1">'.$_SESSION["objekt"].' hinzufügen</button>';
+        if(!$alleSpeisen){//abfragen ob mind. 1 Speise existiert
+            $fehler->fehlerDazu("Keine {$_SESSION["objekte"]} zum anzeigen vorhanden!");
         } else {
-            //setzen der gesamtanzahl an zeilen damit beim aktiv/deaktiv. alle Menupunkte durchlaufen werden.
-            $_SESSION["num_rows"]=$result->num_rows; 
                 echo '<button class="sub_buttons" type="submit" name="aktivieren" value="1">Aktivieren/deaktivieren</button>';
                 echo "<table border='1'>";
+                    echo "<thead>";
+                        echo "<th colspan='3'> Bearbeitung </th> "; 
+                        echo "<th colspan='2'> {$_SESSION["objekt"]} </th> ";
+                        echo "<th colspan='".count($alleAllergene)."'>Allergene</th>";
+                        echo "<th colspan='2'> Kategorie </th> ";
+                        echo "<th colspan='5'> MEP = Menge/Einheit/Preis </th> ";
+                    echo "</thead>";
                     echo "<thead>";
                         echo "<th> Aktiv </th> "; 
                         echo "<th> bearbeiten </th> ";   
                         echo "<th> löschen </th> ";
-                        echo "<th style='display:none'> ID </th> ";
                         echo "<th> Name </th> ";
                         echo "<th> Beschreibung </th> ";
+                        //Die Allergenklassen abrufen
+                        foreach ($alleAllergene as $allergen){
+                            echo "<th> {$allergen->getSpalte("klasse")} </th> ";
+                        }
+                        echo "<th> Aktiv </th> ";
+                        echo "<th> Name </th> ";
+                        echo "<th> MEP bearbeiten </th> ";
+                        echo "<th> Aktiv </th> ";
+                        echo "<th> Menge </th> ";
+                        echo "<th> Einheit </th> ";
                         echo "<th> Preis </th> ";
-                    echo "<thead>";
+                    echo "</thead>";
                     echo "<tbody>"; 
-                        $i=1;
-                        while ($daten_satz=$result->fetch_assoc()){
-                        
-                            if($daten_satz["aktiv"]=="1"){
-                                $checkb="<input type='checkbox' name='cb{$i}' value='{$daten_satz["id"]}' checked>";
+                        foreach ($alleSpeisen as $speise){
+                            
+                            // Abfragen der zugehörigen Kategorie (und eventuell einheit)
+                            // ist keine Kategorie zugeordnet worden soll leer stehen
+                            
+                            // Abfragen der zugehörigen  einheit
+                            // ist keine einheit zugeordnet worden soll leer stehen
+
+                            if($speise->getSpalte ("aktiv")){
+                                $checkb="<input type='checkbox' name='cb{$speise->getSpalte($objektId)}' value='{$speise->getSpalte($objektId)}' checked>";
                                 $bgcolor="green";
                             } else {
-                                $checkb="<input type='checkbox' name='cb{$i}' value='{$daten_satz["id"]}'>";
+                                $checkb="<input type='checkbox' name='cb{$speise->getSpalte($objektId)}' value='{$speise->getSpalte($objektId)}'>";
                                 $bgcolor="red";
                             }
-                            $checkb_id="<input type='checkbox' name='cbid{$i}' value='{$daten_satz["id"]}' checked>";
-
                             echo "<tr>";
                                 echo "<td align='center' style='background-color: {$bgcolor}'>" . $checkb. "</td>";
                                 echo "<td align='center'>" . 
-                                    '<button class="mini_buttons" type="submit" name="s_bearbeiten" value="'.$daten_satz["id"].'">b</button>' 
+                                    '<button class="mini_buttons" type="submit" name="s_bearbeiten" value="'.$speise->getSpalte($objektId).'">b</button>' 
                                     . "</td>";
                                 echo "<td align='center'>" . 
-                                    '<button class="mini_buttons" type="submit" name="s_loeschen" value="'.$daten_satz["id"].'">l</button>' 
+                                    '<button class="mini_buttons" type="submit" name="s_loeschen" value="'.$speise->getSpalte($objektId).'">l</button>' 
                                     . "</td>";
 
-                                // versteckte Checkbox cbid zum aktivieren/deaktivieren.
-                                echo "<td align='center' style='display:none'>" . $checkb_id . "</td>";
-                                echo "<td align='center'>" . $daten_satz["name"]. "</td>";
-                                echo "<td align='center'>" . $daten_satz["beschreibung"]. "</td>";
-                                echo "<td align='center'>" .  zwei_kommastellen($daten_satz["preis"] , 1 ). "</td>";
+                                echo "<td align='center'>" . $speise->getSpalte("name"). "</td>";
+                                echo "<td align='center'>" . $speise->getSpalte("beschreibung"). "</td>";
+                                
+                                // Allergene
+                                $speiseAllergene=$bzAllergene->alleElemente($speise->getSpalte($objektId));
+                                foreach ($alleAllergene as $allergen){
+                                    $vorhanden=false;
+                                    if($speiseAllergene){
+                                        foreach ($speiseAllergene as $speiseAllergen){
+                                            if ($speiseAllergen["allergen_id"] == $allergen->getSpalte("allergen_id")){
+                                                $vorhanden=true;
+                                            }
+                                        }
+                                    }
+                                    if ($vorhanden){
+                                        echo "<td align='center'> x </td>"; //die speise hat dieses Allergen
+                                    } else {
+                                        echo "<td align='center'> - </td>"; //die speise hat dieses Allergen nicht
+                                    }
+                                }
+                                // Kategorie Einheit Preis Typ 
+                                $speiseKat=$bzKatEinheit->zugehörigeKat($speise->getSpalte($objektId));
+                                $speiseEinheit=$bzKatEinheit->zugehörigeEinhMengePreis($speise->getSpalte($objektId));
+    // echo"SpeiseID".$speise->getSpalte("speise_id")."<pre>"; //print_r Inhalt aus einem Array darstellen (nur zum debuggen)
+    // print_r($speiseKatEinheit);
+    // echo "</pre>";
+
+                                if ($speiseKat){
+                                    echo "<td align='center'>";
+                                        if($speiseKat[0]["aktiv"]==1){
+                                            echo " <span style='color:green'> &#10004; </span>";
+                                        } else {
+                                            echo " <span style='color:red'> &#10008; </span>";
+                                        }                                        
+                                    echo "</td>";
+                                    echo "<td align='center'>" . $speiseKat[0]["kname"]. "</td>";
+                                }else{
+                                    echo "<td align='center'> - </td>";
+                                    echo "<td align='center'> - </td>";
+                                }
+
+                                echo "<td align='center'>" . 
+                                    '<button class="mini_buttons" type="submit" name="s_id_mep" value="'.$speise->getSpalte($objektId).'"> MEP </button>' 
+                                    
+                                    . "</td>";
+
+                                if ($speiseEinheit){
+                                    // if(count($speiseEinheit)>=1){
+                                        
+                                        //Aktiv (notwendig falls mehrere einheiten Mengen vorhanden sind)
+                                        
+                                        echo "<td align='center'>";
+                                            for($i=0;$i<count($speiseEinheit);$i++){
+                                                if($speiseEinheit[$i]["aktiv"]==1){
+                                                    echo " <span style='color:green'> &#10004; </span>";
+                                                } else {
+                                                    echo " <span style='color:red'> &#10008; </span>";
+                                                }                                        
+                                                echo "<br>";
+                                            } 
+                                        echo "</td>";
+
+                                        //Menge (notwendig falls mehrere einheiten Mengen vorhanden sind)
+                                        echo "<td align='center'>";
+                                        for($i=0;$i<count($speiseEinheit);$i++){
+                                            echo $speiseEinheit[$i]["menge"]."<br>";
+                                        } 
+                                        echo "</td>";
+
+                                        // Einheit
+                                        echo "<td align='center'>";
+                                        for($i=0;$i<count($speiseEinheit);$i++){
+                                            echo $speiseEinheit[$i]["ename"]."<br>";
+                                        } 
+                                        echo "</td>";
+
+                                        // Preis
+                                        echo "<td align='center'>";
+                                        for($i=0;$i<count($speiseEinheit);$i++){
+                                            echo zwei_kommastellen($speiseEinheit[$i]["preis"])."<br>";
+                                        } 
+                                        echo "</td>";
+                                    // } else {
+                                    //         echo "<td align='center'>" . $speiseEinheit[0]["menge"];
+                                    //         echo "<td align='center'>" . $speiseEinheit[0]["ename"];
+                                    //         echo "<td align='center'>" . zwei_kommastellen($speiseEinheit[0]["preis"]);
+                                    // }
+                                } else {   
+                                    echo "<td align='center'> - </td>";
+                                    echo "<td align='center'> - </td>";
+                                    echo "<td align='center'> - </td>";
+                                    echo "<td align='center'> - </td>";
+                                }
                             echo "</tr> ";
-                            $i++;
                         }
                     echo "</tbody>";
                 echo "</table border='1'>";
@@ -159,18 +298,9 @@ if(empty($_POST["s_loeschen"]) && empty($_POST["s_loeschen_bestaetigung"])){
     }
 }
 
-if(!empty($fehlermeldung)){
-    echo "<p style='color:red'>".$fehlermeldung."</p>";
+if(!empty($fehler->fehlerAufgetreten())){
+    echo "<p style='color:red'>".$fehler->fehlerAusgabeHtml()."</p>";
 }
-  
-
-$result->close();
-$con->close();
-
-
-
-
-
-
+echo "<br><br><br><br><br>"; 
 
 include "fuss.php";

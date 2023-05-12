@@ -49,7 +49,6 @@ abstract class RowAbstract {
         // letztes Komma entfernen
         $sqlFelder = rtrim($sqlFelder," ,");
 
-
         if($this->daten["id"] == null){
             // neuen Datensatz speichern
             $db->query ("INSERT INTO {$this->tabelle} SET {$sqlFelder} ");

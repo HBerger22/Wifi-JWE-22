@@ -2,22 +2,20 @@
 <?php
 
 use WIFI\SK\Validieren;
-use WIFI\SK\Model\Einheiten;
-use WIFI\SK\Model\Row\Einheit;
+use WIFI\SK\Model\Allergene;
+use WIFI\SK\Model\Row\Allergen;
 
 include "setup.php";
 
 include "kopf.php";
 
-echo "<h1>Einheiten</h1>";
-echo "<p>Hier haben sie eine Übersicht über die vorhandenen Einheiten.</p>";
+echo "<h1>Allergene</h1>";
+echo "<p>Hier haben sie eine Übersicht über die vorhandenen Allergene.</p>";
 
-$einheiten = new Einheiten();
-$alleElemente = $einheiten -> alleElemente();
+$allergene = new Allergene();
+$alleElemente = $allergene -> alleElemente();
 
 $fehler = new Validieren();
-
-
 
 
 if(!empty($_SESSION["erfolg"])){
@@ -40,33 +38,33 @@ if(!empty($_SESSION["fehlermeldung"])){
 
 // Artikel bearbeiten
 
-if(!empty($_POST["e_bearbeiten"])){
-    $_SESSION["e_bearbeiten"]=$_POST["e_bearbeiten"];
-    header("location: einheit_aendern.php");
+if(!empty($_POST["a_bearbeiten"])){
+    $_SESSION["a_bearbeiten"]=$_POST["a_bearbeiten"];
+    header("location: allergen_aendern.php");
     exit();
 }
 
 // einheit hinzufügen
 if(!empty($_POST["hinzu"])){
-    header("location: einheit_aendern.php");
+    header("location: allergen_aendern.php");
     exit();
 }
 
 // löschen 
-if(!empty($_POST["e_loeschen"]) || !empty($_POST["e_loeschen_bestaetigung"])){
-    if(!empty($_POST["e_loeschen"])){
-        $_SESSION["e_loeschen"]=($_POST["e_loeschen"]); //übergabe der id von $Post an $session
+if(!empty($_POST["a_loeschen"]) || !empty($_POST["a_loeschen_bestaetigung"])){
+    if(!empty($_POST["a_loeschen"])){
+        $_SESSION["a_loeschen"]=($_POST["a_loeschen"]); //übergabe der id von $Post an $session
     }
     
     // Abfrage ob es zu dieser Einheit noch eine Verknüpfung zu einer Speise gibt
-    $einheit = new Einheit($_SESSION["e_loeschen"]);
+    $allergen = new Allergen($_SESSION["a_loeschen"]);
     // $sql="SELECT * FROM `bz_speise_kategorie` where einheit_id='{$_SESSION["e_loeschen"]}'";
     // $result=$con->query($sql);
     
-    if(!$einheit -> existiertVerbindung() ){//abfragen ob es noch eine Verknüpfung zu einer Speise gibt
+    if(!$allergen -> existiertVerbindung() ){//abfragen ob es noch eine Verknüpfung zu einer Speise gibt
         $fehler-> fehlerdazu("Es existiert noch eine Verknüpfung mit dieser Einheit zu einer Speise! <br>
             Bitte löschen sie vorher die zugehörige/n Speisen!");
-            unset($_POST["e_loeschen"]);
+            unset($_POST["a_loeschen"]);
     } else {
         // $sql="SELECT * from einheit where `einheit_id`= {$_SESSION["e_loeschen"]}";
         // $result=$con->query($sql);
@@ -74,21 +72,21 @@ if(!empty($_POST["e_loeschen"]) || !empty($_POST["e_loeschen_bestaetigung"])){
         
         
 
-        if(empty($_POST["e_loeschen_bestaetigung"]) ){
-            echo "<p style='color:red'>??? Wollen sie die ausgewählte Einheit wirklich endgültig löschen: ???<br> <strong>{$einheit->getSpalte("name")}</strong></p>";
+        if(empty($_POST["a_loeschen_bestaetigung"]) ){
+            echo "<p style='color:red'>??? Wollen sie die ausgewählte Einheit wirklich endgültig löschen: ???<br> <strong>{$allergen->getSpalte("name")}</strong></p>";
             echo "<form method='post'>";
-                    echo '<button class="sub_buttons" type="submit" name="e_loeschen_bestaetigung" value="1">JA</button>';
-                    echo '<button class="sub_buttons" type="submit" name="e_loeschen_bestaetigung" value="0">NEIN</button>';
+                    echo '<button class="sub_buttons" type="submit" name="a_loeschen_bestaetigung" value="1">JA</button>';
+                    echo '<button class="sub_buttons" type="submit" name="a_loeschen_bestaetigung" value="0">NEIN</button>';
             echo "</form>";
         } else {
-            if($_POST["e_loeschen_bestaetigung"] == 1 ){
+            if($_POST["a_loeschen_bestaetigung"] == 1 ){
                 $erfolg= "!!! Einheit erfolgreich gelöscht !!!";
-                $einheit -> datensatzLoeschen();
-                $alleElemente = $einheiten -> alleElemente(); //Daten Aktuallisieren
+                $allergen -> datensatzLoeschen();
+                $alleElemente = $allergene -> alleElemente(); //Daten Aktuallisieren
                 // $sql="DELETE from einheit where `einheit_id`= '{$_SESSION["e_loeschen"]}'";
                 // $con->query($sql);
-                unset($_SESSION["e_loeschen"]);
-                unset($_POST["e_loeschen_bestaetigung"]);
+                unset($_SESSION["a_loeschen"]);
+                unset($_POST["a_loeschen_bestaetigung"]);
             }
         }
     }
@@ -120,12 +118,13 @@ if($fehler->fehlerAufgetreten()){
 
 
 // vorhandenen Einheiten auflisten 
-if(empty($_POST["e_loeschen"]) && empty($_POST["e_loeschen_bestaetigung"])){
-  
+if(empty($_POST["a_loeschen"]) && empty($_POST["a_loeschen_bestaetigung"])){
+
     echo "<form method='post'>";
-        echo '<button class="sub_buttons" type="submit" name="hinzu" value="1">Einheit hinzufügen</button>';
+        echo '<button class="sub_buttons" type="submit" name="hinzu" value="1">Allergen hinzufügen</button>';
         if(!$alleElemente){//abfragen Einheiten existieren
-            $fehler-> fehlerDazu("Keine Einheit zum anzeigen vorhanden!");
+            
+            $fehler -> fehlerDazu("Kein Allergen zum anzeigen vorhanden!");
         } else {
             // Button zum Aktivieren und Deaktivieren einzelner Elemente
             // echo '<button class="sub_buttons" type="submit" name="aktivieren" value="1">Aktivieren/deaktivieren</button>';
@@ -136,12 +135,13 @@ if(empty($_POST["e_loeschen"]) && empty($_POST["e_loeschen_bestaetigung"])){
                         echo "<th> bearbeiten </th> ";   
                         echo "<th> löschen </th> ";
                         // echo "<th style='display:none'> ID </th> ";
-                        echo "<th> Einheit ausgeschrieben</th> ";
-                        echo "<th> Einheit Kürzel </th> ";
+                        echo "<th> Klasse</th> ";
+                        echo "<th> Name </th> ";
+                        echo "<th> Beschreibung </th> ";
                         // echo "<th> Preis </th> ";
                     echo "<thead>";
                     echo "<tbody>"; 
-                        foreach ($alleElemente as $einheit){
+                        foreach ($alleElemente as $allergen){
                         
                             // if($daten_satz["aktiv"]=="1"){
                             //     $checkb="<input type='checkbox' name='cb{$i}' value='{$daten_satz["id"]}' checked>";
@@ -155,16 +155,17 @@ if(empty($_POST["e_loeschen"]) && empty($_POST["e_loeschen_bestaetigung"])){
                             echo "<tr>";
                                 // echo "<td align='center' style='background-color: {$bgcolor}'>" . $checkb. "</td>";
                                 echo "<td align='center'>" . 
-                                    '<button class="mini_buttons" type="submit" name="e_bearbeiten" value="'.$einheit->getSpalte("einheit_id").'">b</button>' 
+                                    '<button class="mini_buttons" type="submit" name="a_bearbeiten" value="'.$allergen->getSpalte("allergen_id").'">b</button>' 
                                     . "</td>";
                                 echo "<td align='center'>" . 
-                                    '<button class="mini_buttons" type="submit" name="e_loeschen" value="'.$einheit->getSpalte("einheit_id").'">l</button>' 
+                                    '<button class="mini_buttons" type="submit" name="a_loeschen" value="'.$allergen->getSpalte("allergen_id").'">l</button>' 
                                     . "</td>";
 
                                 // versteckte Checkbox cbid zum aktivieren/deaktivieren.
                                 // echo "<td align='center' style='display:none'>" . $checkb_id . "</td>";
-                                echo "<td align='center'>" . $einheit->getSpalte("name"). "</td>";
-                                echo "<td align='center'>" . $einheit->getSpalte("kuerzel"). "</td>";
+                                echo "<td align='center'>" . $allergen->getSpalte("klasse"). "</td>";
+                                echo "<td align='center'>" . $allergen->getSpalte("name"). "</td>";
+                                echo "<td align='center'>" . $allergen->getSpalte("beschreibung"). "</td>";
                             echo "</tr> ";
                         }
                     echo "</tbody>";

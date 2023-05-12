@@ -1,19 +1,20 @@
 <?php
-session_start();
+namespace WIFI\SK;
+// session_start();
 
-if(empty($_SESSION["login"])){
-    // kein benutzer eingeloggt --> umleiten zum login
-    header("location: login.php");
-    exit; //mit header wird auf eine andere Seite umgeleitet und mit Exit wird das aktuelle script beendet
-}
+// if(empty($_SESSION["login"])){
+//     // kein benutzer eingeloggt --> umleiten zum login
+//     header("location: login.php");
+//     exit; //mit header wird auf eine andere Seite umgeleitet und mit Exit wird das aktuelle script beendet
+// }
 
-$con= @new mysqli("","root","","speisekarte"); //Das @ bedeutet silent und unterdrückt die ausgabe von Fehlermeldungen (notwendig gegen Hackerangriffe die sonst eine Info zur DB bekommen würden)
+// $con= @new mysqli("","root","","speisekarte"); //Das @ bedeutet silent und unterdrückt die ausgabe von Fehlermeldungen (notwendig gegen Hackerangriffe die sonst eine Info zur DB bekommen würden)
 
-// $con= @new mysqli("localhost","jwe_bh","6td4t~O1jZ75f5@e","obinet_jwe_bh_db1"); //Das @ bedeutet silent und unterdrückt die ausgabe von Fehlermeldungen (notwendig gegen Hackerangriffe die sonst eine Info zur DB bekommen würden)
+// // $con= @new mysqli("localhost","jwe_bh","6td4t~O1jZ75f5@e","obinet_jwe_bh_db1"); //Das @ bedeutet silent und unterdrückt die ausgabe von Fehlermeldungen (notwendig gegen Hackerangriffe die sonst eine Info zur DB bekommen würden)
 
-    if($con->connect_error){
-        exit("Fehler beim Verbindungsaufbau");
-    };
+//     if($con->connect_error){
+//         exit("Fehler beim Verbindungsaufbau");
+//     };
 
 // einfache funktion ohne grossartige überprüfung um in einer Zahl das komma gegen einen Punkt zu tauschen.
 function punkt_statt_komma($zahl){
@@ -48,10 +49,10 @@ function zwei_kommastellen($zahl){
 
 // allgemeine Funktionen zur kürzeren Schreibweise für den DB zugriff.
 // kurzform für: mysqli_real_escape_string($db, $wort)
-function escape ($wort){
-    global $con;
-    return mysqli_real_escape_string($con, $wort);
-}
+// function escape ($wort){
+//     global $con;
+//     return mysqli_real_escape_string($con, $wort);
+// }
 
 // Kurzform für: mysqli_query($db,$statement);
 // function query ($statement){
@@ -61,7 +62,7 @@ function escape ($wort){
 // }
 
 // kurzform für: mysqli_fetch_assoc($result);
-function fetch ($result){
-    return mysqli_fetch_assoc($result);
-}
+// function fetch ($result){
+//     return mysqli_fetch_assoc($result);
+// }
 

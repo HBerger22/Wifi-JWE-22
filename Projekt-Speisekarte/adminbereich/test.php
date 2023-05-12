@@ -43,5 +43,16 @@ if (preg_match("/^\d+[\.,]?\d{0,2}?$/", $eingabe)){
 
 }
 
+echo "<br><br>";
+
 // "\d+(\.\d{1,2})?$"
 // preg_match("/(?=.*[a-zA-Z]+.*){1,}(?=.*\d+.*){1,}(?=.*[@$!%*#?&]+.*){1,}/",$name
+
+
+include "classes/Model/Row/Kat.php";
+include "classes/Mysql.php";
+include "config.php";
+use WIFI\SK\Model\Row\Kat;
+
+$kat = new Kat(2);
+echo "Name: " . $kat -> getSpalte("abeschreibung");

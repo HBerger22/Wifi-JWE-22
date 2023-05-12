@@ -12,35 +12,37 @@
 <body>
 <?php
 
+include "config.php";
+include "classes/Validieren.php";
+include "classes/Mysql.php";
+
+use WIFI\SK\Validieren;
+use WIFI\SK\Mysql;
+
     session_start();
-//     echo'S_Session:';
-// echo"<pre>"; //print_r Inhalt aus einem Array darstellen (nur zum debuggen)
-// print_r($_SESSION);
-// echo "</pre>";
-// echo'S_post:';
-// echo"<pre>"; //print_r Inhalt aus einem Array darstellen (nur zum debuggen)
-// print_r($_POST);
-// echo "</pre>";
+    
     if(!empty($_POST)){
-        if( empty($_POST["ben"]) || empty($_POST["pwort"])){
-            $fehlermeldung = "Benutzername oder Passwort waren leer!";
-        } else {
+        $valid= new Validieren();
+        $valid->istAusgefuellt($_POST["ben"],"Benutzer");
+        $valid->istAusgefuellt($_POST["pwort"],"Passwort");
+        
+        if( !$valid->fehlerAufgetreten()){
             
             // Datenbankverbindung herstellen und benutzer abfragen
-            $con= @new mysqli("","root","","speisekarte"); //Das @ bedeutet silent und unterdrückt die ausgabe von Fehlermeldungen (notwendig gegen Hackerangriffe die sonst eine Info zur DB bekommen würden)
-            // $con= @new mysqli("localhost","jwe_bh","6td4t~O1jZ75f5@e","obinet_jwe_bh_db1"); //Das @ bedeutet silent und unterdrückt die ausgabe von Fehlermeldungen (notwendig gegen Hackerangriffe die sonst eine Info zur DB bekommen würden)
-
-            if($con->connect_error){
+            $con = Mysql::getInstanz();
+            // $con= @new mysqli("","root","","speisekarte"); //Das @ bedeutet silent und unterdrückt die ausgabe von Fehlermeldungen (notwendig gegen Hackerangriffe die sonst eine Info zur DB bekommen würden)
+ 
+            if($con->verbindungsfehler()){
                 exit("Fehler beim Verbindungsaufbau");
             };
 
-            $sql_ben= mysqli_real_escape_string($con, $_POST["ben"]);
-            $sql_pwort= mysqli_real_escape_string($con, $_POST["pwort"]);
+            $sql_ben= $con->escape( $_POST["ben"] );
+            $sql_pwort= $con->escape( $_POST["pwort"] );
 
             $sql="SELECT passwort FROM benutzer WHERE `benutzer`='". $sql_ben."'";
             if($result=$con->query($sql)){ 
                 if($result->num_rows == 0){//abfragen ob der Benutzer existiert
-                    $fehlermeldung="Benutzernamen oder Passwort nicht korrekt!";
+                    $valid->fehlerDazu("Benutzernamen und/oder Passwort nicht korrekt!");
                     
                 } else {
                     $daten_satz=$result->fetch_assoc(); //den 1. Datensatz vom Ergebnis ($result) in $daten_satz übertragen
@@ -51,7 +53,7 @@
                             exit();
                     
                         } else {
-                            $fehlermeldung="Benutzername und/oder Passwort sind falsch!";
+                            $valid->fehlerDazu("Benutzernamen und/oder Passwort nicht korrekt!");;
                             $include_datei="login";
                         }
                     $result->close();
@@ -59,20 +61,21 @@
             } else {
                 $fehlermeldung="Es ist ein Fehler aufgetreten!";
             }
-            $con->close();
+            // $con->close();
         }
     }
 ?>
     <h1>Anmelung zur Speisekartenverwaltung</h1>
-    <p>Bitte geben sie ihre Benutzerdaten ein:</p>
-    <p>
-        <?php 
-            if(isset($fehlermeldung)){
-                echo "<p style='color:red'>".$fehlermeldung."</p>";
-
+    <p class="center">Bitte geben sie ihre Benutzerdaten ein:
+    <?php
+        echo '<p class="center">';
+         
+            if( !empty($valid) ){
+                echo $valid->fehlerAusgabeHtml() ;
             }
         ?>
     </p>
+    
     <form action="#" method="post">
     <div>
             <label for="ben">Benutzer: </label>

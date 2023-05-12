@@ -20,7 +20,7 @@ if(!empty($_SESSION["erfolg"])){
 // echo "</pre>";
 
 if(!empty($_POST)){
-    if( empty($_POST["name"]) || empty($_POST["beschr"]) ){
+    if( empty($_POST["name"]) || empty($_POST["beschr"]) || empty($_POST["typ"]) ){
         $fehlermeldung="Bitte alle Felder ausfüllen !";
     } else {
         $sql_name=escape($_POST["name"]);
@@ -30,9 +30,10 @@ if(!empty($_POST)){
                 $fehlermeldung="Diese Kategorie existiert bereits!";
             } else {
                 $sql_beschr=escape($_POST["beschr"]);
+                $sql_typ=escape($_POST["typ"]);
                 if(!empty($_POST["aktiv"])) $aktiv=1; else $aktiv=0;
-                $sql="INSERT into kategorie (`aktiv`, `name`, `beschreibung`)
-                    VALUES ('$aktiv','$sql_name','$sql_beschr') ";
+                $sql="INSERT into kategorie (`aktiv`, `name`, `beschreibung`, `typ`)
+                    VALUES ('$aktiv','$sql_name','$sql_beschr', '$sql_typ') ";
                 $result=$con->query($sql);
                 $erfolg="Die Kategorie wurde erfolgreich hinzugefügt.";
                 unset($_POST["name"]);
@@ -64,6 +65,27 @@ if(!empty($erfolg)){
     <div>
         <label class="form_beschriftung" for="beschr">Kategorie Beschreibung: </label>
         <input type="text" name="beschr" id="beschr" value="<?php if(!empty($_POST["beschr"])){ echo $_POST["beschr"];} ?>">
+    </div>
+    <div>
+        <label class="form_beschriftung" for="typ">Typ:</label>
+        <select name="typ" size="3">
+            <option value="" selected>-- Bitte auswählen --</option>
+            <option value="Getraenk">Getränk</option>
+            <option value="Speise">Speise</option>
+
+            <?php
+                // $sql="SELECT * from `kategorie` where `typ`='Speise' order by 'name' asc";
+                // $result_kat=$con->query($sql);
+                
+                // while ($kat=fetch($result_kat)){
+                //     echo "<option value='{$kat["kategorie_id"]}'";
+                //     if(!empty($_POST["kategorie"]) && $_POST["kategorie"]==$kat["kategorie_id"] ){
+                //         echo " selected ";
+                //     }
+                //     echo ">{$kat["name"]}</option>";
+                // }
+            ?>
+        </select>
     </div>
     <div>
         <label class="form_beschriftung" for="aktiv">Ist diese Kategorie aktiv? </label>

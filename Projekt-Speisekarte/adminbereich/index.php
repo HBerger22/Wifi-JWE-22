@@ -1,19 +1,21 @@
 <?php
-include "funktionen.php";
+include "setup.php";
+// include "funktionen.php";
+
 
 include "kopf.php";
 
 
 
 
-echo'S_Session:';
-echo"<pre>"; //print_r Inhalt aus einem Array darstellen (nur zum debuggen)
-print_r($_SESSION);
-echo "</pre>";
-echo'S_post:';
-echo"<pre>"; //print_r Inhalt aus einem Array darstellen (nur zum debuggen)
-print_r($_POST);
-echo "</pre>";
+// echo'S_Session:';
+// echo"<pre>"; //print_r Inhalt aus einem Array darstellen (nur zum debuggen)
+// print_r($_SESSION);
+// echo "</pre>";
+// echo'S_post:';
+// echo"<pre>"; //print_r Inhalt aus einem Array darstellen (nur zum debuggen)
+// print_r($_POST);
+// echo "</pre>";
 
 echo "<h1>Willkommen im Verwaltungsbereich</h1>";
 // <?php 
