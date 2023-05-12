@@ -4,7 +4,7 @@
 use WIFI\SK\Model\BzEinheit;
 use WIFI\SK\Model\Einheiten;
 use WIFI\SK\Model\Row\Speise;
-use WIFI\SK\Model\Row\Kat;
+use WIFI\SK\Model\Row\Getraenk;
 use WIFI\SK\Validieren;
 
 use function WIFI\SK\komma_statt_punkt;
@@ -18,13 +18,19 @@ echo "<h1>Speisen - Menge/Einheit/Preis</h1>";
 echo "<p>Hier haben sie eine Übersicht über die vorhandenen Menge(n)/Einheit(en)/Preis(e)</p>";
 
 // neues Objekt mit allen kategorien anlegen
-$speise = new Speise($_SESSION["s_id_mep"]);
+    if($_SESSION["objekt"]=="Speise"){
+        $speise = new Speise($_SESSION["s_id_mep"]);
+    } else {
+        $speise = new Getraenk($_SESSION["s_id_mep"]);
+    }
+
+// $speise = new Speise($_SESSION["s_id_mep"]);
 // $alleElemente = $kategorien-> alleElemente();   
 
 $fehler = new Validieren;
 
 
-$bzMep=new BzEinheit($_SESSION["s_id_mep"]);
+$bzMep=new BzEinheit($_SESSION["s_id_mep"],$_SESSION["objekt"]);
 $alleMep= $bzMep->alleMepEinerSpeise();
 
 // $einheiten= new Einheiten();

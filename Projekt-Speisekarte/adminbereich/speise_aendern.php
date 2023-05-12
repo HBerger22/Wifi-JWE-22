@@ -24,11 +24,11 @@ $allergene=new Allergene();
 $alleAllergene=$allergene->alleElemente();
 
 //speise oder Getränk
-if($_SESSION["objekt"]=="Speise"){
-    $objektId="speise_id";
-} else {
-    $objektId="getraenk_id";
-}
+// if($_SESSION["objekt"]=="Speise"){
+//     $objektId="speise_id";
+// } else {
+//     $objektId="getraenk_id";
+// }
 // sicherheitsüberprüfung ob die übergebene id existiert
 if(!empty($_SESSION["s_bearbeiten"])){
     if($_SESSION["objekt"]=="Speise"){
@@ -82,6 +82,7 @@ if(!empty($_POST)){
         if(!empty($speise)){ 
             $allergenCheck=false;
             foreach ($alleAllergene as $allergen){
+                $allergen->setTyp($objektId);
                 if( $allergen->existiertVerbindungZuSpeise($speise->getSpalte($objektId)) == empty($_POST["allergen_{$allergen->getSpalte("klasse")}"])){
                     echo "allergen_{$allergen->getSpalte("klasse")} - true <br>";
                     $allergenCheck=true;
@@ -103,6 +104,7 @@ if(!empty($_POST)){
 
             // allergene Speichern
             foreach ($alleAllergene as $allergen){
+                $allergen->setTyp($objektId);
                 if(!empty($_POST["allergen_{$allergen->getSpalte("klasse")}"])){
                     $allergen->verbindungSpeichern($speiseId,true);
                 } else {
@@ -186,6 +188,7 @@ if($fehler->fehlerAufgetreten()){
             if(!empty($alleAllergene)){
                 $i=1;
                 foreach($alleAllergene as $allergen){
+                    $allergen->setTyp($objektId);
                     echo "<input type='checkbox' name='allergen_{$allergen->getSpalte("klasse")}' value='allergen_{$allergen->getSpalte("klasse")}'";
                     if((!empty($speise) && $allergen->existiertVerbindungZuSpeise($speise->getSpalte($objektId))) || !empty( $_POST["allergen_{$allergen->getSpalte("klasse")}"] )   ){ 
                         echo " checked ";

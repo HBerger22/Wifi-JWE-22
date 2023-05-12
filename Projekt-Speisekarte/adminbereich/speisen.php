@@ -25,10 +25,10 @@ echo "<p>Sie können einzelne/mehrere {$_SESSION["objekte"]} aktivieren und deak
     Menu, sie sind aber jederzeit wieder aktivierbar, sollte es diese/s {$_SESSION["objekt"]} wieder geben.</p>";
 if($_SESSION["objekt"]=="Speise"){
     $speisen = new Speisen();
-    $objektId="speise_id";
+    // $objektId="speise_id";
 } else {
     $speisen = new Getraenke();
-    $objektId="getraenk_id";
+    // $objektId="getraenk_id";
     
 }
 $alleSpeisen = $speisen -> alleElemente();

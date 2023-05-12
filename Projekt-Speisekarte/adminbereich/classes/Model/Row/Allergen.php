@@ -9,6 +9,7 @@ class Allergen extends RowAbstract{
     protected string $tabelle = "allergen";
     protected string $tabellenId = "allergen_id";
     protected string $beziehung = "bz_speise_allergene";
+    private string $objektId; //datenbank feld getränk_id oder speise_id
    
     // überprüfen ob es noch eine Verknüpfung zu einer Speise gibt.
     // public function existiertVerbindung(): bool{ 
@@ -19,6 +20,11 @@ class Allergen extends RowAbstract{
     //     else 
     //         return true;
     // }
+
+    public function setTyp(string $typ){
+        $db = Mysql::getInstanz();
+        $this->objektId= $db->escape($typ);
+    }
 
     // überprüfen ob sich im Datensatz etwas geändert hat (es werden div. werte von 2 Kat objekten miteinander verglichen)
     public function objektVerschieden(Allergen $ds1){
@@ -50,7 +56,7 @@ class Allergen extends RowAbstract{
 
     public function existiertVerbindungZuSpeise(int $speiseId):bool {
         $db = Mysql::getInstanz();
-        $result = $db -> query(" SELECT * from {$this->beziehung} where `speise_id`=$speiseId and `allergen_id`= {$this->daten["allergen_id"]}");
+        $result = $db -> query(" SELECT * from {$this->beziehung} where `{$this->objektId}`=$speiseId and `allergen_id`= {$this->daten["allergen_id"]}");
         if($result ->num_rows != 0 ){
             return true;
         } else {
@@ -63,11 +69,11 @@ class Allergen extends RowAbstract{
         $sqlSpeiseId=$db->escape($speiseId);
         if($aktiv){ //aktiv und Verbindungseintrag existiert nicht --> Eintrag in Beziehungstabelle erstellen
             if(!$this->existiertVerbindungZuSpeise($speiseId)){
-                $db->query ("INSERT INTO {$this -> beziehung} SET `speise_id`= '{$sqlSpeiseId}', `allergen_id`= '{$this->daten["allergen_id"]}';"); //{$this->tabelle}
+                $db->query ("INSERT INTO {$this -> beziehung} SET `{$this->objektId}`= '{$sqlSpeiseId}', `allergen_id`= '{$this->daten["allergen_id"]}';"); //{$this->tabelle}
             }
         } else { //inaktiv und verbindungseintrag existiert --> löschen des Eintrages
             if($this->existiertVerbindungZuSpeise($speiseId)){
-                $db->query ("DELETE FROM {$this -> beziehung} where `speise_id`= '{$sqlSpeiseId}' and `allergen_id`= '{$this->daten["allergen_id"]}';"); //{$this->tabelle}
+                $db->query ("DELETE FROM {$this -> beziehung} where `{$this->objektId}`= '{$sqlSpeiseId}' and `allergen_id`= '{$this->daten["allergen_id"]}';"); //{$this->tabelle}
             }
         }
         

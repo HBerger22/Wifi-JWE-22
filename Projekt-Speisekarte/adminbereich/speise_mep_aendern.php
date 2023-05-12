@@ -18,7 +18,7 @@ include "kopf.php";
 
 $fehler = new Validieren;
 
-$bzMep=new BzEinheit($_SESSION["s_id_mep"]);
+$bzMep=new BzEinheit($_SESSION["s_id_mep"],$_SESSION["objekt"]);
 $einheiten = new Einheiten();
 $alleEinheiten = $einheiten->alleElemente();
 

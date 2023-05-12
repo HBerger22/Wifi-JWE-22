@@ -10,15 +10,23 @@ class BzEinheit{
     protected string $tabelleEh = "einheit";
     protected string $tabellenId = "bz_sk_id";
     private int $kat_id;
+    private string $typId; // tabellen spalte "speise_id" oder "getraenk_id"
     // protected string $sqlOrder = " "; // wie soll sortiert werden
     // // protected object $rowObjekt = ;
 
-    public function __construct (int $id){
+    public function __construct (int $id, string $typ){
         $db_con = Mysql::getInstanz();
-        $sqlIndex=$db_con->escape($id);
-        $this->speiseId = $sqlIndex;
+        $this->speiseId=$db_con->escape($id);
+        if($typ=="Speise"){
+            $this->typId="speise_id";
+        } else {
+            $this->typId="getraenk_id";
+        }
+        
+        
+        
         // Kat ID holen
-        $result= $db_con -> query("SELECT kategorie_id from {$this->tabelleBz} where speise_id={$sqlIndex}  ");
+        $result= $db_con -> query("SELECT kategorie_id from {$this->tabelleBz} where `{$this->typId}`={$this->speiseId}  ");
         if($result->num_rows != 0){
             $row=$result->fetch_assoc();
             $this->kat_id=$row["kategorie_id"];
@@ -34,7 +42,7 @@ class BzEinheit{
         $db_con = Mysql::getInstanz();
 
         $alleElemente = array();
-        $result = $db_con -> query("SELECT bz.bz_sk_id, bz.aktiv, bz.einheit_id as eid, bz.menge, bz.preis, e.name as ename from {$this->tabelleBz} bz, {$this->tabelleEh} e where `speise_id`={$this->speiseId} and e.einheit_id=bz.einheit_id");
+        $result = $db_con -> query("SELECT bz.bz_sk_id, bz.aktiv, bz.einheit_id as eid, bz.menge, bz.preis, e.name as ename from {$this->tabelleBz} bz, {$this->tabelleEh} e where `{$this->typId}`={$this->speiseId} and e.einheit_id=bz.einheit_id");
         if($result->num_rows == 0){
             return false;
         } else {
@@ -48,7 +56,7 @@ class BzEinheit{
     public function getBzIdOhneMep():int | bool {
         $db_con = Mysql::getInstanz();
 
-        $result = $db_con -> query("SELECT bz.bz_sk_id from {$this->tabelleBz} bz where `speise_id`={$this->speiseId} and isnull(einheit_id)");
+        $result = $db_con -> query("SELECT bz.bz_sk_id from {$this->tabelleBz} bz where `{$this->typId}`={$this->speiseId} and isnull(einheit_id)");
         // echo "getBzIdOhneMep()";
         if($result->num_rows != 0){
             $row=$result->fetch_assoc();
@@ -64,7 +72,7 @@ class BzEinheit{
         $db_con = Mysql::getInstanz();
         $sqlBzId=$db_con->escape($bz_id);
 
-        $result = $db_con -> query("SELECT bz.bz_sk_id, bz.aktiv, bz.einheit_id as eid, bz.menge, bz.preis, e.name as ename from {$this->tabelleBz} bz, {$this->tabelleEh} e where `speise_id`={$this->speiseId} and `bz_sk_id`='{$sqlBzId}'and e.einheit_id=bz.einheit_id");
+        $result = $db_con -> query("SELECT bz.bz_sk_id, bz.aktiv, bz.einheit_id as eid, bz.menge, bz.preis, e.name as ename from {$this->tabelleBz} bz, {$this->tabelleEh} e where `{$this->typId}`={$this->speiseId} and `bz_sk_id`='{$sqlBzId}'and e.einheit_id=bz.einheit_id");
         if($result->num_rows == 0){
             return false;
         } else {
@@ -86,7 +94,7 @@ class BzEinheit{
         $sqlEId=$db_con->escape($datensatz["einheit_id"]);
         $sqlPreis=$db_con->escape($datensatz["preis"]);
         // echo "SELECT * from bz_speise_kategorie where `speise_id`='{$this->speiseId}' and `kategorie_id`='{$sqlKatId}' and `einheit_id`='{$sqlEId}' and `menge`='{$sqlMenge}' and `preis`='{$sqlPreis}' and `aktiv`='{$sqlAktiv}'";
-        $result = $db_con -> query("SELECT * from bz_speise_kategorie where `speise_id`='{$this->speiseId}' and `kategorie_id`='{$sqlKatId}' and `einheit_id`='{$sqlEId}' and `menge`='{$sqlMenge}' and `preis`='{$sqlPreis}' ;");
+        $result = $db_con -> query("SELECT * from bz_speise_kategorie where `{$this->typId}`='{$this->speiseId}' and `kategorie_id`='{$sqlKatId}' and `einheit_id`='{$sqlEId}' and `menge`='{$sqlMenge}' and `preis`='{$sqlPreis}' ;");
         if ($result->num_rows==0){
             //    echo "bz_einheit true <br>";
             return true;
@@ -111,7 +119,7 @@ class BzEinheit{
             $sqlFelder.=" {$key} = '{$sqlFormularwert}',";         
         }
         // letztes Komma entfernen
-        $sqlFelder .= " speise_id='{$this->speiseId}' "; 
+        $sqlFelder .= " {$this->typId}='{$this->speiseId}' "; 
               
         if ($datensatz[$this->tabellenId]!= null){
             $db_con->query("UPDATE {$this->tabelleBz} set $sqlFelder where `bz_sk_id`='{$sqlBzId}' ");
