@@ -9,7 +9,7 @@ class Einheiten extends ModelAbstract{
     protected string $tabelle = "einheit";
     protected string $tabellenId = "einheit_id";
     protected string $sqlOrder = " order by `name` asc ";
-    // protected string $rowObjekt = "Einheit";
+    protected string $rowObjekt = "Einheit";
 
 
 }

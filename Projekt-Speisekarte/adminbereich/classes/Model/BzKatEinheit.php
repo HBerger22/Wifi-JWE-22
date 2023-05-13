@@ -44,7 +44,7 @@ class BzKatEinheit{
         $sqlIndex=$db_con->escape($index);
         $kat = array();
         //  echo "ModelAbstract: SELECT * from {$this->tabelle} {$this->sqlOrder} <br>";
-        $result = $db_con -> query("SELECT {$this->tabellenId}, menge, preis, aktiv,  e.einheit_id as eid, e.name as ename, e.kuerzel from {$this->tabelleBzSGKat} bz, einheit e where `speise_id`='{$sqlIndex}' and e.einheit_id=bz.einheit_id;");
+        $result = $db_con -> query("SELECT {$this->tabellenId}, menge, preis, aktiv,  e.einheit_id as eid, e.name as ename, e.kuerzel from {$this->tabelleBzSGKat} bz, einheit e where `{$this->tabellenId}`='{$sqlIndex}' and e.einheit_id=bz.einheit_id;");
         if($result->num_rows == 0){
             return false;
         } else {

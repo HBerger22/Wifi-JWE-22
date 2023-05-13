@@ -10,7 +10,7 @@ class Speisen extends ModelAbstract{
     protected string $tabelle = "speise";
     protected string $tabellenId = "speise_id";
     protected string $sqlOrder = " order by aktiv desc, `name` asc ";
-    // protected object $rowObjekt = ;
+    protected string $rowObjekt = "Speise";
 
     public function alleAktiveElemente(): array | false{
         $db_con = Mysql::getInstanz();

@@ -1,4 +1,10 @@
 <?php
+
+
+
+echo "Passwort1 gehashed: ".password_hash("1",PASSWORD_BCRYPT);
+
+echo "<br>";
 $zahl = 123.1;
 echo "position 123 : ". strpos("123",",") . "<br>";
 echo "länge: ". strlen("123")  . "<br>";

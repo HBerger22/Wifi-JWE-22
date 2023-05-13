@@ -9,7 +9,7 @@ class Kategorien extends ModelAbstract{
     protected string $tabelle = "kategorie";
     protected string $tabellenId = "kategorie_id";
     protected string $sqlOrder = " order by aktiv desc, typ asc, `name` asc ";
-    // protected object $rowObjekt = ;
+    protected string $rowObjekt = "Kat";
 
 
 }

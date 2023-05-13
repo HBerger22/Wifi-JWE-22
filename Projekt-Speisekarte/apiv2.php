@@ -6,11 +6,18 @@ use WIFI\SK\Model\Allergene;
 use WIFI\SK\Model\BzAllergene;
 
 use function WIFI\SK\zwei_kommastellen;
+header("Content-Type: application/json");
 
-include "setup.php";
-include "funktionen.php";
+// if($_SESSION["objekt"]=="Speise"){
+//     $objektId="speise_id";
+// } else {
+//     $objektId="getraenk_id";
+// }
 
-echo "<h1>API</h1>";
+include "adminbereich/setup.php";
+include "adminbereich/funktionen.php";
+
+// echo "<h1>API</h1>";
 
 $speisen = new Speisen();
 $alleAktivenSpeisen = $speisen->alleAktiveElemente();
@@ -20,7 +27,11 @@ $fehler = new Validieren;
 $allergene = new Allergene();
 $alleAllergene = $allergene -> alleElemente();
 
-$bzAllergene= new BzAllergene;
+
+
+
+
+$bzAllergene= new BzAllergene("Speise");
 // echo'S_post:';
 // echo"<pre>"; //print_r Inhalt aus einem Array darstellen (nur zum debuggen)
 // print_r($_POST);
@@ -42,7 +53,7 @@ $bzAllergene= new BzAllergene;
                     "menge" => zwei_kommastellen($speise["menge"]),
                     "eName" => $speise["eName"],
                     "eKuerzel" => $speise["kuerzel"],
-                    "preeis" => zwei_kommastellen($speise["preis"]) 
+                    "preis" => zwei_kommastellen($speise["preis"]) 
                 );
             } else if(!empty($mep)) {
                 // mep(s) in $daten ablegen
@@ -102,13 +113,17 @@ $bzAllergene= new BzAllergene;
         $daten[$j]["mengeEinheitPreis"]=$mep;
         
     }
-echo'S_daten:';
-echo"<pre>"; //print_r Inhalt aus einem Array darstellen (nur zum debuggen)
-print_r($daten);
-echo "</pre>";
-if (!$daten){
-    echo " Keine Daten zum anzeigen";
-} else {
-    echo "allergen: ". $daten[0]["allergene"][0]["klasse"];
-}
-echo "<br><br><br><br><br>"; 
+
+echo json_encode($daten);
+// echo "<br><br>";
+
+// echo'S_daten:';
+// echo"<pre>"; //print_r Inhalt aus einem Array darstellen (nur zum debuggen)
+// print_r($daten);
+// echo "</pre>";
+// if (!$daten){
+//     echo " Keine Daten zum anzeigen";
+// } else {
+//     echo "allergen: ". $daten[0]["allergene"][0]["klasse"];
+// }
+// echo "<br><br><br><br><br>"; 

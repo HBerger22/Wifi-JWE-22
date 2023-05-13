@@ -113,7 +113,7 @@ if(!empty($_POST["s_loeschen"]) || !empty($_POST["s_loeschen_bestaetigung"])){
 if(!empty($_POST["aktivieren"])){
     foreach ($alleSpeisen as $speise){
         if (!empty($_POST["cb".$speise->getSpalte($objektId)])){
-            $erfolgreich=$speise -> akDeakSpeise(1);
+            $erfolgreich=$speise -> akDeakSpeise(1,$_SESSION["objekt"]);
             if(!$erfolgreich){
                 $fehler->fehlerDazu( "{$_SESSION["objekt"]} {$speise->getSpalte("name")} kann nicht aktiviert werden solange es keinen MEP (Menge/Einheit/Preis) gibt!");
             }

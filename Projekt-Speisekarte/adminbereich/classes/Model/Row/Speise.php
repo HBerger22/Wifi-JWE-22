@@ -11,13 +11,15 @@ class Speise extends RowAbstract{
     protected string $tabellenId = "speise_id";
     protected string $beziehungKat = "bz_speise_kategorie";
     protected string $beziehungAllergene = "bz_speise_allergene";
+    
    
-    public function akDeakSpeise(int $aktiv): bool {
+    public function akDeakSpeise(int $aktiv, string $typ): bool {
         $db = Mysql::getInstanz();
         $sqlAktiv = $db -> escape($aktiv);
+        $sqlTyp = $db -> escape($typ);
 
         // Die Speise darf nur aktiviert werden wenn es eine MEP (Menge/Einheit/Preis) gibt! Macht sonst bei der anzeige keinen Sinn
-        $bzMep = new BzEinheit($this -> daten[$this -> tabellenId]);
+        $bzMep = new BzEinheit($this -> daten[$this -> tabellenId],$sqlTyp);
         if($bzMep->alleMepEinerSpeise()){
             $db -> query("UPDATE {$this -> tabelle} set aktiv = {$sqlAktiv} where {$this -> tabellenId}={$this -> daten["{$this -> tabellenId}"]}");
             return true;

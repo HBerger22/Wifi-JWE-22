@@ -10,6 +10,7 @@ header("Content-Type: application/json");
 
 function fehler($message) {
   header("HTTP/1.1 404 Not Found");
+  // http_response_code(404);
   echo json_encode(array(
     "status" => 0,
     "error" => $message
@@ -17,8 +18,9 @@ function fehler($message) {
   exit;
 }
 
-// GET-Parameter aus request_uri entfernen
+// GET-Parameter aus request_uri entfernen, wird aufgetrennt in ein Array und ich nehme nur den Schlüssel[0] in die $request... als string auf
 $request_uri_ohne_get = explode("?", $_SERVER["REQUEST_URI"])[0];
+
 // Aus Anfrage-URI die gewünschte Methode ermitteln
 $teile = explode("/api/", $request_uri_ohne_get, 2);
 $parameter = explode("/", $teile[1]);

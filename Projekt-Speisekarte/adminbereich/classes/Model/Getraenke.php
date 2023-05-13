@@ -10,7 +10,7 @@ class Getraenke extends ModelAbstract{
     protected string $tabelle = "getraenk";
     protected string $tabellenId = "getraenk_id";
     protected string $sqlOrder = " order by aktiv desc, `name` asc ";
-    // protected object $rowObjekt = ;
+    protected string $rowObjekt = "Getraenk";
 
     public function alleAktiveElemente(): array | false{
         $db_con = Mysql::getInstanz();

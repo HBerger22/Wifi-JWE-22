@@ -12,7 +12,7 @@ class Allergene extends ModelAbstract{
     protected string $sqlOrder= " order by `klasse` asc ";
     protected string $beziehung = "bz_speise_allergene";
 
-    // protected string $rowObjekt = "Einheit";
+    protected string $rowObjekt = "Allergen";
 
     public function alleAllergeneEinerSpeise(int $speiseId): array | false{
         $db_con = Mysql::getInstanz();
