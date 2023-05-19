@@ -62,7 +62,7 @@
         if(!empty($_POST["seite"])){
             if($_POST["seite"]=="logout"){
                 session_destroy();
-                header("location: login.php");
+                header("location: logout.php");
                 exit;
             }else if($_POST["seite"]=="a_ansicht"){
                 header("location: allergene.php");

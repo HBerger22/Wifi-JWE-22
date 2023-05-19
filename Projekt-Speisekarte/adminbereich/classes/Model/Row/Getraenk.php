@@ -38,7 +38,7 @@ class Getraenk extends RowAbstract{
     // überprüfen ob sich im Datensatz etwas geändert hat (es werden div. werte von 2 Kat objekten miteinander verglichen)
     public function objektVerschieden(speise $ds1):bool {
         
-        if ($ds1 -> getSpalte("name") == $this->daten["name"] && $ds1 -> getSpalte("beschreibung") == $this->daten["beschreibung"] ){
+        if ($ds1 -> getSpalte("name") == $this->daten["name"] ){ // && $ds1 -> getSpalte("beschreibung") == $this->daten["beschreibung"]
             // echo "Fehler kommt von objektVerschieben <br>";
             return true;
         } else {
@@ -50,7 +50,7 @@ class Getraenk extends RowAbstract{
     public function datensatzExistiertBereits(): bool{
         
         $db = Mysql::getInstanz();
-        $result = $db -> query(" SELECT * from {$this->tabelle} where `name` ='{$this -> daten["name"]}' or `beschreibung`='{$this -> daten["beschreibung"]}' ");
+        $result = $db -> query(" SELECT * from {$this->tabelle} where `name` ='{$this -> daten["name"]}' "); //or `beschreibung`='{$this -> daten["beschreibung"]}'
         if($result ->num_rows != 0 ){
             // echo "Fehler kommt von datensatzExistiertBereits <br>";
             return true;

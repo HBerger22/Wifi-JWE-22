@@ -149,7 +149,7 @@ if(!$alleAllergene){
                         echo "<th colspan='3'> Bearbeitung </th> "; 
                         echo "<th colspan='2'> {$_SESSION["objekt"]} </th> ";
                         echo "<th colspan='".count($alleAllergene)."'>Allergene</th>";
-                        echo "<th colspan='2'> Kategorie </th> ";
+                        echo "<th colspan='2'> Kategorie  </th> ";
                         echo "<th colspan='5'> MEP = Menge/Einheit/Preis </th> ";
                     echo "</thead>";
                     echo "<thead>";

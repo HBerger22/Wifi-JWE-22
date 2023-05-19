@@ -6,21 +6,18 @@ $('#sod').click(function(){
         $('#speisen').css('display', 'none');
         $('#drinks').css('display', 'flex');
         // Ausblenden des Filters und mittigsetzen des Schalters bei ansicht der Getränke
-        $('#menu').css('display', 'none');
-        $('#filter').css('display','none');
-        $('#auswahl').css('margin-left' , '0px')
-
-        
+        // $('#menu').css('display', 'none');
+        // $('#filter').css('display','none');
+        // $('#auswahl').css('margin-left' , '0px')
     } else {
         $('#speisen').css('display', 'flex');
         $('#drinks').css('display', 'none');
-        // Einblenden des Filters und mittigsetzen des Schalters bei ansicht der Getränke
-        $('#menu').css('display', 'flex');
-        $('#auswahl').css('margin-left' , '43px')
+        // Einblenden des Filters und mittigsetzen des Schalters bei ansicht der Speisen
+        // $('#menu').css('display', 'flex');
+        // $('#auswahl').css('margin-left' , '43px')
         
     }
 });
-
 
 // Ein und Ausblenden des Filters
 $('#menu img').click(function(){
@@ -35,8 +32,10 @@ $('#menu img').click(function(){
 
 // Ein und Ausblenden der einzelnen Speisen
 let aMenu=''; //altes Menu
-$('button').click(function(event){
-    let taste=event.target.id;
+
+// $('button').click(function(event){
+    // let taste=event.target.id;
+function einAusblenden(taste){
     let uMenu='#'+taste+'u'; //uMenu = Untermenu z.b.: s1u
     if (aMenu==''){ //wenn kein untermenu ausgeklappt ist, öffne das neue Menu
         $(uMenu).css({
@@ -63,33 +62,34 @@ $('button').click(function(event){
         });
         aMenu=uMenu;
     }
-});
+};
 
 
 // Auswahl Allergene 
     let text = "123";
     let text2= "nix";
-    let o_allergene={};
-    let anzahl_allergene = document.getElementById('f_allergene').childElementCount;
+    // diese 2 variablen werden jetzt in der Ajax.js definiert und gefüllt
+    // let o_allergene={};
+    // let anzahl_allergene = document.getElementById('f_allergene').childElementCount;
 
-    for(let i = 1; i<= anzahl_allergene;i++){
-        o_allergene['al_'+i]=0;
-    };
+    // for(let i = 1; i<= anzahl_allergene;i++){
+    //     o_allergene['al_'+i]=0;
+    // };
 
-    $('.all').dblclick(function(){});
-    $('.all').click(function(event){
-        let ziel=event.target.id;
+    // $('.all').dblclick(function(){});
+    // $('.all').click(function(event){
+    function allergeneOnOff(radio){
+        let ziel=radio;// let ziel = event.target.id;
         let klasse = ".c_"+ziel;
         let aktive=0;
         // text=" 1: "+ ziel;
-        // console.log("Klasse: "+klasse);
+          console.log("Klasse: "+klasse);
         
         if (o_allergene[ziel]==1){
             o_allergene[ziel]=0;
             // hier noch die notwendigen speisen einblenden die das allergen enthalten
             // $(klasse).show(500);
                 
-            
         } else {
             o_allergene[ziel]=1;
             // hier noch die notwendigen speisen löschen die das allergen enthalten
@@ -125,7 +125,7 @@ $('button').click(function(event){
     }
     
     //  print_allergene();
-    });
+};
 
 // Zugang zum Verwaltungsbereich durch klick auf das Schlossymbol im footer
     $('footer span').click(function(){
@@ -162,7 +162,6 @@ let text1 ='Folgende Klassen existieren: ' + hinweis.childElementCount;
 
 // document.getElementById("test").innerHTML = text1;
 // console.log(text1);
-
 
 function print_allergene(){
     jQuery.each( o_allergene, function( key, value ) {

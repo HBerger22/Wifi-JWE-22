@@ -14,6 +14,22 @@
     --schalterfarbe: rgb(31,197,242); /*#1fc5f2*/ 
 }
 
+@font-face {
+    font-family: joe;
+    src: url(../fonts/josefin-sans-v20-latin-300.woff2);
+    font-weight: lighter;
+}
+@font-face {
+    font-family: joe;
+    src: url(../fonts/josefin-sans-v20-latin-regular.woff2);
+    font-weight: normal;
+}
+@font-face {
+    font-family: joe;
+    src: url(../fonts/josefin-sans-v20-latin-700.woff2);
+    font-weight: bold;
+}
+
 html {
     box-sizing: border-box;
 }
@@ -24,10 +40,31 @@ html, body{
 }
 body{
     background-color: var(--hauptfarbe);
-    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    background:url(../img/HG_Hochformat_hell2.jpg) no-repeat;
+    background-size: 1000px;
+
+    /* background-position: bottom; */
+    /* font-family: joe; /*Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; */
     /* overflow-y: hidden; */
     font-size: 14px;
+    color:white;
+    
 }
+
+
+/* main::before {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: rgb(255, 255, 255);
+    opacity: 0.50;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+} */
+
 
 #header_sprache{
     display: flex;
@@ -58,6 +95,7 @@ h1{
 #menu img {
     border: 1.5px solid black;
     border-radius: 50%;
+    height: 25px;
 }
 
 
@@ -74,14 +112,11 @@ h1{
     display: none;
 }
 
-#f_allergene{
-    font-size: 12px;
-}
 
 #filter{
     display:none;
     flex-direction: column;
-    /* align-items: center; */
+    align-items: center;
     text-align: center;
     margin-bottom: 20px;
     
@@ -97,52 +132,14 @@ h1{
     padding: 2px 10px;
 }
 
-/* allergene Grid */
+/* allergene */
 #f_allergene {
-    display: grid; 
-    grid-template-columns: 45% 45%; 
-    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr ; 
-    gap: 0px 0px; 
-    grid-template-areas: 
-      "a1 a2"
-      "a3 a4"
-      "a5 a6"
-      "a7 a8"
-      "a9 a10"
-      "a11 a12"
-      "a13 a14"; 
-    justify-content: space-evenly; 
-    width: 250px;
-  }
-  
-  .a1 { grid-area: 1 / 1 / 2 / 2; }
-  
-  .a2 { grid-area: 1 / 2 / 2 / 3; }
-  
-  .a3 { grid-area: 2 / 1 / 3 / 2; }
-  
-  .a4 { grid-area: 2 / 2 / 3 / 3; }
-  
-  .a5 { grid-area: 3 / 1 / 4 / 2; }
-  
-  .a6 { grid-area: 3 / 2 / 4 / 3; }
-  
-  .a7 { grid-area: 4 / 1 / 5 / 2; }
-  
-  .a8 { grid-area: 4 / 2 / 5 / 3; }
-  
-  .a9 { grid-area: 5 / 1 / 6 / 2; }
-  
-  .a10 { grid-area: 5 / 2 / 6 / 3; }
-  
-  .a11 { grid-area: 6 / 1 / 7 / 2; }
-  
-  .a12 { grid-area: 6 / 2 / 7 / 3; }
-  
-  .a13 { grid-area: 7 / 1 / 8 / 2; }
-  
-  .a14 { grid-area: 7 / 2 / 8 / 3; }
-  
+    /* font-size: 12px; */
+    column-count: 2;
+    column-gap: 10px;
+    max-width: 240px;
+    margin-top: 10px;
+}
 
 
 button{
@@ -196,10 +193,16 @@ button:hover{
 /* Slider */
 #auswahl{
     display: flex;
-    justify-content: space-around;
+
+    justify-content: center;
+
     margin-bottom: 10px;
     margin-left: 43px;
+    text-align: center;
     
+}
+#auswahl div{ 
+    margin: 0px 50px;
 }
 
 /* gehört noch auf none gesetzt! */
@@ -215,7 +218,7 @@ ul{
 
 li{
     list-style-type: '\25B8';
-    border-bottom: 1px solid black;
+    border-bottom: 1.5px solid white;
 }
 
 li::before{
@@ -262,13 +265,140 @@ footer span:hover{
 
 #innerWrapper{
     /* Max width auf 1024 setzen und im Mediascreen für handy auf 250px setzen */
-    max-width: 1250px;
+    max-width: 250px;
     margin-left: auto;
     margin-right: auto;
 }
 
-
-@media screen {
-    
+a{
+    color:var(--vorspeise);
 }
 
+@media screen and (min-width: 700px) {
+    body{
+        background:url(../img/HG_Querformat_dunkel.jpg) no-repeat center ;
+        /* font-size: 18px; */
+    }
+    #schalter{
+        display: none;
+    }
+    .details, #f_allergene{
+        /* font-size: 16px; */
+        padding-bottom: 4px;
+    }
+
+    #f_allergene{
+        column-count: 3;
+        /* column-gap: 10px; */
+        max-width: 560px;
+        margin-top: 15px;
+    }
+
+   
+    h1{
+        margin-bottom: 10%;
+        padding-left: 10px;
+    }    
+    
+    button{
+        padding: 10px 0px;
+        width: 280px;
+        border-radius: 30px;
+
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    ul{
+        max-width: 250px;
+    }
+
+    #desktop{
+        display: flex;
+        justify-content: center;
+  
+    }
+
+    #auswahl, #auswahl div{
+        margin: 0px;
+        align-items: center;
+    }
+    
+    #menu{
+        display: flex;
+        justify-content: left;
+        text-align: left;
+        padding-left: 3vi;  
+    }
+
+    #menu img{
+        height: 30px;
+
+    }
+    
+    main{
+        display: flex;
+        justify-content: space-around;
+        /* align-items: center; */
+        text-align: center;
+    }
+
+    #speisen, #drinks{
+        display: flex;
+    }
+
+
+
+    #innerWrapper{
+        /* Max width auf 1024 setzen und im Mediascreen für handy auf 250px setzen */
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+@media screen and (min-width: 1000px) {
+    body{
+        /* font-size: 22px; */
+    }
+
+    h1{
+        font-size: 40px;
+        font-weight: bold;
+    }
+    .details, #f_allergene{
+        /* font-size: 20px; */
+        padding-bottom: 6px;
+    }
+
+    #f_allergene{
+        column-count: 4;
+        /* column-gap: 10px; */
+        max-width: 1000px;
+        /* margin-top: 15px; */
+    }
+    
+    button{
+        /* padding: 20px 0px; */
+        width: 400px;
+
+        /* font-size: 24px;
+        font-weight: bold; */
+    }
+
+    ul{
+        max-width: 350px;
+    }
+
+    #menu img{
+        height: 35px;
+    }
+
+  
+
+
+    #innerWrapper{
+        /* Max width auf 1024 setzen und im Mediascreen für handy auf 250px setzen */
+        max-width: 1200px;    
+    }
+}

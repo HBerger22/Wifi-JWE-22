@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="css/style_monitor.css">
+    <!-- <link rel="stylesheet" href="css/slider.css">
+    <link rel="stylesheet" href="css/checkbox.css"> -->
+    <title>U-Keller - Speisekarte</title>
+</head>
+<body>
+    
+    <div id="innerWrapper">
+        <header>
+            <div id="desktop">
+                
+                <h1>Unsere Karte </h1>
+            </div>
+        </header>
+        <main>
+            <!-- <div id="test"></div> -->
+            <div id="speisen">
+                <button  id="s1">Mittagsmenu</button>
+                    <ul id="s1u">
+                        <li class="c_al_1 c_al_2 c_al_4"> 
+                            <div class="produkt"> Wienerschnitzel vom Magalitzerschwein </div> 
+                            <div class="details">mit Pommes und kleinen Salat (A,B,D *)</div>
+                            <div class="preis">€ 12,90</div> 
+                            
+                        </li>
+                        <li class="c_al_1 c_al_2 c_al_7"> 
+                            <div class="produkt"> Schweinsbraten <br> nach Art des Hauses </div> 
+                            <div class="details">mit Pommes und kleinen Salat und lauter anderen tollen Köstlichkeiten (A,B,G *)</div>
+                            <div class="preis">€ 14,90</div> 
+                            
+                        </li>
+                    </ul>           
+                <button id="s2">Vorspeise</button>
+                    <ul id="s2u">
+                        <li>test</li>
+                    </ul>           
+                <button id="s3">Suppe</button>
+                    <ul id="s3u">
+                        <li> 
+                            <div class="produkt">Kräftige Rindssuppe vom Bio-Ochsen</div> 
+                            <div class="details"></div>
+                            <div class="preiseinheit">
+                                <div class="einheit" > mit Frittaten </div>
+                                <div class="preis">€ 4,90</div> 
+                            </div> 
+                            <div class="preiseinheit c_al_1">
+                                <div class="einheit" > mit Leberknödel </div>
+                                <div class="preis">€ 5,90</div> 
+                            </div> 
+                            <div class="preiseinheit c_al_1">
+                                <div class="einheit" > mit Kaspressknödel </div>
+                                <div class="preis">€ 6,20</div> 
+                            </div> 
+                         </li>
+                         <li> 
+                            <div class="produkt">Hausgemachte Gemüsebouillon</div> 
+                            <div class="details"></div>
+                            <div class="preiseinheit">
+                                <div class="einheit" > mit Frittaten </div>
+                                <div class="preis">€ 3,90</div> 
+                            </div> 
+                            <div class="preiseinheit c_al_1">
+                                <div class="einheit" > mit Kaspressknödel </div>
+                                <div class="preis">€ 5,60</div> 
+                            </div>  
+                         </li>
+                         <li> 
+                            <div class="produkt">Erdäpfel-Steinbierschaumsuppe</div> 
+                            <div class="details">mit Buttercroútons</div>
+                            <div class="preis">€ 6,90</div> 
+                         </li>
+                         <li> 
+                            <div class="produkt"> Steinpilzsuppe mit Erdäpfel </div> 
+                            <div class="details"></div>
+                            <div class="preis">€ 5,60</div> 
+                         </li>
+                    </ul>           
+                <button id="s4">Frische Salate</button>
+                <button id="s5">Frisch und Saftig vom Grill</button>
+                <button class="c_al_4" id="s6">Fischspezialität</button>
+                <button id="s7">Klassiker</button>
+                <button id="s8">Vegetarisch / Vegan</button>
+                <button id="s9">Zur Jausn</button>
+                <button id="s10">Kinderkarte</button>
+                <button id="s11">Zum Nachtisch</button>
+            </div>
+            <div id="drinks">
+                <button id="d0">Biere</button>  
+                <ul id="d0u">
+                    <li> 
+                        <div class="produkt"> Gusswerk vom Fass </div> 
+                        <div class="details">mit Pommes und kleinen Salat</div>
+                        <div class="preiseinheit">
+                            <div class="einheit" >0,33 l </div>
+                            <div class="preis">€ 12,90</div> 
+                        </div>
+                        <div class="preiseinheit">
+                            <div class="einheit" >0,50 l </div>
+                            <div class="preis">€ 21,90</div> 
+                        </div>
+                    </li>
+                    <li> 
+                        <div class="produkt"> Gusswerk Flaschenbier </div> 
+                        <div class="details">mit Pommes und kleinen Salat und lauter anderen tollen Köstlichkeiten (A,B,G *)</div>
+                        <div class="preiseinheit">
+                            <div class="einheit" > 0,33l </div>
+                            <div class="preis">€ 12,90</div> 
+                        </div>
+                        
+                    </li>
+                </ul>               
+                <button id="d2">Alkoholfrei - Flaschen</button>
+                <button id="d3">Alkoholfrei - Offen</button>
+                <button id="d4">Heiße Getränke</button>
+                <button id="d5">Spirituosen</button>
+            </div>
+        </main>
+
+        <footer>
+            <!-- <a href="resourcen/Liste-der-14-Allergene.pdf">* Allergene Übersicht</a>  -->
+            <div> Alle Preise in € inkl. gesetzlicher Mwst. 
+                Copyright 2023 <span>&#128271</span>
+            </div>
+        </footer>
+    </div>
+
+    <script src="js/jquery-3.6.3.js"></script>
+    <script src="js/ajax.js"></script>
+    <!-- <script src="js/cookie.umd.min.js"></script> -->
+    <!-- <script src="js/funktionen.js"></script> -->
+    
+    <!-- <script src="js/main.js"></script> -->
+    
+
+    
+
+</body>
+</html>

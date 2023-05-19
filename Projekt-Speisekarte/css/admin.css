@@ -1,4 +1,21 @@
 /* ab hier für den Login und speisenverwaltungsbereich */
+:root{
+    --hauptfarbe: rgb(223,227,218);
+}
+
+body{
+    background: none;
+    color: black;
+    text-align: center;
+}
+
+h1{
+    margin: 0px;
+}
+
+table{
+    text-align: center;
+}
 h2{
     text-align: center;
 }
@@ -71,12 +88,13 @@ ul{
 }
 
 li{
-    display:flex; 
-    flex-flow: column;
+    /* display:flex; 
+    flex-flow: column; */
     list-style-type: none;
     border-bottom: 0;
     margin-top: 3px;
     align-items: right;
+    columns: 2;
 }
 
 form{
@@ -152,7 +170,9 @@ select {
     
     
 }
-
+#innerWrapper{
+    max-width: none;
+}
 
 /* .sub_a{
     display: inline-block;

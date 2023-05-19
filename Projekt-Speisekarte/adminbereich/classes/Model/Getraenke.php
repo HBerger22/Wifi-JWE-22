@@ -12,14 +12,13 @@ class Getraenke extends ModelAbstract{
     protected string $sqlOrder = " order by aktiv desc, `name` asc ";
     protected string $rowObjekt = "Getraenk";
 
-    public function alleAktiveElemente(): array | false{
+    public function alleAktivenElemente(): array | false{
         $db_con = Mysql::getInstanz();
 
 
         $alleElemente = array();
-        // echo "ModelAbstract: SELECT * from {$this->tabelle} {$this->sqlOrder} <br>";
-        $result = $db_con -> query("SELECT g.getraenk_id, s.name as sName, g.beschreibung as gBeschreibung, menge, preis, k.name as kName, k.beschreibung as kBeschreibung, k.typ, e.name as eName, e.kuerzel 
-            from {$this->tabelle} g, bz_speise_kategorie bz, kategorie k , einheit e where g.aktiv= 1 and g.getraenk_id=bz.speise_id and bz.aktiv =1 and k.kategorie_id=bz.kategorie_id and k.aktiv=1 and e.einheit_id=bz.einheit_id order by typ, k.name, g.name, menge;");
+        $result = $db_con -> query("SELECT g.getraenk_id, g.name as gName, g.beschreibung as gBeschreibung, menge, preis, k.name as kName, k.beschreibung as kBeschreibung, k.typ, e.name as eName, e.kuerzel 
+            from {$this->tabelle} g, bz_speise_kategorie bz, kategorie k , einheit e where g.aktiv= 1 and g.getraenk_id=bz.getraenk_id and bz.aktiv =1 and k.kategorie_id=bz.kategorie_id and k.aktiv=1 and e.einheit_id=bz.einheit_id order by typ, k.name, g.name, preis;");
         if($result->num_rows == 0){
             return false;
         } else {

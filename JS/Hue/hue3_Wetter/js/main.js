@@ -41,6 +41,7 @@ $('#btn_wetter').on('click',function(){
     // wetterdaten abfragen
     $.get(
         'https://api.openweathermap.org/data/2.5/weather?lat='+lat +'&lon='+lon+'&appid=fb4d7b9e7ec7eac624a0ec238a6ae26f&lang=de&units=metric',
+        // 'https://localhost/Wifi/Wifi-JWE-22/Projekt-Speisekarte/apiv2',
         function(data,status,rückgabe){
             w_daten=rückgabe.responseJSON;
             // $('p').append(w_daten.name);

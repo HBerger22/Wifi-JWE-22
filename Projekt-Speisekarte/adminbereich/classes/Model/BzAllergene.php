@@ -29,7 +29,8 @@ class BzAllergene{
         $db_con = Mysql::getInstanz();
 
         $alleElemente = array();
-        //  echo "ModelAbstract: SELECT * from {$this->tabelle} {$this->sqlOrder} <br>";
+        
+        // echo "ModelAbstract: SELECT * from {$this->tabelleBzSGAllergene} where `{$this->tabellenId}`='{$index}' <br>";
         $result = $db_con -> query("SELECT * from {$this->tabelleBzSGAllergene} where `{$this->tabellenId}`='{$index}'");
         if($result->num_rows == 0){
             return false;

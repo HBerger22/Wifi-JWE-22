@@ -45,7 +45,7 @@ class Allergen extends RowAbstract{
     public function datensatzExistiertBereits(): bool{
         
         $db = Mysql::getInstanz();
-        $result = $db -> query(" SELECT * from $this->tabelle where `name` ='{$this -> daten["name"]}' or `klasse`='{$this -> daten["klasse"]}' or `beschreibung`='{$this -> daten["beschreibung"]}' ");
+        $result = $db -> query(" SELECT * from $this->tabelle where `name` ='{$this -> daten["name"]}' or `klasse`='{$this -> daten["klasse"]}'  "); //or `beschreibung`='{$this -> daten["beschreibung"]}'
         if($result ->num_rows != 0 ){
             // echo "Fehler kommt von datensatzExistiertBereits <br>";
             return true;
