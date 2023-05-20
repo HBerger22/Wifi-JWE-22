@@ -1,0 +1,6 @@
+RewriteEngine On
+
+
+RewriteBase /Wifi/Wifi-JWE-22/Projekt-Speisekarte/
+
+RewriteRule ^\/?api\/? apiv2.php

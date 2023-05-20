@@ -6,7 +6,7 @@ use Exception;
 use mysqli;
 use WIFI\SK\Mysql;
 
-class RowAbstract {
+abstract class RowAbstract {
     protected array $daten = array();
     protected string $tabelle;
     protected string $tabellenId;

@@ -40,7 +40,6 @@ class BzEinheit{
 
     public function alleMepEinerSpeise(): array | false{
         $db_con = Mysql::getInstanz();
-
         $alleElemente = array();
         $result = $db_con -> query("SELECT bz.bz_sk_id, bz.aktiv, bz.einheit_id as eid, bz.menge, bz.preis, e.name as ename from {$this->tabelleBz} bz, {$this->tabelleEh} e where `{$this->typId}`={$this->speiseId} and e.einheit_id=bz.einheit_id");
         if($result->num_rows == 0){
@@ -52,6 +51,21 @@ class BzEinheit{
             return $alleElemente;
         }
     }
+
+    public function alleAktivenMepEinerSpeise(): array | false{
+        $db_con = Mysql::getInstanz();
+        $alleElemente = array();
+        $result = $db_con -> query("SELECT bz.bz_sk_id, bz.aktiv, bz.einheit_id as eid, bz.menge, bz.preis, e.name as ename from {$this->tabelleBz} bz, {$this->tabelleEh} e where `{$this->typId}`={$this->speiseId} and e.einheit_id=bz.einheit_id and bz.aktiv=1");
+        if($result->num_rows == 0){
+            return false;
+        } else {
+            while ($row = $result -> fetch_assoc()){
+                $alleElemente[] = $row;
+            }
+            return $alleElemente;
+        }
+    }
+
 
     public function getBzIdOhneMep():int | bool {
         $db_con = Mysql::getInstanz();

@@ -171,6 +171,7 @@ function print_allergene(){
     });
 };
 
+// $(window).resize() bedingung Window.Width>700
 
 // text1 = text1.toString();
 // let myarray1=text1.split('\n');

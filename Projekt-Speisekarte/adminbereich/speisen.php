@@ -118,7 +118,7 @@ if(!empty($_POST["aktivieren"])){
                 $fehler->fehlerDazu( "{$_SESSION["objekt"]} {$speise->getSpalte("name")} kann nicht aktiviert werden solange es keinen MEP (Menge/Einheit/Preis) gibt!");
             }
         } else {
-            $speise -> akDeak(0);
+            $speise -> akDeakSpeise(0,$_SESSION["objekt"]);
         }        
     }
     $alleSpeisen = $speisen-> alleElemente();     //Daten Aktualisieren  
