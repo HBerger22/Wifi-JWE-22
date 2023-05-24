@@ -14,9 +14,13 @@ class Allergene extends ModelAbstract{
 
     protected string $rowObjekt = "Allergen";
 
+    /** 
+     * Liefert alle Allergeninformationen zu einer Speise zurück
+     * @param int $speiseID ID der Speise deren Allergene angefragt werden
+     * @return false | array false wenn es keine Allergene gibt | Array mit allergen Objekten
+     */
     public function alleAllergeneEinerSpeise(int $speiseId): array | false{
         $db_con = Mysql::getInstanz();
-
         $alleElemente = array();
         $result = $db_con -> query("SELECT * from {$this->beziehung} where `speise_id`={$speiseId}");
         if($result->num_rows == 0){

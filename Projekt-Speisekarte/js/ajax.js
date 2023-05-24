@@ -6,7 +6,7 @@ let o_allergene={};
 
 // Allergene Holen
 $.get(
-    '../Projekt-Speisekarte/api/V1/Allergene',
+    'api/V1/Allergene',
     // '../projekt/api/V1/Allergene',
     function(data,status,rückgabe){
         alleAllergene=rückgabe.responseJSON;
@@ -25,8 +25,7 @@ $.get(
         });
 
         $('#f_allergene').html(agHTML);
-        // console.log(agHTML);
-        
+        // console.log(agHTML);        
     }
 );
 
@@ -72,8 +71,8 @@ $.get(
             sHTML = sHTML + '\n' + `
             
             <li class="${alKlasse}"> 
-                <div class="produkt"> ${entry["sName"]} </div> 
-                <div class="details"> ${entry["sBeschreibung"]} ${alText}</div>`
+                <div class="produkt"> ${entry["Name"]} </div> 
+                <div class="details"> ${entry["Beschreibung"]} ${alText}</div>`
                 // mehrere MEPs? (Menge/Einheit/Preise)
                 $(entry["mengeEinheitPreis"]).each((indexMep, entryMep) =>{
                     sHTML = sHTML +`
@@ -90,7 +89,6 @@ $.get(
         sHTML = sHTML +`</ul>`;
         $('#speisen').html(sHTML);
         // console.log(sHTML);
-        
     }
 );
 
@@ -132,11 +130,10 @@ $.get(
                 alText+=" *)";
             }
             
-            
             sHTML = sHTML + '\n' + `
             <li class="${alKlasse}"> 
-                <div class="produkt"> ${entry["gName"]} </div> 
-                <div class="details"> ${entry["gBeschreibung"]} ${alText}</div>`
+                <div class="produkt"> ${entry["Name"]} </div> 
+                <div class="details"> ${entry["Beschreibung"]} ${alText}</div>`
                 // mehrere MEPs? (Menge/Einheit/Preise)
                 $(entry["mengeEinheitPreis"]).each((indexMep, entryMep) =>{
                     sHTML = sHTML +`
@@ -156,11 +153,3 @@ $.get(
         
     }
 );
-
-// document.getElementById("test").innerHTML = agHTML;
-
-
-// $.get( "../Projekt-Speisekarte/api/", function( data ) {
-//     console.log( typeof data ); // string
-//     console.log( data ); // HTML content of the jQuery.ajax page
-//   });

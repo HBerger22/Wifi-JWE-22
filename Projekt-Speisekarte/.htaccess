@@ -1,8 +1,12 @@
 RewriteEngine On
 
-
-RewriteBase /Wifi-JWE-22/Projekt-Speisekarte/
 # Kommentare beginnen mit Route
-# RewriteBase /Wifi/Wifi-JWE-22/Projekt-Speisekarte/
+
+# RewriteBase für Obinet page
+# RewriteBase /Wifi-JWE-22/Projekt-Speisekarte/
+
+
+# RewriteBase für Locale Anwendung
+RewriteBase /Wifi/Wifi-JWE-22/Projekt-Speisekarte/
 
 RewriteRule ^\/?api\/? apiv2.php

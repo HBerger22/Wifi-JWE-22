@@ -30,8 +30,6 @@ use WIFI\SK\Mysql;
             
             // Datenbankverbindung herstellen und benutzer abfragen
             $con = Mysql::getInstanz();
-            // $con= @new mysqli("","root","","speisekarte"); //Das @ bedeutet silent und unterdrückt die ausgabe von Fehlermeldungen (notwendig gegen Hackerangriffe die sonst eine Info zur DB bekommen würden)
- 
             if($con->verbindungsfehler()){
                 exit("Fehler beim Verbindungsaufbau");
             };
@@ -61,8 +59,7 @@ use WIFI\SK\Mysql;
             } else {
                 $fehlermeldung="Es ist ein Fehler aufgetreten!";
             }
-            // $con->close();
-        }
+       }
     }
 ?>
     <h1>Anmelung zur Speisekartenverwaltung</h1>

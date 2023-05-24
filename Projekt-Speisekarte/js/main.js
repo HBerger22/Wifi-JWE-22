@@ -30,6 +30,18 @@ $('#menu img').click(function(){
     }
 });
 
+// Bei änderung der Fensterbreite soll bei eine Breite von  > 700 unbedingt speisen und drinks eingeblendet werden.
+$(window).resize(function(){
+    // console.log("window resize"+ $(window).width());
+    if ($(window).width()>700){
+        $('#drinks').css('display', 'flex');
+        $('#speisen').css('display', 'flex');
+        $('#sod').prop( "checked", false );
+    } else {
+        $('#drinks').css('display', 'none');
+    }
+})
+
 // Ein und Ausblenden der einzelnen Speisen
 let aMenu=''; //altes Menu
 
@@ -170,6 +182,14 @@ function print_allergene(){
         document.getElementById("test").innerHTML = text2;
     });
 };
+
+
+// nachladen wenn document fertig geladen ist
+$(document).load(() => {
+    $.get('source.php', data => {
+      $('#target').html(data)
+    })
+  })
 
 // $(window).resize() bedingung Window.Width>700
 

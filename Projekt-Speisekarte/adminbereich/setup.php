@@ -3,7 +3,7 @@
 
 // Setup Code: nur verändern wenn du weißt was du tust!!!
 
-// ich kann die Include datei vergessen wenn ich die folgende Methode verwende
+// Man kann die Include datei vergessen wenn man die folgende Methode verwende
 // vorausgesetzt es wurden die Namespaces korrekt verwendet !!!
 
 session_start();
@@ -21,7 +21,7 @@ spl_autoload_register(
         $basis = __DIR__ ."/classes/"; //Basisverzeichnis __DIR__ ist das Verzeichnis in der die Datei ist. z.B.: C:\XAMPP\HTDOCS\Wifi-JWE-22\PHP\PHP3\projekt\admin
 
         // Projekt-spezifisches namespace prefix
-        $prefix ="WIFI\\SK\\";// \Fdb, weil die klassen in diesem Unterordner sind
+        $prefix ="WIFI\\SK\\"; //  weil die klassen in diesem Unterordner sind
         $laenge =strlen($prefix);
         // wenn die Klasse nicht das gleiche Prefix hat wird abgebrochen (notwendig für fremdprogrammierte eingebundenen code)
         if($prefix !== substr($klasse,0,$laenge)){
@@ -38,7 +38,5 @@ spl_autoload_register(
         if(file_exists($datei)){
             include $datei;
         }
-
-        // die($datei);
     }
 );

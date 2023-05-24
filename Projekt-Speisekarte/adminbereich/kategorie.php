@@ -8,7 +8,6 @@ use WIFI\SK\Validieren;
 include "setup.php";
 
 include "kopf.php";
-// include "classes/Model/Kategorien.php";
 
 echo "<h1>Kategorien</h1>";
 echo "<p>Hier haben sie eine Übersicht über die vorhandenen Kategorien.</p>";
@@ -28,15 +27,6 @@ if(!empty($_SESSION["fehlermeldung"])){
     unset($_SESSION["fehlermeldung"]);
 }
 unset($_SESSION["k_bearbeiten"]);
-
-// echo'S_Session:';
-// echo"<pre>"; //print_r Inhalt aus einem Array darstellen (nur zum debuggen)
-// print_r($_SESSION);
-// echo "</pre>";
-// echo'S_post:';
-// echo"<pre>"; //print_r Inhalt aus einem Array darstellen (nur zum debuggen)
-// print_r($_POST);
-// echo "</pre>";
 
 // Artikel bearbeiten
 
@@ -100,10 +90,7 @@ if(!empty($_POST["aktivieren"])){
 if(!empty($erfolg)){
     echo "<p style='color:green'>".$erfolg."</p>";
 }
-// if(!empty($fehlermeldung)){
-//     echo "<p style='color:red'>".$fehlermeldung."</p>";
-//     unset($fehlermeldung);
-// }
+
 if($fehler->fehlerAufgetreten()){
     echo "<p style='color:red'>".$fehler -> fehlerAusgabeHtml() ."</p>";
     unset($fehler);
@@ -162,18 +149,4 @@ if(!empty($fehler)){
     echo "<p style='color:red'>".$fehler -> fehlerAusgabeHtml() ."</p>";
     unset($fehler);
 }
-// if(!empty($fehlermeldung)){
-//     echo "<p style='color:red'>".$fehlermeldung."</p>";
-// }
-  
-
-// $result->close();
-// $con->close();
-
-
-
-
-
-
-
 include "fuss.php";

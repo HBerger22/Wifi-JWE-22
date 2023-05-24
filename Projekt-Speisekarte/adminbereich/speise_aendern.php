@@ -23,23 +23,16 @@ $bzA = new BzAllergene($_SESSION["objekt"]);
 $allergene=new Allergene();
 $alleAllergene=$allergene->alleElemente();
 
-//speise oder Getränk
-// if($_SESSION["objekt"]=="Speise"){
-//     $objektId="speise_id";
-// } else {
-//     $objektId="getraenk_id";
-// }
 // sicherheitsüberprüfung ob die übergebene id existiert
 if(!empty($_SESSION["s_bearbeiten"])){
-    if($_SESSION["objekt"]=="Speise"){
+    if($_SESSION["objekt"]=="speise"){
         $speise = new Speise($_SESSION["s_bearbeiten"]);
     } else {
         $speise = new Getraenk($_SESSION["s_bearbeiten"]);
     }
     
     $aktiv=$speise->getSpalte("aktiv"); //benötigt zum speichern bei änderungen 
-    // $bzKatExistiert = $bzKEP->alleElemente($speise->getSpalte("speise_id"));
-    $bzKatExistiert = $bzKEP->zugehörigeKat($speise->getSpalte($objektId));
+   $bzKatExistiert = $bzKEP->zugehörigeKat($speise->getSpalte($objektId));
     $tun="bearbeiten";
 } else {
     $bzKatExistiert=false;
@@ -57,10 +50,9 @@ if(!empty($_POST)){
     $fehler -> istAusgefuellt($_POST["kategorie"],"Kategorie");
     // if(!empty($_POST["aktiv"])) $aktiv=1; else $aktiv=0;
     
-
     if(!$fehler->fehlerAufgetreten()){   //Felder dürfen nicht leer sein.
          // überprüfen ob sich etwas geändert hat, bin mir nicht ganz sicher ob das sinnvoll/zweckmässig ist?
-         if($_SESSION["objekt"]=="Speise"){
+         if($_SESSION["objekt"]=="speise"){
             $speise_neu = new Speise(array(
                 $objektId => $_SESSION["s_bearbeiten"] ?? null,
                     // if(!empty($_GET["id"])) {"id" => $_GET["id"]} else {"id" => null}
@@ -71,7 +63,6 @@ if(!empty($_POST)){
         } else {
             $speise_neu = new Getraenk(array(
                 $objektId => $_SESSION["s_bearbeiten"] ?? null,
-                    // if(!empty($_GET["id"])) {"id" => $_GET["id"]} else {"id" => null}
                 "name" => $_POST["name"],
                 "beschreibung" => $_POST["beschr"],
                 "aktiv" => $aktiv
@@ -90,14 +81,13 @@ if(!empty($_POST)){
                 } 
             }
         }
-
+       
         if(((!empty($allergenCheck)&& !$allergenCheck) && !empty($speise) && ($speise->objektVerschieden($speise_neu) && !$bzKEP->katVerschieden($_SESSION["s_bearbeiten"],$_POST["kategorie"]))) || ( empty($speise) && $speise_neu-> datensatzExistiertBereits())){//abfragen ob die übergebenen Daten, sich tatsächlich geändert haben oder die neue Kategorie bereits in der DB existiert (Name, Beschreibung)
                 $fehler-> fehlerDazu("Diese {$_SESSION["objekt"]} existiert bereits oder es wurde nichts geändert!");
         } else {
             // speichern 
 
             $speiseId = $speise_neu -> speichern();
-            // echo "Speise ID: ". $speiseId;
 
             // Kat speichern
             $bzKEP->speichernKat($speiseId,$_POST["kategorie"]);
@@ -122,7 +112,6 @@ if(!empty($_POST)){
             header("location: speisen.php");
             exit();
         }
-
     }
 }
 
@@ -131,14 +120,9 @@ if(!$alleAllergene){
 }
 
 if($fehler->fehlerAufgetreten()){
-    echo "<p style='color:red'>".$fehler->fehlerAusgabeHtml()."</p>";
+    echo $fehler->fehlerAusgabeHtml();
 
 }
-// if(!empty($erfolg)){
-//     echo "<p style='color:green'>".$erfolg."</p>";
-//     header("refresh:5; kategorie.php");
-//     exit();
-// }
 ?>
 
 <form method='post'>
@@ -151,18 +135,6 @@ if($fehler->fehlerAufgetreten()){
         <input type="text" name="beschr" id="beschr" value="<?php if(!empty($speise)){ echo $speise -> getSpalte("beschreibung");}else if (!empty( $_POST["beschr"] )) {echo  $_POST["beschr"]; } ?>">
     </div>
 
-
-
-
-<?php
-// echo"<pre>"; //print_r Inhalt aus einem Array darstellen (nur zum debuggen)
-// print_r($bzKatExistiert);
-// echo "</pre>";
-
-?>
-
-
-
     <div><!-- Kategorie (Vorspeise, Suppe, ...))  -->
         <label class="form_beschriftung" for="kategorie">Kategorie:</label>
         <select name="kategorie" size="5">
@@ -170,15 +142,12 @@ if($fehler->fehlerAufgetreten()){
             <?php 
                 // $bzKatExistiert = $bzKEP->zugehörigeKat($speise->getSpalte("speise_id"));
                 foreach ($alleKategorien as $kat){
-                    if( $kat->getSpalte("typ")==$_SESSION["objekt"] ){
+                    if( mb_strtolower($kat->getSpalte("typ"))==mb_strtolower($_SESSION["objekt"]) ){
                         echo "<option value='{$kat->getSpalte("kategorie_id")}'"; 
                         if(!empty($speise) && $bzKatExistiert && $bzKatExistiert [0]["kid"]== $kat->getSpalte("kategorie_id")) {echo ' selected ';} else if (!empty( $_POST["kategorie"] ) && $_POST["kategorie"] == $kat->getSpalte("kategorie_id") ) {echo  " selected "; } 
                         echo ">{$kat->getSpalte("name")}</option>";        
                     }
                 }
-            ?>
-            
-            <?php
            ?>
         </select>
     </div>
@@ -202,12 +171,7 @@ if($fehler->fehlerAufgetreten()){
         ?>
 
     </div>
-
-    <!-- Checkbox mit Aktiv noch dazufügen () -->
-    
     <button type="submit"> <?php $_SESSION["objekt"] ?> speichern</button>
 </form>
-
 <?php
-
 include "fuss.php";

@@ -14,6 +14,22 @@
     --schalterfarbe: rgb(31,197,242); /*#1fc5f2*/ 
 }
 
+@font-face {
+    font-family: joe;
+    src: url(../fonts/josefin-sans-v20-latin-300.woff2);
+    font-weight: lighter;
+}
+@font-face {
+    font-family: joe;
+    src: url(../fonts/josefin-sans-v20-latin-regular.woff2);
+    font-weight: normal;
+}
+@font-face {
+    font-family: joe;
+    src: url(../fonts/josefin-sans-v20-latin-700.woff2);
+    font-weight: bold;
+}
+
 html {
     box-sizing: border-box;
 }
@@ -21,44 +37,35 @@ html {
 html, body{
     margin: 0px;
     padding: 0px;
+    
 }
 body{
-    background-color: var(--hauptfarbe);
-    background:url(../img/HG_Querformat_dunkel.jpg) no-repeat center ;
-    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    font-size: 20px;
-    color:white;
-    max-height: 1080px;
-    
-
-    
+    /* background-color: rgb(70, 70, 70); */
+    /* var(--hauptfarbe); */
+    background: url(../img/IMG_20200727_141402nur_wasser.jpg) ;
+    background-size: 1920px 1075px;
+    font-family:joe;
+    font-size: 22px;
+    letter-spacing: 3px;
+    color:lightgoldenrodyellow;
 }
 
 main{
-    columns: 4;
-    max-height: 1000;
+    display: flex;
+    justify-content: space-around;
+    max-height: 1000px;
 }
-
-/* main::before {
-    content: '';
-    display: block;
-    width: 100%;
-    height: 100%;
-    background: rgb(255, 255, 255);
-    opacity: 0.50;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 0;
-} */
-
-
 
 h1{
     text-align: center;
     margin-bottom: 15px;
-    font-size: 40px;
+    /* font-size: 40px; */
     font-weight: bold;
+}
+
+h3{
+    line-height: 1.3em;
+    margin-bottom: 10px;
 }
 
 #speisen, #drinks{
@@ -72,16 +79,102 @@ h1{
 }
 
 button{
-    padding: 10px 0px;
-    width: 400px;
-    border-radius: 30px;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    font-size: 18px;
+    padding: 15px 0px;
+    width: 520px;
+    border-radius: 35px;
+    /* font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; */
+    font-size: 28px;
     font-weight: bold;
+    letter-spacing: 6px;
+    margin-top: 1em;
 }
 
 
 
+
+
+
+/* button:hover{
+    transform: scale(105%);
+    box-shadow: 0px 0px 5px black;
+} */
+
+ul{
+    
+    /* height: 0px; */
+    transition: 4s;
+    padding-left: 0px;
+    width: 480px;
+    /* list-style-type: '\25B8'; */
+    margin: 0px;
+}
+
+li{
+    margin-left: 1em;
+    list-style-type: none;
+    /* list-style-type: '\25B8'; */
+    border-bottom: 1.5px solid white;
+    width: 480px;
+}
+
+
+li::before{
+    display: block;
+    position:fixed;
+    color: red;
+    content: "\25B8";
+    font-weight: bold;
+    /* display: inline-block; */
+    /* margin-left: 1em; */
+}
+
+.produkt{
+    margin-left: 1em;
+    /* font-weight: bold; */
+    width: 460px;
+   
+}
+
+.details{
+    font-size: 20px;
+    padding-bottom: 20px;
+    line-height: 1.3em;
+}
+
+.preis{
+    text-align: right;
+    font-weight: bold;
+    padding-bottom: 0.3em;
+}
+
+.preiseinheit{
+    display: flex;
+    justify-content: space-between;
+    width: 480px;
+    /* font-size: small; */
+}
+.einheit{
+    /* margin-left: 1em; */
+    text-align: left;
+}
+
+footer{
+    text-align: center;
+    margin: 20px 0px;
+}
+
+footer span:hover{
+    cursor: pointer;
+}
+
+#innerWrapper{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+a{
+    color:var(--vorspeise);
+}
 
 #s1{
     background-color: var(--mittag);    
@@ -116,82 +209,3 @@ button{
 #s11{
     background-color: var(--nachtisch);
 }
-
-/* button:hover{
-    transform: scale(105%);
-    box-shadow: 0px 0px 5px black;
-} */
-
-ul{
-    
-    /* height: 0px; */
-    transition: 4s;
-    padding-left: 0px;
-    max-width: 350px;
-    list-style-type: '\25B8';
-    margin-top: 0px;
-}
-
-li{
-    list-style-type: '\25B8';
-    border-bottom: 1.5px solid white;
-}
-
-.produkt{
-    
-    font-weight: bold;
-    padding-top: 10px;
-}
-.details{
-    font-size: 12px;
-    padding-bottom: 4px;
-}
-.preis{
-    text-align: right;
-    font-weight: bold;
-    padding-bottom: 2px;
-}
-
-.preiseinheit{
-    display: flex;
-    justify-content: space-between;
-    /* font-size: small; */
-}
-.einheit{
-    margin-left: 20px;
-    text-align: left;
-}
-
-footer{
-    text-align: center;
-    margin: 10px 0px;
-}
-
-footer span:hover{
-    cursor: pointer;
-}
-
-
-
-#innerWrapper{
-    margin-left: auto;
-    margin-right: auto;
-}
-
-a{
-    color:var(--vorspeise);
-}
-
-/* @media screen and (min-width: 700px) {
-    main{
-        display: flex;
-        justify-content: space-around;
-        text-align: center;
-    }
-}
-
-@media screen and (min-width: 1000px) {
-    .details{
-        padding-bottom: 6px;
-    }
-} */

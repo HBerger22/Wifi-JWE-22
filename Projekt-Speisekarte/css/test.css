@@ -1,8 +1,0 @@
-
-.verwaltung ul li{
-    display: flex;
-    flex-flow: column;
-}
-li {
-    width: 150px;
-}

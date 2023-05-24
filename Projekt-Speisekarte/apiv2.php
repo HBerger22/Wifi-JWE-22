@@ -7,6 +7,8 @@ use WIFI\SK\Model\Allergene;
 use WIFI\SK\Model\BzAllergene;
 use WIFI\SK\Model\Kategorien;
 use WIFI\SK\Model\Row\Getraenk;
+use WIFI\SK\Model\Row\Kat;
+use WIFI\SK\Model\Row\Speise;
 
 use function WIFI\SK\zwei_kommastellen;
 header("Content-Type: application/json");
@@ -99,22 +101,22 @@ $getraenke = new Getraenke();
 $alleAktivenGetraenke =$getraenke->alleAktivenElemente();
 
 $kategorien = new Kategorien();
-$alleKategoriern = $kategorien->alleElemente();
+$alleKategorien = $kategorien->alleElemente();
 
 // $fehler = new Validieren;
 
 $allergene = new Allergene();
 $alleAllergene = $allergene -> alleElemente();
 
-$bzAllergene= new BzAllergene("Speise");
-$bzAllergeneGetraenke = new BzAllergene("Getraenk");
+// $bzAllergene= new BzAllergene("Speise");
+// $bzAllergeneGetraenke = new BzAllergene("Getraenk");
 
 
 
 $daten=array();
 // echo'S_post:';
 // echo"<pre>"; //print_r Inhalt aus einem Array darstellen (nur zum debuggen)
-// print_r($_POST);
+// print_r($alleAktivenSpeisen);
 // echo "</pre>";
 // echo"<pre>" ;print_r($parameter);
 
@@ -145,7 +147,7 @@ if($parameter[0]=="allergene") {
     if(!$alleAktivenSpeisen){//abfragen ob mind. 1 Speise existiert
         fehler("Keine Speisen zum Anzeigen vorhanden");
     } else {
-        $daten = alleSpeisen();         
+        $daten = $speisen -> alleElementeMitKatMep();
     }
     echo json_encode($daten);
     exit;
@@ -154,35 +156,68 @@ if($parameter[0]=="allergene") {
     if(!$alleAktivenGetraenke){//abfragen ob mind. 1 getraenk existiert
         fehler("Keine Getränke zum Anzeigen vorhanden");
     } else {
-        $daten = alleDrinks();         
+        $daten = $getraenke -> alleElementeMitKatMep();         
         
     }
     echo json_encode($daten);
     exit;
 }else if($parameter[0]=="products") {
     if (empty($parameter[1])) {
-        fehler("Nach der Methode wurde keine Sub-Methode übergeben. Prüfen Sie Ihren Aufruf!");
+        fehler("Nach der Methode wurde keine Sub-Methode übergeben (/list oder /id) . Prüfen Sie Ihren Aufruf!");
     } else if($parameter[1]=="list"){
-        $daten=alleSpeisen();
-        $daten=array_merge($daten, alleDrinks());
+        $daten = $speisen ->alleElementeMitKatMep();
+        $daten=array_merge($daten, $getraenke -> alleElementeMitKatMep());
         echo json_encode($daten);
         exit;
+    } else if((int)($parameter[1])!=0){
+        try{
+            $produkt= new Speise((int)($parameter[1]));
+            echo json_encode($produkt->detailsProdukt());
+        } catch (Exception $e) {
+            fehler($e->getMessage());
+        }
+        
+        exit;
     } else {
-        fehler("Nach der Methode wurde eine falsche Sub-Methode/ID übergeben. Prüfen Sie Ihren Aufruf!");
+        fehler("Nach der Methode wurde eine falsche Sub-Methode/ID ( /list oder /id) übergeben. Prüfen Sie Ihren Aufruf!");
     }
 } else if($parameter[0]=="categories"){
-    if($parameter[1]=="list"){
-        foreach($alleKategoriern as $key=> $kat){
+    if(empty($parameter[1])){
+        fehler("Nach der Methode Categories muss entweder /list oder /id stehen");
+    } else if($parameter[1]=="list"){
+        foreach($alleKategorien as $key=> $kat){
             $daten[$key]["typ"] = $kat->getSpalte("typ");
             $daten[$key]["name"] = $kat->getSpalte("name");
             $daten[$key]["beschreibung"] = $kat->getSpalte("beschreibung");
         }
         echo json_encode($daten);
         exit;        
-    } else if(is_int($parameter[1])){
-        // überprüfen ob es die Zahl gibt sons fehlermeldung einzelne kat ausgeben
+    } else if(!empty($parameter[2]) && $parameter[2]=="products" && (int)($parameter[1])!=0 ){
+        $kat = new Kat((int)$parameter[1]);
+        if ($kat->zugehoerigeProdukte()){
+            echo json_encode($kat->zugehoerigeProdukte());
+            exit;
+        } else {
+            fehler("Keine Speisen zur Kategorie vorhanden");
+        }
+        // überprüfen ob es die Zahl gibt sonst fehlermeldung einzelne kat ausgeben
+    } else if (!empty($parameter[2]) && $parameter[2]!="products"){
+        fehler("Der 2. Parameter nach categories existiert nicht sollte /products sein");
+    } else if ((int)($parameter[1])!=0){
+        try{
+            $kat = new Kat((int)$parameter[1]);
+            $daten["name"]=$kat->getSpalte("name");
+            $daten["beschreibung"]=$kat->getSpalte("beschreibung");
+            $daten["typ"]=$kat->getSpalte("typ");
+            $daten["aktiv"]=$kat->getSpalte("aktiv");
+            echo json_encode($daten);
+            exit;
+        } catch (Exception $e){
+            fehler($e->getMessage());
+        } 
+                    
     } else {
-        fehler("Nach der Methode wurde eine falsche Sub-Methode/Id übergeben. Prüfen Sie Ihren Aufruf!");
+        fehler("Nach der Methode Categories muss entweder /list oder eine /id stehen");
     }
 }else {
     fehler("Keine Passende Methode übergeben. Prüfen Sie Ihren Aufruf!");
@@ -200,153 +235,153 @@ if($parameter[0]=="allergene") {
 // }
 // echo "<br><br><br><br><br>"; 
 
-function alleSpeisen (){
-    global $alleAktivenSpeisen, $bzAllergene, $alleAllergene;
-    $daten=array();
-        $j=0;
-        $vorherigeId="-1";
-        foreach ($alleAktivenSpeisen as $speise){
-            if($vorherigeId==$speise["speise_id"]){
-                // mep hinzufügen zu $daten-Array
+// function alleSpeisen (){
+//     global $alleAktivenSpeisen, $bzAllergene, $alleAllergene;
+//     $daten=array();
+//         $j=0;
+//         $vorherigeId="-1";
+//         foreach ($alleAktivenSpeisen as $speise){
+//             if($vorherigeId==$speise["speise_id"]){
+//                 // mep hinzufügen zu $daten-Array
 
-                $mep[]=array(
-                    "menge" => zwei_kommastellen($speise["menge"]),
-                    "eName" => $speise["eName"],
-                    "eKuerzel" => $speise["kuerzel"],
-                    "preis" => zwei_kommastellen($speise["preis"]) 
-                );
-            } else if(!empty($mep)) {
-                // mep(s) in $daten ablegen
-                $daten[$j]["mengeEinheitPreis"]=$mep;
-                $j++;
-                unset($mep);
-            }
-            $daten[$j]["sName"]=$speise["sName"];
-            $daten[$j]["sBeschreibung"]=$speise["sBeschreibung"];
+//                 $mep[]=array(
+//                     "menge" => zwei_kommastellen($speise["menge"]),
+//                     "eName" => $speise["eName"],
+//                     "eKuerzel" => $speise["kuerzel"],
+//                     "preis" => zwei_kommastellen($speise["preis"]) 
+//                 );
+//             } else if(!empty($mep)) {
+//                 // mep(s) in $daten ablegen
+//                 $daten[$j]["mengeEinheitPreis"]=$mep;
+//                 $j++;
+//                 unset($mep);
+//             }
+//             $daten[$j]["sName"]=$speise["sName"];
+//             $daten[$j]["sBeschreibung"]=$speise["sBeschreibung"];
                 
-            // Allergene
-                $speiseAllergene=$bzAllergene->alleElemente($speise["speise_id"]);
+//             // Allergene
+//                 $speiseAllergene=$bzAllergene->alleElemente($speise["speise_id"]);
 
-                $ag=array();
-                foreach ($alleAllergene as $allergen){
-                $vorhanden=false;
-                    if($speiseAllergene){
-                        foreach ($speiseAllergene as $speiseAllergen){
-                            if ($speiseAllergen["allergen_id"] == $allergen->getSpalte("allergen_id")){
-                                $vorhanden=true;
-                            }
-                        }
-                    }
-                    if ($vorhanden){
-                        $aktiv=1; //die speise hat dieses Allergen
-                    } else {
-                        $aktiv=0;
-                    }
-                    $ag[]=array(
-                        "klasse" => $allergen->getSpalte("klasse"),
-                        "name" => $allergen->getSpalte("name"),
-                        "beschreibung" => $allergen->getSpalte("beschreibung"),
-                        "sBeinhaltetA" => $aktiv
-                    );
+//                 $ag=array();
+//                 foreach ($alleAllergene as $allergen){
+//                 $vorhanden=false;
+//                     if($speiseAllergene){
+//                         foreach ($speiseAllergene as $speiseAllergen){
+//                             if ($speiseAllergen["allergen_id"] == $allergen->getSpalte("allergen_id")){
+//                                 $vorhanden=true;
+//                             }
+//                         }
+//                     }
+//                     if ($vorhanden){
+//                         $aktiv=1; //die speise hat dieses Allergen
+//                     } else {
+//                         $aktiv=0;
+//                     }
+//                     $ag[]=array(
+//                         "klasse" => $allergen->getSpalte("klasse"),
+//                         "name" => $allergen->getSpalte("name"),
+//                         "beschreibung" => $allergen->getSpalte("beschreibung"),
+//                         "sBeinhaltetA" => $aktiv
+//                     );
                     
-                }
-            $daten[$j]["allergene"]=$ag;
+//                 }
+//             $daten[$j]["allergene"]=$ag;
 
-            // Kategorie Einheit Preis Typ 
-            $daten[$j]["Typ"] = $speise["typ"];
-            $daten[$j]["kName"] = $speise["kName"];
-            $daten[$j]["kBeschreibung"] = $speise["kBeschreibung"];
+//             // Kategorie Einheit Preis Typ 
+//             $daten[$j]["Typ"] = $speise["typ"];
+//             $daten[$j]["kName"] = $speise["kName"];
+//             $daten[$j]["kBeschreibung"] = $speise["kBeschreibung"];
 
-                // $mep=array();
-                if(empty($mep)){
-                    $mep[]=array(
-                        "menge" => $speise["menge"],
-                        "eName" => $speise["eName"],
-                        "eKuerzel" => $speise["kuerzel"],
-                        "preis" => zwei_kommastellen($speise["preis"]) 
-                    );
-                }
+//                 // $mep=array();
+//                 if(empty($mep)){
+//                     $mep[]=array(
+//                         "menge" => $speise["menge"],
+//                         "eName" => $speise["eName"],
+//                         "eKuerzel" => $speise["kuerzel"],
+//                         "preis" => zwei_kommastellen($speise["preis"]) 
+//                     );
+//                 }
 
-                $vorherigeId=$speise["speise_id"];
-        }
-        // mep für letzten Datensatz hinzufügen
-        $daten[$j]["mengeEinheitPreis"]=$mep;
-        return $daten;
-}
+//                 $vorherigeId=$speise["speise_id"];
+//         }
+//         // mep für letzten Datensatz hinzufügen
+//         $daten[$j]["mengeEinheitPreis"]=$mep;
+//         return $daten;
+// }
 
-function alleDrinks(){
-    global $alleAktivenGetraenke, $bzAllergeneGetraenke, $alleAllergene ;
-    $daten=array();
-    $j=0;
-    $vorherigeId="-1";
-    foreach ($alleAktivenGetraenke as $getraenk){
-        if($vorherigeId==$getraenk["getraenk_id"]){
-            // mep hinzufügen zu $daten-Array
+// function alleDrinks(){
+//     global $alleAktivenGetraenke, $bzAllergeneGetraenke, $alleAllergene ;
+//     $daten=array();
+//     $j=0;
+//     $vorherigeId="-1";
+//     foreach ($alleAktivenGetraenke as $getraenk){
+//         if($vorherigeId==$getraenk["getraenk_id"]){
+//             // mep hinzufügen zu $daten-Array
 
-            $mep[]=array(
-                "menge" => zwei_kommastellen($getraenk["menge"]),
-                "eName" => $getraenk["eName"],
-                "eKuerzel" => $getraenk["kuerzel"],
-                "preis" => zwei_kommastellen($getraenk["preis"]) 
-            );
-        } else if(!empty($mep)) {
-            // mep(s) in $daten ablegen
-            $daten[$j]["mengeEinheitPreis"]=$mep;
-            $j++;
-            unset($mep);
-        }
-        $daten[$j]["gName"]=$getraenk["gName"];
-        $daten[$j]["gBeschreibung"]=$getraenk["gBeschreibung"];
+//             $mep[]=array(
+//                 "menge" => zwei_kommastellen($getraenk["menge"]),
+//                 "eName" => $getraenk["eName"],
+//                 "eKuerzel" => $getraenk["kuerzel"],
+//                 "preis" => zwei_kommastellen($getraenk["preis"]) 
+//             );
+//         } else if(!empty($mep)) {
+//             // mep(s) in $daten ablegen
+//             $daten[$j]["mengeEinheitPreis"]=$mep;
+//             $j++;
+//             unset($mep);
+//         }
+//         $daten[$j]["gName"]=$getraenk["gName"];
+//         $daten[$j]["gBeschreibung"]=$getraenk["gBeschreibung"];
             
-        // Allergene
-            $getraenkAllergene=$bzAllergeneGetraenke->alleElemente($getraenk["getraenk_id"]);
+//         // Allergene
+//             $getraenkAllergene=$bzAllergeneGetraenke->alleElemente($getraenk["getraenk_id"]);
 
-            $ag=array();
-            foreach ($alleAllergene as $allergen){
-            $vorhanden=false;
-                if($getraenkAllergene){
-                    foreach ($getraenkAllergene as $getraenkAllergen){
-                        if ($getraenkAllergen["allergen_id"] == $allergen->getSpalte("allergen_id")){
-                            $vorhanden=true;
-                        }
-                    }
-                }
-                if ($vorhanden){
-                    $aktiv=1; //die getraenk hat dieses Allergen
-                } else {
-                    $aktiv=0;
-                }
-                $ag[]=array(
-                    "klasse" => $allergen->getSpalte("klasse"),
-                    "name" => $allergen->getSpalte("name"),
-                    "beschreibung" => $allergen->getSpalte("beschreibung"),
-                    "gBeinhaltetA" => $aktiv
-                );
+//             $ag=array();
+//             foreach ($alleAllergene as $allergen){
+//             $vorhanden=false;
+//                 if($getraenkAllergene){
+//                     foreach ($getraenkAllergene as $getraenkAllergen){
+//                         if ($getraenkAllergen["allergen_id"] == $allergen->getSpalte("allergen_id")){
+//                             $vorhanden=true;
+//                         }
+//                     }
+//                 }
+//                 if ($vorhanden){
+//                     $aktiv=1; //die getraenk hat dieses Allergen
+//                 } else {
+//                     $aktiv=0;
+//                 }
+//                 $ag[]=array(
+//                     "klasse" => $allergen->getSpalte("klasse"),
+//                     "name" => $allergen->getSpalte("name"),
+//                     "beschreibung" => $allergen->getSpalte("beschreibung"),
+//                     "gBeinhaltetA" => $aktiv
+//                 );
                 
-            }
-        $daten[$j]["allergene"]=$ag;
+//             }
+//         $daten[$j]["allergene"]=$ag;
 
-        // Kategorie Einheit Preis Typ 
-        $daten[$j]["Typ"] = $getraenk["typ"];
-        $daten[$j]["kName"] = $getraenk["kName"];
-        $daten[$j]["kBeschreibung"] = $getraenk["kBeschreibung"];
+//         // Kategorie Einheit Preis Typ 
+//         $daten[$j]["Typ"] = $getraenk["typ"];
+//         $daten[$j]["kName"] = $getraenk["kName"];
+//         $daten[$j]["kBeschreibung"] = $getraenk["kBeschreibung"];
 
-            // $mep=array();
-            if(empty($mep)){
-                $mep[]=array(
-                    "menge" => zwei_kommastellen($getraenk["menge"]),
-                    "eName" => $getraenk["eName"],
-                    "eKuerzel" => $getraenk["kuerzel"],
-                    "preis" => zwei_kommastellen($getraenk["preis"]) 
-                );
-            }
+//             // $mep=array();
+//             if(empty($mep)){
+//                 $mep[]=array(
+//                     "menge" => zwei_kommastellen($getraenk["menge"]),
+//                     "eName" => $getraenk["eName"],
+//                     "eKuerzel" => $getraenk["kuerzel"],
+//                     "preis" => zwei_kommastellen($getraenk["preis"]) 
+//                 );
+//             }
 
-            $vorherigeId=$getraenk["getraenk_id"];
-    }
-    // mep für letzten Datensatz hinzufügen
-    $daten[$j]["mengeEinheitPreis"]=$mep;
-    return $daten;
-}
+//             $vorherigeId=$getraenk["getraenk_id"];
+//     }
+//     // mep für letzten Datensatz hinzufügen
+//     $daten[$j]["mengeEinheitPreis"]=$mep;
+//     return $daten;
+// }
 
 
 

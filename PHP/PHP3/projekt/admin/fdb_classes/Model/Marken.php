@@ -9,7 +9,7 @@ use WIFI\Fdb\Mysql;
 class Marken {
 
     /**
-     * Gibt alle Fahrzeuge zurück
+     * Gibt alle Marken zurück
      * @return array ein Array mit mehreren Marken Objekten darin
      */
     public function alleMarken(): array {

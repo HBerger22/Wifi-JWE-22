@@ -14,7 +14,7 @@ const MYSQL_DB = "speisekarte";
 // const MYSQL_DB = "obinet_jwe_bh_db1";
 
 if(!empty($_SESSION["objekt"])){
-    if($_SESSION["objekt"]=="Speise"){
+    if($_SESSION["objekt"]=="speise"){
         $objektId="speise_id";
     } else {
         $objektId="getraenk_id";

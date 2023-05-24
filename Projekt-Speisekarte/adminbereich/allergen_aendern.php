@@ -31,32 +31,26 @@ if(!empty($_POST)){
             "klasse" => $_POST["klasse"]
         ));
 
-   
         // überprüfen ob sich etwas geändert hat, bin mir nicht ganz sicher ob das sinnvoll/zweckmässig ist?
             if(!empty($allergen) && $allergen -> objektVerschieden($allergenNeu) || (empty($allergen) && $allergenNeu-> datensatzExistiertBereits()) ){//abfragen ob die Einheit existiert
                 $fehler->fehlerDazu("Diese/s Einheit/Kürzel existiert bereits oder es wurde nichts geändert!");
-                // unset($_SESSION["e_bearbeiten"]);
             } else {
                 $allergenNeu -> speichern();
-                // $sql="UPDATE einheit set `name`='$sql_name', `kuerzel`='$sql_kuerzel' where `einheit_id`= {$sql_id}; ";
-                
-                // $result=$con->query($sql);
 
-                // $erfolg="Die Einheit wurde erfolgreich eingetragen.";
                 // variablen zurücksetzen
                 unset($_POST["name"]);
                 unset($_POST["klasse"]);
                 unset($_POST["beschr"]);
                 unset($_SESSION["a_bearbeiten"]);
+
                 // erfolgsmeldung an folgeseite übergeben.
                 $_SESSION["erfolg"] ="Die Einheit wurde erfolgreich gespeichert";
+
                 // umleiten auf die hauptseite
                 header("location: allergene.php");
                 exit();
             }
 
-            // $con->close();
-        // }
     }
 }
 
@@ -64,11 +58,6 @@ if(!empty($fehler->fehlerAufgetreten())){
     echo "<p style='color:red'>".$fehler->fehlerAusgabeHtml()."</p>";
 
 }
-// if(!empty($erfolg)){
-//     echo "<p style='color:green'>".$erfolg."</p>";
-//     header("refresh:5; einheiten.php");
-//     exit();
-// }
 ?>
 
 <form method='post'>
@@ -90,6 +79,4 @@ if(!empty($fehler->fehlerAufgetreten())){
 
 
 <?php
-
-
 include "fuss.php";

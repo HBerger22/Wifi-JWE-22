@@ -28,19 +28,13 @@ if(!empty($_POST)){
             "name" => $_POST["name"],
             "kuerzel" => $_POST["kuerzel"]
         ));
-
    
         // überprüfen ob sich etwas geändert hat, bin mir nicht ganz sicher ob das sinnvoll/zweckmässig ist?
             if(!empty($einheit) && $einheit -> objektVerschieden($einheitNeu) || (empty($einheit) && $einheitNeu-> datensatzExistiertBereits()) ){//abfragen ob die Einheit existiert
                 $fehler->fehlerDazu("Diese/s Einheit/Kürzel existiert bereits oder es wurde nichts geändert!");
-                // unset($_SESSION["e_bearbeiten"]);
             } else {
                 $einheitNeu -> speichern();
-                // $sql="UPDATE einheit set `name`='$sql_name', `kuerzel`='$sql_kuerzel' where `einheit_id`= {$sql_id}; ";
-                
-                // $result=$con->query($sql);
 
-                // $erfolg="Die Einheit wurde erfolgreich eingetragen.";
                 // variablen zurücksetzen
                 unset($_POST["name"]);
                 unset($_POST["kuerzel"]);
@@ -52,8 +46,6 @@ if(!empty($_POST)){
                 exit();
             }
 
-            // $con->close();
-        // }
     }
 }
 
@@ -61,11 +53,6 @@ if(!empty($fehler->fehlerAufgetreten())){
     echo "<p style='color:red'>".$fehler->fehlerAusgabeHtml()."</p>";
 
 }
-// if(!empty($erfolg)){
-//     echo "<p style='color:green'>".$erfolg."</p>";
-//     header("refresh:5; einheiten.php");
-//     exit();
-// }
 ?>
 
 <form method='post'>
@@ -79,10 +66,5 @@ if(!empty($fehler->fehlerAufgetreten())){
     </div>
     <button type="submit">Einheit speichern</button>
 </form>
-
-
-
 <?php
-
-
 include "fuss.php";
