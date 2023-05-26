@@ -58,7 +58,7 @@ if(!empty($fehler->fehlerAufgetreten())){
 <form method='post'>
     <div>
         <label class="form_beschriftung" for="name">Einheit ausgeschrieben: </label>
-        <input type="text" name="name" id="name" value="<?php if(!empty($einheit)){ echo $einheit -> getSpalte("name");}else if (!empty( $_POST["name"] )) {echo  $_POST["name"]; }  ?>">
+        <input autofocus type="text" name="name" id="name" value="<?php if(!empty($einheit)){ echo $einheit -> getSpalte("name");}else if (!empty( $_POST["name"] )) {echo  $_POST["name"]; }  ?>">
     </div>
     <div>
         <label class="form_beschriftung" for="kuerzel">Einheit Kürzel: </label>

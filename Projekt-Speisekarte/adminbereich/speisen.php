@@ -102,7 +102,7 @@ if(!empty($_POST["aktivieren"])){
         if (!empty($_POST["cb".$speise->getSpalte($objektId)])){
             $erfolgreich=$speise -> akDeakSpeise(1,$_SESSION["objekt"]);
             if(!$erfolgreich){
-                $fehler->fehlerDazu( "{$_SESSION["objekt"]} {$speise->getSpalte("name")} kann nicht aktiviert werden solange es keinen MEP (Menge/Einheit/Preis) gibt!");
+                $fehler->fehlerDazu( "{$_SESSION["objekt"]}: {$speise->getSpalte("name")} kann nicht aktiviert werden solange es keine aktive MEP (Menge/Einheit/Preis) gibt!");
             }
         } else {
             $speise -> akDeakSpeise(0,$_SESSION["objekt"]);
@@ -126,7 +126,7 @@ if(!$alleAllergene){
 {
     if(empty($_POST["s_loeschen"]) && empty($_POST["s_loeschen_bestaetigung"])){
         echo "<form method='post'>";
-            echo '<button class="sub_buttons" type="submit" name="hinzu" value="1">'.$_SESSION["objekt"].' hinzufügen</button>';
+            echo '<button autofocus class="sub_buttons" type="submit" name="hinzu" value="1">'.$_SESSION["objekt"].' hinzufügen</button>';
         if(!$alleSpeisen){//abfragen ob mind. 1 Speise existiert
             $fehler->fehlerDazu("Keine {$_SESSION["objekte"]} zum anzeigen vorhanden!");
         } else {

@@ -15,7 +15,6 @@ $('#sod').click(function(){
         // Einblenden des Filters und mittigsetzen des Schalters bei ansicht der Speisen
         // $('#menu').css('display', 'flex');
         // $('#auswahl').css('margin-left' , '43px')
-        
     }
 });
 
@@ -32,13 +31,20 @@ $('#menu img').click(function(){
 
 // Bei änderung der Fensterbreite soll bei eine Breite von  > 700 unbedingt speisen und drinks eingeblendet werden.
 $(window).resize(function(){
-    // console.log("window resize"+ $(window).width());
+    console.log("sod prop: "+$('#sod:checked').length );
     if ($(window).width()>700){
         $('#drinks').css('display', 'flex');
         $('#speisen').css('display', 'flex');
         $('#sod').prop( "checked", false );
-    } else {
-        $('#drinks').css('display', 'none');
+    } else if ($(window).width()<700){
+        if($('#sod:checked').length ==1){
+            $('#speisen').css('display', 'none');
+            $('#drinks').css('display', 'flex');
+        } else {
+            $('#speisen').css('display', 'flex');
+            $('#drinks').css('display', 'none');
+        }
+
     }
 })
 
@@ -48,7 +54,7 @@ let aMenu=''; //altes Menu
 // $('button').click(function(event){
     // let taste=event.target.id;
 function einAusblenden(taste){
-    let uMenu='#'+taste+'u'; //uMenu = Untermenu z.b.: s1u
+    let uMenu='#'+taste+'u'; //uMenu = Untermenu z.b.: s1u (id des ul tags)
     if (aMenu==''){ //wenn kein untermenu ausgeklappt ist, öffne das neue Menu
         $(uMenu).css({
             'display':'block',
@@ -142,8 +148,8 @@ function einAusblenden(taste){
 // Zugang zum Verwaltungsbereich durch klick auf das Schlossymbol im footer
     $('footer span').click(function(){
         // $('#test').html('111 u ');
-        window.open('adminbereich/index.php','_self');
-        // window.open('https://bergerhe.jwe.obinet.at/projekt/adminbereich/index.php','_self');
+        // window.open('adminbereich/index.php','_self');
+        window.open('https://bergerhe.jwe.obinet.at/projekt/adminbereich/index.php','_self');
     });
 
 // allgemeine Funktionen

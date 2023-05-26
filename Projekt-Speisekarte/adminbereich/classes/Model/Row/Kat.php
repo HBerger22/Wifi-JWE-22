@@ -62,10 +62,9 @@ class Kat extends RowAbstract{
      * @param Kat $ds1 datensatz 1
      * @return bool
      */
-    public function objektVerschieden(Kat $ds1){
-        if (($ds1 -> getSpalte("name") == $this->daten["name"] && $ds1 -> getSpalte("beschreibung") == $this->daten["beschreibung"] && $ds1 -> getSpalte("typ") == $this->daten["typ"]) || 
-        (($ds1 -> getSpalte("name") == $this->daten["name"] || $ds1 -> getSpalte("beschreibung") == $this->daten["beschreibung"]) && $ds1 -> getSpalte("kategorie_id") != $this->daten["kategorie_id"] )){
-            // echo "Fehler kommt von objektVerschieben <br>";
+    public function objektVerschieden(Kat $ds1){ // Überprüfen ob (Name==Name und Beschr==Beschr und Typ==Typ) oder ((name==name oder beschr==beschr) und Kat_id!=kat_id)
+        if (($ds1 -> getSpalte("name") == $this->daten["name"] && $ds1 -> getSpalte("beschreibung") == $this->daten["beschreibung"] && $ds1 -> getSpalte("typ") == $this->daten["typ"] && $ds1 -> getSpalte("reihenfolge") == $this->daten["reihenfolge"]) || 
+        (($ds1 -> getSpalte("name") == $this->daten["name"] || $ds1 -> getSpalte("beschreibung") == $this->daten["beschreibung"] || $ds1 -> getSpalte("reihenfolge") == $this->daten["reihenfolge"]) && $ds1 -> getSpalte("kategorie_id") != $this->daten["kategorie_id"] )){
             return true;
         } else {
             return false;

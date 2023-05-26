@@ -112,7 +112,7 @@ if($fehler->fehlerAufgetreten()){
 if(empty($_POST["mep_loeschen"]) && empty($_POST["mep_loeschen_bestaetigung"])){
 
         echo "<form method='post'>";
-            echo '<button class="sub_buttons" type="submit" name="hinzu" value="1">Menge/Einheit/Preis hinzufügen</button>';
+            echo '<button autofocus class="sub_buttons" type="submit" name="hinzu" value="1">Menge/Einheit/Preis hinzufügen</button>';
             if(!$alleMep){//abfragen MEP existieren
                 $fehler -> fehlerDazu("Keine Menge/Einheit/Preis zum anzeigen vorhanden!");
             } else {

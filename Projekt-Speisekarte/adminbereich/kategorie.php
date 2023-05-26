@@ -1,4 +1,3 @@
-
 <?php
 
 use WIFI\SK\Model\Kategorien;
@@ -100,7 +99,7 @@ if($fehler->fehlerAufgetreten()){
 if(empty($_POST["k_loeschen"]) && empty($_POST["k_loeschen_bestaetigung"])){
 
         echo "<form method='post'>";
-            echo '<button class="sub_buttons" type="submit" name="hinzu" value="1">Kategorie hinzufügen</button>';
+            echo '<button autofocus class="sub_buttons" type="submit" name="hinzu" value="1">Kategorie hinzufügen</button>';
             if(!$alleElemente){//abfragen ob Kategorien existieren
                 $fehler -> fehlerDazu("Keine Kategorie zum anzeigen vorhanden!");
             } else {
@@ -113,6 +112,7 @@ if(empty($_POST["k_loeschen"]) && empty($_POST["k_loeschen_bestaetigung"])){
                             echo "<th> bearbeiten </th> ";   
                             echo "<th> löschen </th> ";
                             echo "<th> Typ </th> ";
+                            echo "<th> Reihenfolge </th> ";
                             echo "<th> Name </th> ";
                             echo "<th> Beschreibung </th> ";
                         echo "<thead>";
@@ -134,6 +134,7 @@ if(empty($_POST["k_loeschen"]) && empty($_POST["k_loeschen_bestaetigung"])){
                                         '<button class="mini_buttons" type="submit" name="k_loeschen" value="'.$kategorie->getSpalte("kategorie_id").'">l</button>' 
                                         . "</td>";
                                     echo "<td align='center'>" . $kategorie->getSpalte("typ"). "</td>";
+                                    echo "<td align='center'>" . $kategorie->getSpalte("reihenfolge"). "</td>";
                                     echo "<td align='center'>" . $kategorie->getSpalte("name"). "</td>";
                                     echo "<td align='center'>" . $kategorie->getSpalte("beschreibung"). "</td>";
                                 echo "</tr> ";

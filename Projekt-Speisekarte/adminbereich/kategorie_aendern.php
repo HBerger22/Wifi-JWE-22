@@ -6,8 +6,6 @@ use WIFI\SK\Validieren;
 
 include "kopf.php";
 
-
-
 $fehler = new Validieren;
 
 // sicherheitsüberprüfung ob die übergebene id existiert
@@ -20,11 +18,12 @@ if(!empty($_SESSION["k_bearbeiten"])){
 
 echo "<h1>Kategorie {$tun} </h1>";
 
-// Bearbeitete Kategorie wurde übergeben
+// Bearbeitete/neue Kategorie wurde übergeben
 if(!empty($_POST)){
     $fehler -> istAusgefuellt($_POST["name"],"Name");
     $fehler -> istAusgefuellt($_POST["beschr"],"Beschreibung");
     $fehler -> istAusgefuellt($_POST["typ"],"Typ");
+    $fehler -> istAusgefuellt($_POST["reihenfolge"],"Reihenfolge");
     if(!empty($_POST["aktiv"])) $aktiv=1; else $aktiv=0;
 
     if(!$fehler->fehlerAufgetreten()){   //Felder dürfen nicht leer sein.
@@ -36,6 +35,7 @@ if(!empty($_POST)){
             "name" => $_POST["name"],
             "beschreibung" => $_POST["beschr"],
             "typ" => $_POST["typ"],
+            "reihenfolge" => $_POST["reihenfolge"],
             "aktiv" => $aktiv
         ));
   
@@ -46,6 +46,7 @@ if(!empty($_POST)){
             // variablen zurücksetzen
             unset($_POST["name"]);
             unset($_POST["beschr"]);
+            unset($_POST["reihenfolge"]);
             unset($_SESSION["k_bearbeiten"]);
             // erfolgsmeldung an folgeseite übergeben.
             $_SESSION["erfolg"] ="Die Kategorie wurde erfolgreich geändert";
@@ -58,18 +59,21 @@ if(!empty($_POST)){
 
 if($fehler->fehlerAufgetreten()){
     echo "<p style='color:red'>".$fehler->fehlerAusgabeHtml()."</p>";
-
 }
 ?>
 
 <form method='post'>
     <div>
         <label class="form_beschriftung" for="name">Kategorie ausgeschrieben: </label>
-        <input type="text" name="name" id="name" value="<?php if(!empty($kat)){ echo $kat -> getSpalte("name");} else if (!empty( $_POST["name"] )) {echo  $_POST["name"]; } ?>">
+        <input autofocus type="text" name="name" id="name" value="<?php if(!empty($kat)){ echo $kat -> getSpalte("name");} else if (!empty( $_POST["name"] )) {echo  $_POST["name"]; } ?>">
     </div>
     <div>
         <label class="form_beschriftung" for="beschr">Kategorie Beschreibung: </label>
         <input type="text" name="beschr" id="beschr" value="<?php if(!empty($kat)){ echo $kat -> getSpalte("beschreibung");}else if (!empty( $_POST["beschr"] )) {echo  $_POST["beschr"]; } ?>">
+    </div>
+    <div>
+        <label class="form_beschriftung" for="reihenfolge">Reihenfolge: </label>
+        <input type="number" step="1" min="0" name="reihenfolge" id="reihenfolge" value="<?php if(!empty($kat)){ echo $kat -> getSpalte("reihenfolge");}else if (!empty( $_POST["reihenfolge"] )) {echo  $_POST["reihenfolge"]; } ?>">
     </div>
     <div>
         <label class="form_beschriftung" for="typ">Typ:</label>

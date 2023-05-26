@@ -89,7 +89,7 @@ abstract class SGModelAbstract extends ModelAbstract{
                             "klasse" => $allergen->getSpalte("klasse"),
                             "name" => $allergen->getSpalte("name"),
                             "beschreibung" => $allergen->getSpalte("beschreibung"),
-                            "sBeinhaltetA" => $aktiv
+                            "pBeinhaltetA" => $aktiv
                         );
                         
                     }

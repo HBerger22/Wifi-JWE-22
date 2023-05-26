@@ -59,3 +59,20 @@
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
 }
+
+@media screen and (min-width: 1280px) {
+    .checkmark {
+        top: 0px;
+        left: 5px;
+        height: 16px;
+        width: 16px;
+    }
+
+    .allergene .checkmark:after{
+        left: 5px;
+        top: 1px;
+        width: 3px;
+        height: 10px;
+    }
+
+}

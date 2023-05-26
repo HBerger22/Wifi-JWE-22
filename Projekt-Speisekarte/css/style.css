@@ -40,15 +40,11 @@ html, body{
 }
 body{
     background-color: var(--hauptfarbe);
-    background:url(../img/HG_Hochformat_hell2.jpg) no-repeat;
-    background-size: 1000px;
+    background:url(../img/HG_Hochformat_hell2.jpg) no-repeat center;
 
-    /* background-position: bottom; */
-    /* font-family: joe; /*Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; */
-    /* overflow-y: hidden; */
+    font-family: joe; 
     font-size: 14px;
     color:white;
-    
 }
 
 #header_sprache{
@@ -82,7 +78,6 @@ h1{
     border-radius: 50%;
     height: 25px;
 }
-
 
 #speisen, #drinks{
     display: flex;
@@ -131,7 +126,6 @@ button{
     padding: 10px 0px;
     width: 250px;
     border-radius: 30px;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     font-size: 16px;
     font-weight: bold;
 }
@@ -139,34 +133,34 @@ button{
 #s1{
     background-color: var(--mittag);    
 }
-#s2,#d1{
+#s2,#d4{
     background-color: var(--vorspeise);    
 }
-#s3{
+#s3,#d2{
     background-color: var(--suppe);    
 }
-#s4, #d2{
+#s4,#d9{
     background-color: var(--salat);
 }
-#s5,#d4{
+#s5,#d3{
     background-color: var(--grill);
 }
 #s6,#d5{
     background-color: var(--fisch);    
 }
-#s7{
+#s7,#d6{
     background-color: var(--klassik);
 }
-#s8,#d3{
+#s8,#d1{
     background-color: var(--vegan);
 }
-#s9{
+#s9,#d7{
     background-color: var(--jause);
 }
-#s10{
+#s10,#d8{
     background-color: var(--kinder);    
 }
-#s11{
+#s11,#d10{
     background-color: var(--nachtisch);
 }
 
@@ -213,6 +207,8 @@ li{
 .details{
     font-size: 12px;
     padding-bottom: 4px;
+    margin-top: 8px;
+    margin-bottom: 10px;
 }
 .preis{
     text-align: right;
@@ -224,6 +220,7 @@ li{
     display: flex;
     justify-content: space-between;
     /* font-size: small; */
+    width: 220px;
 }
 .einheit{
     margin-left: 20px;
@@ -232,7 +229,12 @@ li{
 
 footer{
     text-align: center;
-    margin: 10px 0px;
+    margin-bottom: 10px;
+    margin-top:20px ;
+
+}
+footer div{
+    padding-top: 10px;
 }
 
 footer span:hover{
@@ -324,7 +326,6 @@ a{
     }
 
 
-
     #innerWrapper{
         /* Max width auf 1024 setzen und im Mediascreen für handy auf 250px setzen */
         max-width: 600px;
@@ -333,13 +334,18 @@ a{
     }
 }
 
-@media screen and (min-width: 1000px) {
-    h1{
+@media screen and (min-width: 1280px) {
+    body{
+        font-size: 1.5em;
+    }
+    /* h1{
         font-size: 40px;
         font-weight: bold;
-    }
+    } */
     .details, #f_allergene{
         /* font-size: 20px; */
+        /* font-size: unset; */
+        font-size: smaller;
         padding-bottom: 6px;
     }
 
@@ -351,11 +357,18 @@ a{
     }
     
     button{
-        width: 400px;
+        font-size:x-large;
+        letter-spacing: 3px;
+        width:400px ;
     }
 
     ul{
-        max-width: 350px;
+        width: 380px;
+        max-width: 380px;
+    }
+
+    .preiseinheit{
+        width: 350px;
     }
 
     #menu img{
@@ -363,7 +376,6 @@ a{
     }
 
     #innerWrapper{
-        /* Max width auf 1024 setzen und im Mediascreen für handy auf 250px setzen */
-        max-width: 1200px;    
+        max-width: 1280px;    
     }
 }

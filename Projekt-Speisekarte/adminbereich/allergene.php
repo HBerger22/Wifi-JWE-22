@@ -1,4 +1,3 @@
-
 <?php
 
 use WIFI\SK\Validieren;
@@ -83,7 +82,7 @@ if($fehler->fehlerAufgetreten()){
 if(empty($_POST["a_loeschen"]) && empty($_POST["a_loeschen_bestaetigung"])){
 
     echo "<form method='post'>";
-        echo '<button class="sub_buttons" type="submit" name="hinzu" value="1">Allergen hinzufügen</button>';
+        echo '<button autofocus class="sub_buttons" type="submit" name="hinzu" value="1">Allergen hinzufügen</button>';
         if(!$alleElemente){//abfragen Einheiten existieren
             
             $fehler -> fehlerDazu("Kein Allergen zum anzeigen vorhanden!");

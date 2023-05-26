@@ -8,7 +8,7 @@ use WIFI\SK\Model\Row\Speise;
 class Speisen extends SGModelAbstract{
     protected string $tabelle = "speise";
     protected string $tabellenId = "speise_id";
-    protected string $sqlOrder = " order by aktiv desc, `name` asc ";
+    protected string $sqlOrder = " order by aktiv asc, `name` asc ";
     protected string $rowObjekt = "Speise";
 
     protected string $sqlAlleAktivenElementeTeil1 = "SELECT s.speise_id, s.name, s.beschreibung, menge, preis, k.name as kName, k.beschreibung as kBeschreibung, k.typ, e.name as eName, e.kuerzel from ";

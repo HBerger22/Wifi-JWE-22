@@ -128,7 +128,7 @@ if($fehler->fehlerAufgetreten()){
 <form method='post'>
     <div>
         <label class="form_beschriftung" for="name"> <?php echo $_SESSION["objekt"] ?> namen: </label>
-        <input type="text" name="name" id="name" value="<?php if(!empty($speise)){ echo $speise -> getSpalte("name");} else if (!empty( $_POST["name"] )) {echo  $_POST["name"]; } ?>">
+        <input autofocus type="text" name="name" id="name" value="<?php if(!empty($speise)){ echo $speise -> getSpalte("name");} else if (!empty( $_POST["name"] )) {echo  $_POST["name"]; } ?>">
     </div>
     <div>
         <label class="form_beschriftung" for="beschr"> Beschreibung: </label>
@@ -137,7 +137,7 @@ if($fehler->fehlerAufgetreten()){
 
     <div><!-- Kategorie (Vorspeise, Suppe, ...))  -->
         <label class="form_beschriftung" for="kategorie">Kategorie:</label>
-        <select name="kategorie" size="5">
+        <select name="kategorie" id="kategorie" size="5">
             <option value="" <?php if(empty($speise) || empty($_POST["kategorie"])) {echo ' selected ';} ?>>- Bitte wählen -</option>
             <?php 
                 // $bzKatExistiert = $bzKEP->zugehörigeKat($speise->getSpalte("speise_id"));
@@ -158,7 +158,7 @@ if($fehler->fehlerAufgetreten()){
                 $i=1;
                 foreach($alleAllergene as $allergen){
                     $allergen->setTyp($objektId);
-                    echo "<input type='checkbox' name='allergen_{$allergen->getSpalte("klasse")}' value='allergen_{$allergen->getSpalte("klasse")}'";
+                    echo "<input type='checkbox' name='allergen_{$allergen->getSpalte("klasse")}' id='allergen_{$allergen->getSpalte("klasse")}' value='allergen_{$allergen->getSpalte("klasse")}'";
                     if((!empty($speise) && $allergen->existiertVerbindungZuSpeise($speise->getSpalte($objektId))) || !empty( $_POST["allergen_{$allergen->getSpalte("klasse")}"] )   ){ 
                         echo " checked ";
                     }

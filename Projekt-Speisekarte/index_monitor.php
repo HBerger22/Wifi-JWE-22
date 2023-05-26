@@ -1,5 +1,5 @@
 <?php
-header("refresh:15; index_monitor.php");
+header("refresh:5; index_monitor.php");
 session_start();
 if(empty($_SESSION["typ"])){
     $_SESSION["typ"]="speise";
@@ -73,7 +73,7 @@ $zaehler=0;    // Zähler für die verschiedenen Farben der Kategorien
 $divZaehler=0; // Zähler für die <div> elemente
 
 $htmlInhalt="<div>";
-$zeichenProDiv=1100; //anzahl der zeichen im $htmlInhalt bevor ein neuer Div Tag erzeugt wird 
+$zeichenProDiv=1050; //anzahl der zeichen im $htmlInhalt bevor ein neuer Div Tag erzeugt wird 
 
 // verarbeitung der Speisen
     foreach($alleSpeisen as $entry ){
@@ -104,7 +104,7 @@ $zeichenProDiv=1100; //anzahl der zeichen im $htmlInhalt bevor ein neuer Div Tag
         $alText="";
         // $alKlasse="";
         foreach($entry["allergene"] as $indexA => $entryA ) {
-            if($entry["allergene"][$indexA]["sBeinhaltetA"]==1){
+            if($entry["allergene"][$indexA]["pBeinhaltetA"]==1){
                 if ($alText==""){
                     $alText="(". $entryA["klasse"];
                 } else {
@@ -171,7 +171,7 @@ $htmlInhalt="<div>";
         $alText="";
         // $alKlasse="";
         foreach($entry["allergene"] as $indexA => $entryA ) {
-            if($entry["allergene"][$indexA]["sBeinhaltetA"]==1){
+            if($entry["allergene"][$indexA]["pBeinhaltetA"]==1){
                 if ($alText==""){
                     $alText="(". $entryA["klasse"];
                 } else {

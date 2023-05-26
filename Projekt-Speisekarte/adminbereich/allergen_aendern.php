@@ -63,7 +63,7 @@ if(!empty($fehler->fehlerAufgetreten())){
 <form method='post'>
 <div>
         <label class="form_beschriftung" for="klasse">Allergen Kürzel: </label>
-        <input type="text" name="klasse" id="klasse" value="<?php if(!empty($allergen)){ echo $allergen -> getSpalte("klasse");}else if (!empty( $_POST["klasse"] )) {echo  $_POST["klasse"]; } ?>">
+        <input autofocus type="text" name="klasse" id="klasse" value="<?php if(!empty($allergen)){ echo $allergen -> getSpalte("klasse");}else if (!empty( $_POST["klasse"] )) {echo  $_POST["klasse"]; } ?>">
     </div>
     <div>
         <label class="form_beschriftung" for="name">Allergen ausgeschrieben: </label>

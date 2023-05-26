@@ -84,7 +84,7 @@ if($fehler->fehlerAufgetreten()){
 if(empty($_POST["e_loeschen"]) && empty($_POST["e_loeschen_bestaetigung"])){
   
     echo "<form method='post'>";
-        echo '<button class="sub_buttons" type="submit" name="hinzu" value="1">Einheit hinzufügen</button>';
+        echo '<button autofocus class="sub_buttons" type="submit" name="hinzu" value="1">Einheit hinzufügen</button>';
         if(!$alleElemente){//abfragen Einheiten existieren
             $fehler-> fehlerDazu("Keine Einheit zum anzeigen vorhanden!");
         } else {

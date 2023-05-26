@@ -78,7 +78,7 @@ if($fehler->fehlerAufgetreten()){
 <form method='post'>
     <div>
         <label class="form_beschriftung" for="menge">Menge: </label>
-        <input type="number" step="0.01" min="0.01" name="menge" id="menge" value="<?php if (!empty( $_POST["menge"] )) {echo  punkt_statt_komma( zwei_kommastellen( $_POST["menge"])); } else if (!empty($mepDatensatz)){ echo punkt_statt_komma( zwei_kommastellen($mepDatensatz["menge"]));}  ?>">
+        <input autofocus type="number" step="0.01" min="0.01" name="menge" id="menge" value="<?php if (!empty( $_POST["menge"] )) {echo  punkt_statt_komma( zwei_kommastellen( $_POST["menge"])); } else if (!empty($mepDatensatz)){ echo punkt_statt_komma( zwei_kommastellen($mepDatensatz["menge"]));}  ?>">
     </div>
     <div>
         <label class="form_beschriftung" for="einheit">Einheit:</label>

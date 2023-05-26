@@ -54,7 +54,7 @@ $.get(
             let alText="";
             let alKlasse="";
             $(entry["allergene"]).each((indexA, entryA ) =>{
-                if(entry["allergene"][indexA]["sBeinhaltetA"]==1){
+                if(entry["allergene"][indexA]["pBeinhaltetA"]==1){
                     if (alText==""){
                         alText="("+ entryA["klasse"];
                     } else {
@@ -117,7 +117,7 @@ $.get(
             let alText="";
             let alKlasse="";
             $(entry["allergene"]).each((indexA, entryA ) =>{
-                if(entry["allergene"][indexA]["gBeinhaltetA"]==1){
+                if(entry["allergene"][indexA]["pBeinhaltetA"]==1){
                     if (alText==""){
                         alText="("+ entryA["klasse"];
                     } else {
