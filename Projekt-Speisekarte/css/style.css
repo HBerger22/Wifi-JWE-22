@@ -133,16 +133,16 @@ button{
 #s1{
     background-color: var(--mittag);    
 }
-#s2,#d4{
+#s2,#d3{
     background-color: var(--vorspeise);    
 }
-#s3,#d2{
+#s3,#d1{
     background-color: var(--suppe);    
 }
 #s4,#d9{
     background-color: var(--salat);
 }
-#s5,#d3{
+#s5,#d2{
     background-color: var(--grill);
 }
 #s6,#d5{
@@ -151,10 +151,10 @@ button{
 #s7,#d6{
     background-color: var(--klassik);
 }
-#s8,#d1{
+#s8,#d7{
     background-color: var(--vegan);
 }
-#s9,#d7{
+#s9,#d4{
     background-color: var(--jause);
 }
 #s10,#d8{
